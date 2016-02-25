@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Thu Feb 25 19:54:04 2016 Antoine Baché
+## Last update Thu Feb 25 23:27:00 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -13,7 +13,11 @@ DEBUG=			yes
 SRC_ASM_PREFIX=		src/asm/
 
 SRC_ASM_FILES=		main.c			\
+			header.c		\
+			parser.c		\
+			write_file.c		\
 			errors.c		\
+			free.c			\
 			warnings.c
 
 SRC_CORE_PREFIX=	src/corewar/
@@ -60,7 +64,8 @@ SRC_TOOLS_FILES=	my_bzero.c		\
 			my_strncpy.c		\
 			my_strndup.c		\
 			my_write.c		\
-			common_errors.c
+			common_errors.c		\
+			get_next_line.c
 
 SRC_ASM=		$(addprefix $(SRC_ASM_PREFIX),$(SRC_ASM_FILES))
 
@@ -69,6 +74,8 @@ SRC_CORE=		$(addprefix $(SRC_CORE_PREFIX),$(SRC_CORE_FILES))
 SRC_DECOMPILER=		$(addprefix $(SRC_DECOMPILER_PREFIX),$(SRC_DECOMPILER_FILES))
 
 SRC_TOOLS=		$(addprefix $(SRC_TOOLS_PREFIX),$(SRC_TOOLS_FILES))
+
+SRC_ASM+=		$(SRC_TOOLS)
 
 SRC_DECOMPILER+=	$(SRC_TOOLS)
 

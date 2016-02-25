@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Feb 24 16:53:31 2016 Antoine Baché
-** Last update Thu Feb 25 03:40:33 2016 Antoine Baché
+** Last update Thu Feb 25 20:23:14 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -34,14 +34,6 @@ int	prepare_ins(char **inst)
   return (0);
 }
 
-/*
-** Tant que READ != 0
-**   Lecture de 1 pour savoir instruction
-**   Tableau de pointeur sur fonction pour chaque fonction
-**     Lecture du nombre de caractere apres instruction
-**     Ecriture
-**
-**/
 int		load_champ(int fd, int new)
 {
   t_read	data;

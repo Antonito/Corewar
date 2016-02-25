@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:04:32 2016 Antoine Baché
-** Last update Wed Feb 24 22:20:56 2016 Antoine Baché
+** Last update Thu Feb 25 21:51:53 2016 Antoine Baché
 */
 
 #ifndef	TOOLS_H_
 # define TOOLS_H_
 
 # include <unistd.h>
+# include "get_next_line.h"
 
 int	my_put_nbr(int);
 char	*my_strncpy(char *, char *, int);

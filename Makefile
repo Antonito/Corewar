@@ -5,14 +5,16 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Thu Feb 25 13:46:43 2016 Antoine Baché
+## Last update Thu Feb 25 19:54:04 2016 Antoine Baché
 ##
 
 DEBUG=			yes
 
 SRC_ASM_PREFIX=		src/asm/
 
-SRC_ASM_FILES=		main.c
+SRC_ASM_FILES=		main.c			\
+			errors.c		\
+			warnings.c
 
 SRC_CORE_PREFIX=	src/corewar/
 
@@ -57,7 +59,8 @@ SRC_TOOLS_FILES=	my_bzero.c		\
 			my_strncmp.c		\
 			my_strncpy.c		\
 			my_strndup.c		\
-			my_write.c
+			my_write.c		\
+			common_errors.c
 
 SRC_ASM=		$(addprefix $(SRC_ASM_PREFIX),$(SRC_ASM_FILES))
 

@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Thu Feb 25 03:36:53 2016 Antoine Baché
+## Last update Thu Feb 25 13:46:43 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -73,7 +73,7 @@ NAME_ASM=		asm/asm
 
 NAME_CORE=		corewar/corewar
 
-NAME_DECOMPILER=	decompiler
+NAME_DECOMPILER=	bonus/decompiler
 
 HEAD=			-Iinclude
 

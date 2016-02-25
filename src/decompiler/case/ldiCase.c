@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 01:03:06 2016 Antoine Baché
-** Last update Thu Feb 25 03:35:16 2016 Antoine Baché
+** Last update Thu Feb 25 13:56:05 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -14,7 +14,14 @@
 
 int	ldiIndirect(t_read *data)
 {
-  (void)data;
+  int	tmp;
+
+  my_bzero(data->buff, 5);
+  if (read(data->fd, data->buff, 2) < 0)
+    return (1);
+  tmp = data->buff[0] * 256 + data->buff[1];
+  if (my_write_nb(tmp, 1, data->new) < 0)
+    return (1);
   return (0);
 }
 

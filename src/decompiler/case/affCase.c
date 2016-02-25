@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 01:03:06 2016 Antoine Baché
-** Last update Thu Feb 25 02:35:58 2016 Antoine Baché
+** Last update Thu Feb 25 03:35:39 2016 Antoine Baché
 */
 
 #include <unistd.h>
 #include "decompiler.h"
 #include "tools.h"
 
-int	affRegister(t_read *data)
+int		affRegister(t_read *data)
 {
   unsigned char	str[3];
 
@@ -30,7 +30,7 @@ int	affRegister(t_read *data)
       str[1] = (data->buff[1] - 10) + '0';
     }
   if (write(data->new, "r", 1) < 0 ||
-      write(data->new, str, my_strlen(str)) < 0)
+      write(data->new, str, my_strlen((char *)str)) < 0)
     return (1);
   return (0);
 }

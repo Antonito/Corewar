@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Feb 24 16:53:31 2016 Antoine Baché
-** Last update Thu Feb 25 02:08:34 2016 Antoine Baché
+** Last update Thu Feb 25 03:38:19 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -58,11 +58,10 @@ int		load_champ(int fd, int new)
       if (!(data.sum = read(fd, &data.buff, 1)))
 	break;
       if (write(data.new, "\t", 1) < 0 ||
-	  array[((data.buff[0] < 0 || data.buff[0] > 16)
-		 ? 16 : data.buff[0] - 1)](&data) ||
+	  array[((data.buff[0] > 16) ? 16 : data.buff[0] - 1)](&data) ||
 	  write(data.new, "\n", 1) < 0)
 	return (errorChamp());
     }
-  freeLoadChamp(data.inst);
+  freeLoadChamp(data.inst, array);
   return (0);
 }

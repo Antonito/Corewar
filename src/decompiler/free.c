@@ -5,12 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Feb 24 18:50:52 2016 Antoine Baché
-** Last update Wed Feb 24 18:54:09 2016 Antoine Baché
+** Last update Thu Feb 25 03:39:03 2016 Antoine Baché
 */
 
 #include <stdlib.h>
+#include "decompiler.h"
 
-int	freeLoadChamp(char **tab)
+int	freeLoadChamp(char **tab, ptrtab ptr)
 {
   int	i;
 
@@ -18,5 +19,6 @@ int	freeLoadChamp(char **tab)
   while (tab[i] != NULL)
     free(tab[i++]);
   free(tab);
+  free(ptr);
   return (1);
 }

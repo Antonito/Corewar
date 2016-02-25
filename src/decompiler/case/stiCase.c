@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 01:03:06 2016 Antoine Baché
-** Last update Thu Feb 25 01:40:07 2016 Antoine Baché
+** Last update Thu Feb 25 03:34:47 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -14,6 +14,7 @@
 
 int	stiIndirect(t_read *data)
 {
+  (void)data;
   return (0);
 }
 
@@ -49,7 +50,7 @@ int		stiRegister(t_read *data)
       str[1] = (data->buff[0] - 10) + '0';
     }
   if (write(data->new, "r", 1) < 0 ||
-      write(data->new, str, my_strlen(str)) < 0)
+      write(data->new, str, my_strlen((char *)str)) < 0)
     return (1);
   return (0);
 }

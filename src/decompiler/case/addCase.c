@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 01:03:06 2016 Antoine Baché
-** Last update Thu Feb 25 02:18:20 2016 Antoine Baché
+** Last update Thu Feb 25 03:31:59 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -30,7 +30,7 @@ int		addRegister(t_read *data)
       str[1] = (data->buff[0] - 10) + '0';
     }
   if (write(data->new, "r", 1) < 0 ||
-      write(data->new, str, my_strlen(str)) < 0)
+      write(data->new, str, my_strlen((char *)str)) < 0)
     return (1);
   return (0);
 }

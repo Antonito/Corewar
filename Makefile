@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Thu Feb 25 01:40:48 2016 Antoine Baché
+## Last update Thu Feb 25 03:36:53 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -24,9 +24,6 @@ SRC_DECOMPILER_FILES=	main.c			\
 			check_file.c		\
 			load_champ.c		\
 			free.c			\
-			write_instruction.c	\
-			write_direct.c		\
-			write_indirect.c	\
 			loader.c		\
 			bytecode.c		\
 			select.c		\

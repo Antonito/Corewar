@@ -5,14 +5,19 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 01:03:06 2016 Antoine Baché
-** Last update Thu Feb 25 01:35:15 2016 Antoine Baché
+** Last update Thu Feb 25 03:08:58 2016 Antoine Baché
 */
 
 #include <unistd.h>
 #include "decompiler.h"
 #include "tools.h"
 
-int	andCase(t_read *data)
+int	andIndirect(t_read *data)
+{
+  return (0);
+}
+
+int	andDirect(t_read *data)
 {
   int	tmp;
 
@@ -22,8 +27,58 @@ int	andCase(t_read *data)
   tmp = data->buff[0] * 256 * 256 * 256 +
     data->buff[1] * 256 * 256 + data->buff[2] * 256 + data->buff[3];
   if (write(data->new, "%", 1) < 0 ||
-      my_write_nb(tmp, 1, data->new) < 0 ||
-      write(data->new, "\n\t", 2) < 0)
+      my_write_nb(tmp, 1, data->new) < 0)
     return (1);
+  return (0);
+}
+
+int		andRegister(t_read *data)
+{
+  unsigned char	str[3];
+
+  my_bzero(data->buff, 5);
+  if (read(data->fd, data->buff, 1) < 0)
+    return (1);
+  if (data->buff[0] < 1 || data->buff[0] > 16)
+    return (1);
+  my_bzero(&str, 3);
+  if (data->buff[0] <= 9)
+    str[0] = data->buff[0] + '0';
+  else
+    {
+      str[0] = '1';
+      str[1] = (data->buff[0] - 10) + '0';
+    }
+  if (write(data->new, "r", 1) < 0 ||
+      write(data->new, str, my_strlen(str)) < 0)
+    return (1);
+  return (0);
+}
+
+int	andCase(t_read *data)
+{
+  int	code;
+  int	i;
+
+  my_bzero(data->buff, 5);
+  if (read(data->fd, data->buff, 1) < 0 ||
+      write(data->new, data->inst[5], my_strlen(data->inst[5])) < 0)
+    return (1);
+  data->byte.bytecode = data->buff[0];
+  i = -1;
+  while (++i < 4)
+    {
+      code = getByteCode(&data->byte);
+      my_bzero(data->buff, 5);
+      if (!code && andRegister(data))
+	return (1);
+      if (code == 1 && andDirect(data))
+	return (1);
+      if (code == 2 && andIndirect(data))
+	return (1);
+      if (code != -1 && i != 2 && write(data->new, ", ", 2) < 0)
+	return (1);
+      data->byte.bytecode <<= 2;
+    }
   return (0);
 }

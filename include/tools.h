@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:04:32 2016 Antoine Baché
-** Last update Tue Feb 23 16:19:01 2016 Antoine Baché
+** Last update Wed Feb 24 22:20:56 2016 Antoine Baché
 */
 
 #ifndef	TOOLS_H_
@@ -26,5 +26,7 @@ int	my_strlen(const char *);
 char	*my_strncat(char *, char *, int);
 char	*my_strcpy(char *, const char *);
 void	my_bzero(void *, int);
+int	my_write_nb(int, int, int);
+int	my_write(char, int);
 
 #endif	/* !TOOLS_H_ */

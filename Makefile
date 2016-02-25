@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Tue Feb 23 16:39:02 2016 Antoine Baché
+## Last update Thu Feb 25 01:40:48 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -22,7 +22,30 @@ SRC_DECOMPILER_PREFIX=	src/decompiler/
 
 SRC_DECOMPILER_FILES=	main.c			\
 			check_file.c		\
-			loader.c
+			load_champ.c		\
+			free.c			\
+			write_instruction.c	\
+			write_direct.c		\
+			write_indirect.c	\
+			loader.c		\
+			bytecode.c		\
+			select.c		\
+			case/addCase.c		\
+			case/ldCase.c		\
+			case/liveCase.c		\
+			case/stCase.c		\
+			case/subCase.c		\
+			case/andCase.c		\
+			case/orCase.c		\
+			case/xorCase.c		\
+			case/zjmpCase.c		\
+			case/ldiCase.c		\
+			case/stiCase.c		\
+			case/forkCase.c		\
+			case/lforkCase.c	\
+			case/lldCase.c		\
+			case/lldiCase.c		\
+			case/affCase.c
 
 SRC_TOOLS_PREFIX=	src/tools/
 
@@ -36,7 +59,8 @@ SRC_TOOLS_FILES=	my_bzero.c		\
 			my_strncat.c		\
 			my_strncmp.c		\
 			my_strncpy.c		\
-			my_strndup.c
+			my_strndup.c		\
+			my_write.c
 
 SRC_ASM=		$(addprefix $(SRC_ASM_PREFIX),$(SRC_ASM_FILES))
 

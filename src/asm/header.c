@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 21:45:58 2016 Antoine Baché
-** Last update Fri Feb 26 00:11:25 2016 Antoine Baché
+** Last update Fri Feb 26 10:27:26 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -15,7 +15,6 @@
 
 int	warningComment(int line, char *tmp)
 {
-
   if (tmp)
     free(tmp);
   write(2, "Warning: Line ", 14);

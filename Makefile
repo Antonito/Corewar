@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Thu Feb 25 23:27:00 2016 Antoine Baché
+## Last update Fri Feb 26 14:56:32 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -18,7 +18,26 @@ SRC_ASM_FILES=		main.c			\
 			write_file.c		\
 			errors.c		\
 			free.c			\
-			warnings.c
+			getfunction.c		\
+			getargs.c		\
+			select.c		\
+			warnings.c		\
+			case/addCase.c		\
+			case/ldCase.c		\
+			case/liveCase.c		\
+			case/stCase.c		\
+			case/subCase.c		\
+			case/andCase.c		\
+			case/orCase.c		\
+			case/xorCase.c		\
+			case/zjmpCase.c		\
+			case/ldiCase.c		\
+			case/stiCase.c		\
+			case/forkCase.c		\
+			case/lforkCase.c	\
+			case/lldCase.c		\
+			case/lldiCase.c		\
+			case/affCase.c
 
 SRC_CORE_PREFIX=	src/corewar/
 

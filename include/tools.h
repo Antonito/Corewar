@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:04:32 2016 Antoine Baché
-** Last update Thu Feb 25 21:51:53 2016 Antoine Baché
+** Last update Fri Feb 26 13:13:26 2016 Antoine Baché
 */
 
 #ifndef	TOOLS_H_
@@ -16,8 +16,8 @@
 
 int	my_put_nbr(int);
 char	*my_strncpy(char *, char *, int);
-int	my_strncmp(char *, char *, int);
-int	my_strcmp(char *, char *);
+int	my_strncmp(const char *, const char *, int);
+int	my_strcmp(const char *, const char *);
 int	my_getnbr(char *);
 char	*my_strdup(char *);
 char	*my_strndup(char *, int);

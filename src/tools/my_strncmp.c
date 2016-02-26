@@ -5,10 +5,10 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:09:27 2016 Antoine Baché
-** Last update Tue Feb 23 16:09:33 2016 Antoine Baché
+** Last update Fri Feb 26 13:12:24 2016 Antoine Baché
 */
 
-int	my_strncmp(char *s1, char *s2, int n)
+int	my_strncmp(const char *s1, const char *s2, int n)
 {
   int	i;
   int	j;

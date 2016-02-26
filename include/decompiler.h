@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 15:57:16 2016 Antoine Baché
-** Last update Thu Feb 25 03:39:47 2016 Antoine Baché
+** Last update Fri Feb 26 14:37:29 2016 Antoine Baché
 */
 
 #ifndef	DECOMPILER_H_

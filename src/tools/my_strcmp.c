@@ -5,12 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:07:59 2016 Antoine Baché
-** Last update Tue Feb 23 16:08:06 2016 Antoine Baché
+** Last update Fri Feb 26 13:13:08 2016 Antoine Baché
 */
 
 #include "tools.h"
 
-int	my_strcmp(char *s1, char *s2)
+int	my_strcmp(const char *s1, const char *s2)
 {
   int	i;
   int	j;

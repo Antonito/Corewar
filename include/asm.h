@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sun Feb 28 16:39:06 2016 Antoine Baché
+** Last update Sun Feb 28 18:23:08 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -47,6 +47,8 @@ typedef	int (**writetab)(int, t_parsing *);
 
 writetab		selector_write(void);
 ptrtab			selector(void);
+
+int			getRegisterSti(t_data *, t_parsing *, int *, int);
 
 /*
 ** parser.c
@@ -104,5 +106,6 @@ int			write_ld(int, t_parsing *);
 int			write_zjmp(int, t_parsing *);
 int			write_live(int, t_parsing *);
 int			write_fork(int, t_parsing *);
+int			write_add(int, t_parsing *);
 
 #endif /* !ASM_H_ */

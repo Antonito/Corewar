@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 00:47:20 2016 Antoine Baché
-** Last update Sun Feb 28 16:34:50 2016 Antoine Baché
+** Last update Sun Feb 28 18:05:21 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -23,7 +23,7 @@ int		errorWrite(int fd, t_parsing *tmp)
 {
   (void)fd;
   (void)tmp;
-  return (1);
+  return (0);
 }
 
 ptrtab		selector(void)
@@ -61,7 +61,7 @@ writetab       	selector_write(void)
   array[0] = &write_live;
   array[1] = &write_ld;
   array[2] = &stCase;
-  array[3] = &addCase;
+  array[3] = &write_add;
   array[4] = &subCase;
   array[5] = &andCase;
   array[6] = &orCase;

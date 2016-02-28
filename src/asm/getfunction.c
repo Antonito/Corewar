@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 11:04:59 2016 Antoine Baché
-** Last update Sat Feb 27 22:14:54 2016 Antoine Baché
+** Last update Sun Feb 28 18:06:50 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -37,10 +37,18 @@ int	getFunction(t_data *data, t_parsing *elem)
       while (data->str[i] && data->str[i] != ':' && ++i);
       ++i;
     }
+  if (!data->str[i] && (elem->function = 16) && !(elem->bytecode = 0))
+    return (0);
   ++i;
   if ((elem->function = findName(data->str, i, data->ins)) == -1)
     return (errorSyntax(data->line));
+#ifdef	DEBUG
+  write(1, "[INFOS] Found name !\n", 21);
+#endif
   if (getArgs(data, elem, i))
     return (1);
+#ifdef	DEBUG
+  write(1, "[INFOS] Found args !\n", 21);
+#endif
   return (0);
 }

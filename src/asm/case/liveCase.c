@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sun Feb 28 04:24:50 2016 Antoine Baché
+** Last update Sun Feb 28 17:38:44 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -48,6 +48,11 @@ int	getLive(t_data *data, t_parsing *elem, int *offset)
   nb[tmp - (*offset)] = 0;
   elem->value[0] = my_getnbr(nb);
   free(nb);
+#ifdef	DEBUG
+  write(1, "[INFOS] Live ", 13);
+  my_put_nbr(elem->value[0]);
+  write(1, "\n", 1);
+#endif
   return (0);
 }
 

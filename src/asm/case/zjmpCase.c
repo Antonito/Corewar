@@ -5,10 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sun Feb 28 05:09:33 2016 Antoine Baché
+** Last update Sun Feb 28 18:21:56 2016 Antoine Baché
 */
 
 #include "asm.h"
+#include "errors.h"
+#include "tools.h"
 
 int	write_zjmp(int new, t_parsing *tmp)
 {

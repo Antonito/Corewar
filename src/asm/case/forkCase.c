@@ -5,10 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sun Feb 28 16:38:39 2016 Antoine Baché
+** Last update Sun Feb 28 18:21:04 2016 Antoine Baché
 */
 
 #include "asm.h"
+#include "errors.h"
+#include "tools.h"
 
 int	write_fork(int new, t_parsing *tmp)
 {

@@ -6,7 +6,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sun Feb 28 04:40:24 2016 Antoine Baché
+** Last update Sun Feb 28 17:44:13 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -45,6 +45,7 @@ int	getRegisterSti(t_data *data, t_parsing *elem, int *offset, int i)
     return (errorRegister(data->line));
   elem->bytecode |= 64 >> ((i - 1) << 1);
   *offset = tmp;
+  printf("STI = %d %d %d\n", elem->reg[0], elem->reg[1], elem->reg[2]);
   return (0);
 }
 
@@ -59,18 +60,19 @@ int	stiCase(t_data *data, t_parsing *elem, int *offset)
     return (errorSyntax(data->line));
   i = -1;
   while (++i < 2)
-    {
-      if (data->str[++(*offset)] == '%')
-	{
-	  elem->bytecode |= 128 >> ((i + 1) * 2);
-	  if (getIndirectSti(data, elem, offset, i + 1))
-	    return (1);
-	}
-      else if (data->str[*offset] == 'r' &&
-	       getRegisterSti(data, elem, offset, i + 1))
-	return (1);
-      else
-	return (errorSyntax(data->line));
-    }
+    if (data->str[++(*offset)] == '%')
+      {
+	elem->bytecode |= 128 >> ((i + 1) * 2);
+	if (getIndirectSti(data, elem, offset, i + 1))
+	  return (1);
+      }
+    else if (data->str[*offset] == 'r')
+      {
+	if (getRegisterSti(data, elem, offset, i + 2))
+	  return (1);
+	  ++(*offset);
+      }
+    else
+      return (errorSyntax(data->line));
   return (0);
 }

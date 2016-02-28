@@ -5,11 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sun Feb 28 03:09:54 2016 Antoine Baché
+** Last update Sun Feb 28 15:40:28 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
 # define ASM_H_
+
+# define OFFSETOF(TYPE, MEMBER)	((size_t) & ((TYPE *)0)->MEMBER)
 
 # include <stdlib.h>
 # include "header.h"
@@ -69,7 +71,7 @@ int			getArgs(t_data *, t_parsing *, int);
 /*
 ** free.c
 */
-void			free_elems(t_parsing *, char **);
+void			free_elems(t_data *);
 
 /*
 ** Cases
@@ -95,6 +97,8 @@ int			zjmpCase(t_data *, t_parsing *, int *);
 ** Write
 */
 int			write_sti(int, t_parsing *);
+int			write_ld(int, t_parsing *);
+int			write_zjmp(int, t_parsing *);
 int			write_live(int, t_parsing *);
 
 #endif /* !ASM_H_ */

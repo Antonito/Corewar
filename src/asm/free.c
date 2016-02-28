@@ -5,26 +5,27 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 23:22:18 2016 Antoine Baché
-** Last update Fri Feb 26 10:41:55 2016 Antoine Baché
+** Last update Sun Feb 28 04:52:06 2016 Antoine Baché
 */
 
 #include <stdlib.h>
 #include "asm.h"
 
-void		free_elems(t_parsing *elem, char **ins)
+void		free_elems(t_data *data)
 {
   int		i;
   t_parsing	*tmp;
 
-  while (elem->next)
+  while (data->elem->next)
     {
-      tmp = elem;
-      elem = elem->next;
+      tmp = data->elem;
+      data->elem = data->elem->next;
       free(tmp);
     }
-  free(elem);
+  free(data->elem);
   i = 0;
   while (i < 17)
-    free(ins[i++]);
-  free(ins);
+    free(data->ins[i++]);
+  free(data->ins);
+  free(data->list);
 }

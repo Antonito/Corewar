@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 22:42:05 2016 Antoine Baché
-** Last update Sun Feb 28 03:11:24 2016 Antoine Baché
+** Last update Sun Feb 28 15:49:43 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -27,6 +27,23 @@ int		write_args(int new, t_parsing *tmp)
   if (tmp->function == 0x0B && write_sti(new, tmp))
     return (1);
   if (tmp->function == 0x01 && write_live(new, tmp))
+    return (1);
+  if (tmp->function == 0x02 && write_ld(new, tmp))
+    return (1);
+  if (tmp->function == 0x09 && write_zjmp(new, tmp))
+    return (1);
+  return (0);
+}
+
+int		end_header(int new, t_data *data)
+{
+  int		size;
+
+  if ((size = lseek(data->fd, 0, SEEK_END)) == -1 ||
+      (size = size - sizeof(t_header)) < 0 ||
+      reverseInt(&size) ||
+      lseek(new, OFFSETOF(t_header, prog_size), SEEK_SET) == -1 ||
+      write(new, &size, sizeof(int)) < 0)
     return (1);
   return (0);
 }
@@ -50,7 +67,7 @@ int		write_file(char *str, t_data *data)
 	return (errorWriting("test.cor"));
       tmp = tmp->next;
     }
-  if (close(new) < 0)
-    return (1);
+  if (end_header(new, data) || close(new) < 0)
+    return (errorWriting("test.cor"));
   return (0);
 }

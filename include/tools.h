@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:04:32 2016 Antoine Baché
-** Last update Sun Feb 28 02:43:13 2016 Antoine Baché
+** Last update Sun Feb 28 04:55:35 2016 Antoine Baché
 */
 
 #ifndef	TOOLS_H_
@@ -31,5 +31,6 @@ int	my_write_nb(int, int, int);
 int	my_write(char, int);
 int	reverseChar(char *);
 int	reverseShort(short *);
+int	reverseInt(int *);
 
 #endif	/* !TOOLS_H_ */

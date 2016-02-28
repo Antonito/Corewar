@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 13:34:43 2016 Antoine Baché
-** Last update Sat Feb 27 22:06:36 2016 Antoine Baché
+** Last update Sun Feb 28 03:31:31 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -14,7 +14,7 @@
 
 int	getArgs(t_data *data, t_parsing *elem, int offset)
 {
-  if (data->list[elem->function](data, elem, &offset))
+  if (data->list[(int)elem->function](data, elem, &offset))
     return (1);
   return (0);
 }

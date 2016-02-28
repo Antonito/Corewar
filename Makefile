@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Fri Feb 26 14:56:32 2016 Antoine Baché
+## Last update Sun Feb 28 02:12:57 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -20,8 +20,12 @@ SRC_ASM_FILES=		main.c			\
 			free.c			\
 			getfunction.c		\
 			getargs.c		\
+			getvalue.c		\
+			get_label.c		\
 			select.c		\
 			warnings.c		\
+			bytecode.c		\
+			case/stiWrite.c		\
 			case/addCase.c		\
 			case/ldCase.c		\
 			case/liveCase.c		\
@@ -84,7 +88,8 @@ SRC_TOOLS_FILES=	my_bzero.c		\
 			my_strndup.c		\
 			my_write.c		\
 			common_errors.c		\
-			get_next_line.c
+			get_next_line.c		\
+			reverse_byte.c
 
 SRC_ASM=		$(addprefix $(SRC_ASM_PREFIX),$(SRC_ASM_FILES))
 

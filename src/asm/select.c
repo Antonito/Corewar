@@ -5,16 +5,15 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 00:47:20 2016 Antoine Baché
-** Last update Fri Feb 26 14:47:10 2016 Antoine Baché
+** Last update Sun Feb 28 00:41:23 2016 Antoine Baché
 */
 
 #include <stdlib.h>
 #include "asm.h"
 
-int		errorInst(t_data *data, char *str, t_parsing *elem, int *offset)
+int		errorInst(t_data *data, t_parsing *elem, int *offset)
 {
   (void)data;
-  (void)str;
   (void)elem;
   (void)offset;
   return (1);

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 22:42:05 2016 Antoine Baché
-** Last update Fri Feb 26 14:03:17 2016 Antoine Baché
+** Last update Sun Feb 28 03:11:24 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -20,6 +20,15 @@ int		errorWriting(char *str)
   write(2, str, my_strlen(str));
   write(2, "\n", 1);
   return (1);
+}
+
+int		write_args(int new, t_parsing *tmp)
+{
+  if (tmp->function == 0x0B && write_sti(new, tmp))
+    return (1);
+  if (tmp->function == 0x01 && write_live(new, tmp))
+    return (1);
+  return (0);
 }
 
 int		write_file(char *str, t_data *data)
@@ -37,7 +46,11 @@ int		write_file(char *str, t_data *data)
       if (write(new, &tmp->function, 1) < 0 ||
 	  ((tmp->bytecode) ? write(new, &tmp->bytecode, 1) : 0) < 0)
 	return (errorWriting("test.cor"));
+      if (write_args(new, tmp))
+	return (errorWriting("test.cor"));
       tmp = tmp->next;
     }
+  if (close(new) < 0)
+    return (1);
   return (0);
 }

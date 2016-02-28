@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 11:04:59 2016 Antoine Baché
-** Last update Fri Feb 26 13:56:38 2016 Antoine Baché
+** Last update Sat Feb 27 22:14:54 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -27,20 +27,20 @@ int	findName(const char *str, const int offset, char **ins)
   return (-1);
 }
 
-int	getFunction(t_data *data, char *str, t_parsing *elem)
+int	getFunction(t_data *data, t_parsing *elem)
 {
   int	i;
 
   i = 0;
-  if (str[i] != '\t')
+  if (data->str[i] != '\t')
     {
-      while (str[i] && str[i] != ':' && ++i);
+      while (data->str[i] && data->str[i] != ':' && ++i);
       ++i;
     }
   ++i;
-  if ((elem->function = findName(str, i, data->ins)) == -1)
+  if ((elem->function = findName(data->str, i, data->ins)) == -1)
     return (errorSyntax(data->line));
-  if (getArgs(data, str, elem, i))
+  if (getArgs(data, elem, i))
     return (1);
   return (0);
 }

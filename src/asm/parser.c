@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Fri Feb 26 15:00:51 2016 Antoine Baché
+** Last update Sat Feb 27 22:14:33 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -52,23 +52,22 @@ t_parsing      	*addElem(t_parsing *new, t_parsing *old)
 
 int		parseFile(int fd, t_data *data)
 {
-  char		*tmp;
   t_parsing	*tmp_parse;
   t_parsing	*elem;
 
   tmp_parse = data->elem;
-  while ((tmp = get_next_line(fd)) && ++data->line)
+  while ((data->str = get_next_line(fd)) && ++data->line)
     {
-      if (tmp[0])
+      if (data->str[0])
 	{
 	  if (!(elem = addElem(elem, tmp_parse)))
 	    return (errorMalloc());
-	  printf("Line %d: %s\n", data->line, tmp);
-	  if (getFunction(data, tmp, elem))
+	  printf("Line %d: %s\n", data->line, data->str);
+	  if (getFunction(data, elem))
 	    return (1);
 	  tmp_parse = tmp_parse->next;
 	}
-      free(tmp);
+      free(data->str);
     }
   return (0);
 }

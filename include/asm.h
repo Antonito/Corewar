@@ -5,12 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Fri Feb 26 15:00:13 2016 Antoine Baché
+** Last update Sun Feb 28 03:09:54 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
 # define ASM_H_
 
+# include <stdlib.h>
 # include "header.h"
 
 /*
@@ -21,10 +22,9 @@
 typedef	struct		s_parsing
 {
   char			function;
-  char			bytecode;
-  int			value1;
-  int			value2;
-  int			value3;
+  unsigned char		bytecode;
+  int			value[3];
+  char			reg[3];
   struct s_parsing	*next;
 }			t_parsing;
 
@@ -35,10 +35,11 @@ typedef	struct		s_data
   t_header		header;
   t_parsing		*elem;
   char			**ins;
-  int			(**list)(struct s_data *, char *, t_parsing *, int *);
+  char			*str;
+  int			(**list)(struct s_data *, t_parsing *, int *);
 }			t_data;
 
-typedef	int (**ptrtab)(t_data *, char *, t_parsing *, int *);
+typedef	int (**ptrtab)(t_data *, t_parsing *, int *);
 
 ptrtab			selector(void);
 
@@ -60,8 +61,10 @@ int			write_file(char *, t_data *);
 /*
 ** get*.c
 */
-int			getFunction(t_data *, char *, t_parsing *);
-int			getArgs(t_data *, char *, t_parsing *, int);
+int			getIndiValue(t_data *, t_parsing *, int *, int);
+int			getLabel(t_data *, t_parsing *, int *, int);
+int			getFunction(t_data *, t_parsing *);
+int			getArgs(t_data *, t_parsing *, int);
 
 /*
 ** free.c
@@ -71,21 +74,27 @@ void			free_elems(t_parsing *, char **);
 /*
 ** Cases
 */
-int			addCase(t_data *, char *, t_parsing *, int *);
-int			affCase(t_data *, char *, t_parsing *, int *);
-int			andCase(t_data *, char *, t_parsing *, int *);
-int			forkCase(t_data *, char *, t_parsing *, int *);
-int			ldCase(t_data *, char *, t_parsing *, int *);
-int			ldiCase(t_data *, char *, t_parsing *, int *);
-int			lforkCase(t_data *, char *, t_parsing *, int *);
-int			liveCase(t_data *, char *, t_parsing *, int *);
-int			lldCase(t_data *, char *, t_parsing *, int *);
-int			lldiCase(t_data *, char *, t_parsing *, int *);
-int			orCase(t_data *, char *, t_parsing *, int *);
-int			stCase(t_data *, char *, t_parsing *, int *);
-int			stiCase(t_data *, char *, t_parsing *, int *);
-int			subCase(t_data *, char *, t_parsing *, int *);
-int			xorCase(t_data *, char *, t_parsing *, int *);
-int			zjmpCase(t_data *, char *, t_parsing *, int *);
+int			addCase(t_data *, t_parsing *, int *);
+int			affCase(t_data *, t_parsing *, int *);
+int			andCase(t_data *, t_parsing *, int *);
+int			forkCase(t_data *, t_parsing *, int *);
+int			ldCase(t_data *, t_parsing *, int *);
+int			ldiCase(t_data *, t_parsing *, int *);
+int			lforkCase(t_data *, t_parsing *, int *);
+int			liveCase(t_data *, t_parsing *, int *);
+int			lldCase(t_data *, t_parsing *, int *);
+int			lldiCase(t_data *, t_parsing *, int *);
+int			orCase(t_data *, t_parsing *, int *);
+int			stCase(t_data *, t_parsing *, int *);
+int			stiCase(t_data *, t_parsing *, int *);
+int			subCase(t_data *, t_parsing *, int *);
+int			xorCase(t_data *, t_parsing *, int *);
+int			zjmpCase(t_data *, t_parsing *, int *);
+
+/*
+** Write
+*/
+int			write_sti(int, t_parsing *);
+int			write_live(int, t_parsing *);
 
 #endif /* !ASM_H_ */

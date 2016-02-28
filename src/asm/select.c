@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 00:47:20 2016 Antoine Baché
-** Last update Sun Feb 28 00:41:23 2016 Antoine Baché
+** Last update Sun Feb 28 16:34:50 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -16,6 +16,13 @@ int		errorInst(t_data *data, t_parsing *elem, int *offset)
   (void)data;
   (void)elem;
   (void)offset;
+  return (1);
+}
+
+int		errorWrite(int fd, t_parsing *tmp)
+{
+  (void)fd;
+  (void)tmp;
   return (1);
 }
 
@@ -42,5 +49,31 @@ ptrtab		selector(void)
   array[14] = &lforkCase;
   array[15] = &affCase;
   array[16] = &errorInst;
+  return (array);
+}
+
+writetab       	selector_write(void)
+{
+  writetab	array;
+
+  if ((array = malloc(sizeof(int *) * 17)) == NULL)
+    return (NULL);
+  array[0] = &write_live;
+  array[1] = &write_ld;
+  array[2] = &stCase;
+  array[3] = &addCase;
+  array[4] = &subCase;
+  array[5] = &andCase;
+  array[6] = &orCase;
+  array[7] = &xorCase;
+  array[8] = &write_zjmp;
+  array[9] = &ldiCase;
+  array[10] = &write_sti;
+  array[11] = &write_fork;
+  array[12] = &lldCase;
+  array[13] = &lldiCase;
+  array[14] = &lforkCase;
+  array[15] = &affCase;
+  array[16] = &errorWrite;
   return (array);
 }

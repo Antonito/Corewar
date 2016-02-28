@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sun Feb 28 04:42:05 2016 Antoine Baché
+** Last update Sun Feb 28 16:24:53 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -70,7 +70,7 @@ int	ldCase(t_data *data, t_parsing *elem, int *offset)
 {
   *offset += 1;
   if (data->str[++(*offset)] != ' ' || (data->str[(*offset) + 1] != '%' &&
-					(data->str[(*offset) + 1] < '1' ||
+					(data->str[(*offset) + 1] < '0' ||
 					 data->str[(*offset) + 1] > '9')))
     return (errorSyntax(data->line));
   if (data->str[(*offset + 1)] > '0' && data->str[(*offset) + 1] < '9' &&
@@ -81,7 +81,7 @@ int	ldCase(t_data *data, t_parsing *elem, int *offset)
       elem->bytecode |= 128;
       if (data->str[++(*offset) + 1] == ':' && getLabelLd(data, elem, offset))
 	return (1);
-      else if (data->str[(*offset) + 1] > '0' &&
+      else if (data->str[(*offset) + 1] >= '0' &&
 	       data->str[(*offset) + 1] <='9' && getDirLd(data, elem, offset))
 	return (1);
     }

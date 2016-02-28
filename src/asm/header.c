@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 21:45:58 2016 Antoine Baché
-** Last update Fri Feb 26 10:27:26 2016 Antoine Baché
+** Last update Sun Feb 28 16:22:18 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -43,9 +43,13 @@ int	getComment(char *tmp, t_header *header, int *line, int fd)
   while (tmp[i] && tmp[i] != '.' && ++i);
   if ((!tmp[i] || tmp[++i] != 'c' || tmp[++i] != 'o' || tmp[++i] != 'm' ||
       tmp[++i] != 'm' || tmp[++i] != 'e' || tmp [++i] != 'n' ||
-       tmp[++i] != 't' || tmp[++i] != ' ' || tmp[++i] != '"') && (*line)--)
+       tmp[++i] != 't') && (*line)--)
     return (((lseek(fd, 0, SEEK_CUR) != -1) ?
 	     warningComment(*line + 1, NULL) : 1));
+  ++i;
+  while (tmp[i] && (tmp[i] == ' ' || tmp[i] == '\t') && ++i);
+  if (!tmp[i] || tmp[i] != '"')
+    return (warningComment(*line + 1, NULL));
   j = 0;
   while (tmp[++i] && tmp[i] != '"' && (header->comment[j] = tmp[i]) &&
 	 ++j < 2047);
@@ -64,7 +68,11 @@ int	getHeaderName(char *tmp, t_header *header, int line)
   i = 0;
   while (tmp[i] && tmp[i] != '.' && ++i);
   if (!tmp[i] || tmp[++i] != 'n' || tmp[++i] != 'a' || tmp[++i] != 'm' ||
-      tmp[++i] != 'e' || tmp[++i] != ' ' || tmp[++i] != '"')
+      tmp[++i] != 'e')
+    return (errorName(line, tmp));
+  ++i;
+  while (tmp[i] && (tmp[i] == ' ' || tmp[i] == '\t') && ++i);
+  if (!tmp[i] || tmp[i] != '"')
     return (errorName(line, tmp));
   j = 0;
   while (tmp[++i] && tmp[i] != '"' && (header->name[j] = tmp[i]) && ++j < 127);

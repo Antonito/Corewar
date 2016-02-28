@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sun Feb 28 15:40:28 2016 Antoine Baché
+** Last update Sun Feb 28 16:39:06 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -43,6 +43,9 @@ typedef	struct		s_data
 
 typedef	int (**ptrtab)(t_data *, t_parsing *, int *);
 
+typedef	int (**writetab)(int, t_parsing *);
+
+writetab		selector_write(void);
 ptrtab			selector(void);
 
 /*
@@ -100,5 +103,6 @@ int			write_sti(int, t_parsing *);
 int			write_ld(int, t_parsing *);
 int			write_zjmp(int, t_parsing *);
 int			write_live(int, t_parsing *);
+int			write_fork(int, t_parsing *);
 
 #endif /* !ASM_H_ */

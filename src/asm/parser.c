@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Sun Feb 28 18:20:23 2016 Antoine Baché
+** Last update Mon Feb 29 17:20:13 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -63,6 +63,8 @@ int		parseFile(int fd, t_data *data)
 	  if (!(elem = addElem(elem, tmp_parse)))
 	    return (errorMalloc());
 	  printf("Line %d: %s\n", data->line, data->str);
+	  epurStr(data->str);
+	  printf("Epured Line %d : %s\n", data->line, data->str);
 	  if (getFunction(data, elem))
 	    return (1);
 	  tmp_parse = tmp_parse->next;

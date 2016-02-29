@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sun Feb 28 18:23:08 2016 Antoine Baché
+** Last update Mon Feb 29 23:35:03 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -49,6 +49,19 @@ writetab		selector_write(void);
 ptrtab			selector(void);
 
 int			getRegisterSti(t_data *, t_parsing *, int *, int);
+
+/*
+**  ________________________________________________________________________
+** /                                                                        \
+** | EpurStr -> Formate les lignes afin qu'elles correspondent à la syntaxe |
+** |            attendue par le compilo                                     |
+** | Si une ligne contient un label elle est formatée ainsi :               |
+** | "label: instruction arg1 arg2 arg3"                                    |
+** | Si une ligne ne contient pas de label elle est formatée ainsi :        |
+** | "\tinstruction arg1 arg2 arg3"                                         |
+** \________________________________________________________________________/
+*/
+void			epurStr(char *);
 
 /*
 ** parser.c
@@ -106,6 +119,9 @@ int			write_ld(int, t_parsing *);
 int			write_zjmp(int, t_parsing *);
 int			write_live(int, t_parsing *);
 int			write_fork(int, t_parsing *);
+int			write_lfork(int, t_parsing *);
 int			write_add(int, t_parsing *);
+int			write_sub(int, t_parsing *);
+int			write_lld(int, t_parsing *);
 
 #endif /* !ASM_H_ */

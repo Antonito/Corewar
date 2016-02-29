@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Mon Feb 29 17:20:13 2016 Antoine Baché
+** Last update Tue Mar  1 00:19:50 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -19,14 +19,22 @@
 int	prepare_ins(char **inst)
 {
   inst[0x10] = NULL;
-  if (!(inst[0x00] = my_strdup("live ")) || !(inst[0x01] = my_strdup("ld ")) ||
-      !(inst[0x02] = my_strdup("st ")) || !(inst[0x03] = my_strdup("add ")) ||
-      !(inst[0x04] = my_strdup("sub ")) || !(inst[0x05] = my_strdup("and ")) ||
-      !(inst[0x06] = my_strdup("or ")) || !(inst[0x07] = my_strdup("xor ")) ||
-      !(inst[0x08] = my_strdup("zjmp ")) || !(inst[0x09] = my_strdup("ldi ")) ||
-      !(inst[0x0a] = my_strdup("sti ")) || !(inst[0x0b] = my_strdup("fork ")) ||
-      !(inst[0x0c] = my_strdup("lld ")) || !(inst[0x0d] = my_strdup("lldi ")) ||
-      !(inst[0x0e] = my_strdup("lfork ")) || !(inst[0x0f] = my_strdup("aff ")))
+  if (!(inst[0x00] = my_strdup("live ")) ||
+      !(inst[0x01] = my_strdup("ld ")) ||
+      !(inst[0x02] = my_strdup("st ")) ||
+      !(inst[0x03] = my_strdup("add ")) ||
+      !(inst[0x04] = my_strdup("sub ")) ||
+      !(inst[0x05] = my_strdup("and ")) ||
+      !(inst[0x06] = my_strdup("or ")) ||
+      !(inst[0x07] = my_strdup("xor ")) ||
+      !(inst[0x08] = my_strdup("zjmp ")) ||
+      !(inst[0x09] = my_strdup("ldi ")) ||
+      !(inst[0x0a] = my_strdup("sti ")) ||
+      !(inst[0x0b] = my_strdup("fork ")) ||
+      !(inst[0x0c] = my_strdup("lld ")) ||
+      !(inst[0x0d] = my_strdup("lldi ")) ||
+      !(inst[0x0e] = my_strdup("lfork ")) ||
+      !(inst[0x0f] = my_strdup("aff ")))
     return (1);
   return (0);
 }
@@ -61,17 +69,17 @@ int		parseFile(int fd, t_data *data)
       if (data->str[0])
 	{
 	  if (!(elem = addElem(elem, tmp_parse)))
-	    return (errorMalloc());
+	    return (free(data->str), errorMalloc());
 	  printf("Line %d: %s\n", data->line, data->str);
 	  epurStr(data->str);
 	  printf("Epured Line %d : %s\n", data->line, data->str);
 	  if (getFunction(data, elem))
-	    return (1);
+	    return (free(data->str), 1);
 	  tmp_parse = tmp_parse->next;
 	}
       free(data->str);
     }
-  return (0);
+  return (free(data->str), 0);
 }
 
 /*
@@ -88,11 +96,12 @@ int		check_file(char *str)
   my_bzero(&data.header, sizeof(t_header));
   if ((data.fd = open(str, O_RDONLY)) < 0)
     return (errorFileName(str));
-  if (prepareElems(&data) || prepareHeader(data.fd, &data.header, &data.line) ||
+  if (prepareElems(&data) ||
+      prepareHeader(data.fd, &data.header, &data.line) ||
       parseFile(data.fd, &data))
-    return (1);
+    return (free_elems(&data), 1);
   if (close(data.fd) < 0 || write_file(str, &data))
-    return (1);
+    return (free_elems(&data), 1);
   free_elems(&data);
   return (0);
 }

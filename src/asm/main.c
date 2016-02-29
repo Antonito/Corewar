@@ -5,11 +5,11 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:31:55 2016 Antoine Baché
-** Last update Thu Feb 25 20:58:59 2016 Antoine Baché
+** Last update Mon Feb 29 23:46:46 2016 Antoine Baché
 */
 
-#include "asm.h"
 #include <unistd.h>
+#include "asm.h"
 
 int		parse(char *str)
 {

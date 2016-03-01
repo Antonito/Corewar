@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Tue Mar  1 15:29:57 2016 Antoine Baché
+** Last update Tue Mar  1 18:42:13 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -128,5 +128,8 @@ int			writeSub(int, t_parsing *, int);
 int			writeLld(int, t_parsing *, int);
 int			writeSt(int, t_parsing *, int);
 int			writeAff(int, t_parsing *, int);
+int			writeXor(int, t_parsing *, int);
+int			writeOr(int, t_parsing *, int);
+int			writeAnd(int, t_parsing *, int);
 
 #endif /* !ASM_H_ */

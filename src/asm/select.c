@@ -1,11 +1,11 @@
 /*
-** select.c for Corewar in /CPE_2015_corewar/src/asm
+1;4204;0c** select.c for Corewar in /CPE_2015_corewar/src/asm
 **
 ** Made by Antoine Baché
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 00:47:20 2016 Antoine Baché
-** Last update Tue Mar  1 15:28:36 2016 Antoine Baché
+** Last update Tue Mar  1 18:42:30 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -64,9 +64,9 @@ writetab       	selector_write(void)
   array[2] = &writeSt;
   array[3] = &writeAdd;
   array[4] = &writeSub;
-  array[5] = &andCase;
-  array[6] = &orCase;
-  array[7] = &xorCase;
+  array[5] = &writeAnd;
+  array[6] = &writeOr;
+  array[7] = &writeXor;
   array[8] = &writeZjmp;
   array[9] = &ldiCase;
   array[10] = &writeSti;

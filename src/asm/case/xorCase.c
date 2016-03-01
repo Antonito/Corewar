@@ -5,12 +5,34 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sat Feb 27 22:11:47 2016 Antoine Baché
+** Last update Tue Mar  1 18:39:15 2016 Antoine Baché
 */
 
 #include "asm.h"
+#include "errors.h"
+
+int	writeXor(int new, t_parsing *tmp, int endian)
+{
+  if (write(new, &tmp->reg[0], 1) < 0 || write(new, &tmp->reg[1], 1) < 0 ||
+      write(new, &tmp->reg[2], 1) < 0)
+    return (1);
+  return (0);
+}
 
 int	xorCase(t_data *data, t_parsing *elem, int *offset)
 {
-  return (0);
+  *offset += 3;
+  if (data->str[*offset] != ' ' || data->str[++(*offset)] != 'r')
+    return (errorSyntax(data->line));
+  if (getRegisterSti(data, elem, offset, 1))
+    return (1);
+  if (data->str[*offset] != ',' || data->str[++(*offset)] != ' ' ||
+      data->str[++(*offset)] != 'r')
+    return (errorSyntax(data->line));
+  if (getRegisterSti(data, elem, offset, 2))
+    return (1);
+  if (data->str[*offset] != ',' || data->str[++(*offset)] != ' ' ||
+      data->str[++(*offset)] != 'r')
+    return (errorSyntax(data->line));
+  return (getRegisterSti(data, elem, offset, 3));
 }

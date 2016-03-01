@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Tue Mar  1 00:19:50 2016 Antoine Baché
+** Last update Tue Mar  1 01:07:48 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -102,6 +102,5 @@ int		check_file(char *str)
     return (free_elems(&data), 1);
   if (close(data.fd) < 0 || write_file(str, &data))
     return (free_elems(&data), 1);
-  free_elems(&data);
-  return (0);
+  return (free_elems(&data), 0);
 }

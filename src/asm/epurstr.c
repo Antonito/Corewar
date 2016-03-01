@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Feb 29 17:19:03 2016 Antoine Baché
-** Last update Tue Mar  1 00:11:27 2016 Antoine Baché
+** Last update Tue Mar  1 00:59:39 2016 Antoine Baché
 */
 
 #include <stdbool.h>
@@ -30,18 +30,16 @@ int	epurStrLabel(char *str, int len)
 
   i = 0;
   while (str[i] && (str[i] != ' ' && str[i] != '\t') && ++i);
-  if (i = len - 1 || !str[i])
+  if (i == len - 1 || !str[i])
     return (1);
   while (str[i] && (str[i] == ' ' || str[i] == '\t') && ++i);
   if (!str[i])
     return (1);
-  printf("str[%d] = %c\n", i, str[i]);
   while (str[i] && (str[i] != ' ' && str[i] != '\t') && ++i);
   if (!str[i])
     return (1);
   j = i;
   str[j++] = ' ';
-  printf("str[%d] = %c\n", i, str[i]);
   return (0);
 }
 
@@ -55,7 +53,7 @@ int	epurStrBeginning(char *str, int len, bool isLabel)
   if (!(j = 0) && isLabel && --j)
     {
       while (++j + i < len && (str[j] = str[j + i]));
-      if (!(i = 0) && j >= len && !(str[j] = 0))
+      if (!(i = 0) && str[j - 1] == ':' && !(str[j] = 0))
 	return (1);
     }
   else if ((str[0] = '\t'))
@@ -63,14 +61,14 @@ int	epurStrBeginning(char *str, int len, bool isLabel)
       while (++j + i < len && (str[j] = str[j + i - 1]));
       i = 1;
     }
+  if (isLabel && epurStrLabel(str, len))
+    return (1);
   while (str[i] && (str[i] != ' ' && str[i] != '\t') && ++i && (j = i));
   while (str[i] && (str[i] == ' ' || str[i] == '\t') && ++i);
   str[j] = ' ';
   i -= j;
   while (++j + (i - 1) < len && (str[j] = str[j + i - 1]));
   while (j < len && !(str[j++] = 0));
-  if (isLabel && epurStrLabel(str, len))
-    return (1);
   return (0);
 }
 

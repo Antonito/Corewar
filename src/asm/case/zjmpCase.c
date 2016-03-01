@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Mon Feb 29 18:22:02 2016 Antoine Baché
+** Last update Tue Mar  1 01:18:46 2016 Antoine Baché
 */
 
 #include "asm.h"
 #include "errors.h"
 #include "tools.h"
 
-int	write_zjmp(int new, t_parsing *tmp)
+int	writeZjmp(int new, t_parsing *tmp)
 {
   if (!reverseShort((short *)&tmp->value[0]) &&
       write(new, &tmp->value[0], 2) < 0)

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 00:47:20 2016 Antoine Baché
-** Last update Mon Feb 29 23:33:53 2016 Antoine Baché
+** Last update Tue Mar  1 02:21:48 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -58,21 +58,21 @@ writetab       	selector_write(void)
 
   if ((array = malloc(sizeof(int *) * 17)) == NULL)
     return (NULL);
-  array[0] = &write_live;
-  array[1] = &write_ld;
-  array[2] = &stCase;
-  array[3] = &write_add;
-  array[4] = &write_sub;
+  array[0] = &writeLive;
+  array[1] = &writeLd;
+  array[2] = &writeSt;
+  array[3] = &writeAdd;
+  array[4] = &writeSub;
   array[5] = &andCase;
   array[6] = &orCase;
   array[7] = &xorCase;
-  array[8] = &write_zjmp;
+  array[8] = &writeZjmp;
   array[9] = &ldiCase;
-  array[10] = &write_sti;
-  array[11] = &write_fork;
-  array[12] = &write_lld;
+  array[10] = &writeSti;
+  array[11] = &writeFork;
+  array[12] = &writeLld;
   array[13] = &lldiCase;
-  array[14] = &write_lfork;
+  array[14] = &writeLfork;
   array[15] = &affCase;
   array[16] = &errorWrite;
   return (array);

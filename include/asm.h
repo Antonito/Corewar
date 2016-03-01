@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Mon Feb 29 23:35:03 2016 Antoine Baché
+** Last update Tue Mar  1 03:50:36 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -14,9 +14,12 @@
 # define OFFSETOF(TYPE, MEMBER)	((size_t) & ((TYPE *)0)->MEMBER)
 
 # include <stdlib.h>
+# include <endian.h>
 # include "header.h"
 
 /*
+** Endian.h -> __BYTE__ORDER == LITTLE_ENDIAN or BIG_ENDIAN
+**
 ** Ecriture (function + 1)
 ** Ecriture bytecode
 ** Ecriture sur 1 / 2 / 4 octets des values
@@ -114,14 +117,15 @@ int			zjmpCase(t_data *, t_parsing *, int *);
 /*
 ** Write
 */
-int			write_sti(int, t_parsing *);
-int			write_ld(int, t_parsing *);
-int			write_zjmp(int, t_parsing *);
-int			write_live(int, t_parsing *);
-int			write_fork(int, t_parsing *);
-int			write_lfork(int, t_parsing *);
-int			write_add(int, t_parsing *);
-int			write_sub(int, t_parsing *);
-int			write_lld(int, t_parsing *);
+int			writeSti(int, t_parsing *);
+int			writeLd(int, t_parsing *);
+int			writeZjmp(int, t_parsing *);
+int			writeLive(int, t_parsing *);
+int			writeFork(int, t_parsing *);
+int			writeLfork(int, t_parsing *);
+int			writeAdd(int, t_parsing *);
+int			writeSub(int, t_parsing *);
+int			writeLld(int, t_parsing *);
+int			writeSt(int, t_parsing *);
 
 #endif /* !ASM_H_ */

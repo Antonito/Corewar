@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sun Feb 28 18:21:04 2016 Antoine Baché
+** Last update Tue Mar  1 01:17:28 2016 Antoine Baché
 */
 
 #include "asm.h"
 #include "errors.h"
 #include "tools.h"
 
-int	write_fork(int new, t_parsing *tmp)
+int	writeFork(int new, t_parsing *tmp)
 {
   if (!reverseShort((short *)&tmp->value[0]) &&
       write(new, &tmp->value[0], 2) < 0)

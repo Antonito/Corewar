@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 23:17:16 2016 Antoine Baché
-** Last update Sun Feb 28 05:03:03 2016 Antoine Baché
+** Last update Tue Mar  1 01:18:28 2016 Antoine Baché
 */
 
 #include "asm.h"
 #include "tools.h"
 #include "bytecode.h"
 
-int		write_ld(int new, t_parsing *tmp)
+int		writeLd(int new, t_parsing *tmp)
 {
   int		code;
   t_bytecode	byte;
@@ -38,7 +38,7 @@ int		write_ld(int new, t_parsing *tmp)
   return (0);
 }
 
-int		write_sti(int new, t_parsing *tmp)
+int		writeSti(int new, t_parsing *tmp)
 {
   int		i;
   int		code;

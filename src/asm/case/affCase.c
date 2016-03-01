@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 04:16:31 2016 Antoine Baché
+** Last update Tue Mar  1 12:56:32 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -33,14 +33,9 @@ int	writeAff(int new, t_parsing *tmp)
 int	affCase(t_data *data, t_parsing *elem, int *offset)
 {
   *offset += 4;
-  printf("str[%d] = %c Instr ==> %d\n", *offset, data->str[*offset], elem->function);
   if (data->str[*offset] == 'r')
     return (getRegisterSti(data, elem, offset, 1));
-  else if (data->str[*offset] == '%')
-    return (1);
-  else if (data->str[*offset] >= '0' || data->str[*offset] <= '9')
-    return (1);
   else
-    return (1);
+    return (errorSyntax(data->line));
   return (0);
 }

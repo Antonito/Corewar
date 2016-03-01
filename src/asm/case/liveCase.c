@@ -5,23 +5,16 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 01:17:49 2016 Antoine Baché
+** Last update Tue Mar  1 15:38:54 2016 Antoine Baché
 */
 
 #include "asm.h"
 #include "errors.h"
 #include "tools.h"
 
-int	writeLive(int new, t_parsing *tmp)
+int	writeLive(int new, t_parsing *tmp, int endian)
 {
-  int	nb;
-
-  nb = 0;
-  nb |= (tmp->value[0] & 0xFF000000) >> 24;
-  nb |= (tmp->value[0] & 0x00FF0000) >> 8;
-  nb |= (tmp->value[0] & 0x0000FF00) << 8;
-  nb |= (tmp->value[0] & 0x000000FF) << 24;
-  if (write(new, &nb, 4) < 0)
+  if (!reverseInt(&tmp->value[0], endian) && write(new, &tmp->value[0], 4) < 0)
     return (1);
   return (0);
 }

@@ -6,7 +6,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 04:06:00 2016 Antoine Baché
+** Last update Tue Mar  1 14:43:01 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -16,9 +16,9 @@
 int	getIndirectSti(t_data *data, t_parsing *elem, int *offset, int i)
 {
   if (data->str[++(*offset)] == ':')
-    return (((getLabel(data, elem, offset, i + 1)) ? 1 : 0));
+    return (getLabel(data, elem));
   else if (data->str[*offset] >'0' && data->str[*offset] <= '9')
-    return (((getIndiValue(data, elem, offset, i + 1)) ? 1 : 0));
+    return (getIndiValue(data, elem, offset, i + 1));
   else
     return (errorSyntax(data->line));
   return (0);

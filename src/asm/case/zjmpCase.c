@@ -5,16 +5,16 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 01:18:46 2016 Antoine Baché
+** Last update Tue Mar  1 15:33:27 2016 Antoine Baché
 */
 
 #include "asm.h"
 #include "errors.h"
 #include "tools.h"
 
-int	writeZjmp(int new, t_parsing *tmp)
+int	writeZjmp(int new, t_parsing *tmp, int endian)
 {
-  if (!reverseShort((short *)&tmp->value[0]) &&
+  if (!reverseShort((short *)&tmp->value[0], endian) &&
       write(new, &tmp->value[0], 2) < 0)
     return (1);
   return (0);

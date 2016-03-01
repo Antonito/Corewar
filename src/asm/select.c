@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 00:47:20 2016 Antoine Baché
-** Last update Tue Mar  1 04:08:15 2016 Antoine Baché
+** Last update Tue Mar  1 15:28:36 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -19,10 +19,11 @@ int		errorInst(t_data *data, t_parsing *elem, int *offset)
   return (1);
 }
 
-int		errorWrite(int fd, t_parsing *tmp)
+int		errorWrite(int fd, t_parsing *tmp, int endian)
 {
   (void)fd;
   (void)tmp;
+  (void)endian;
   return (0);
 }
 

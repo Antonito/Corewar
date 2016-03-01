@@ -5,13 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 01:16:43 2016 Antoine Baché
+** Last update Tue Mar  1 15:30:32 2016 Antoine Baché
 */
 
 #include <unistd.h>
 #include "asm.h"
 
-int	writeAdd(int new, t_parsing *tmp)
+int	writeAdd(int new, t_parsing *tmp, int endian)
 {
   int	i;
 

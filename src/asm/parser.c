@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Tue Mar  1 01:07:48 2016 Antoine Baché
+** Last update Tue Mar  1 15:23:03 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -15,6 +15,7 @@
 #include "asm.h"
 #include "errors.h"
 #include "tools.h"
+#include "endianness.h"
 
 int	prepare_ins(char **inst)
 {
@@ -90,6 +91,7 @@ int		check_file(char *str)
   t_data	data;
 
   data.line = 0;
+  data.endianness = findEndian();
   if (!(data.ins = malloc(sizeof(char *) * 17)) || prepare_ins(data.ins) ||
       !(data.list = selector()))
     return (errorMalloc());

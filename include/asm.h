@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Tue Mar  1 04:07:33 2016 Antoine Baché
+** Last update Tue Mar  1 15:29:57 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -14,12 +14,10 @@
 # define OFFSETOF(TYPE, MEMBER)	((size_t) & ((TYPE *)0)->MEMBER)
 
 # include <stdlib.h>
-# include <endian.h>
+# include <stdbool.h>
 # include "header.h"
 
 /*
-** Endian.h -> __BYTE__ORDER == LITTLE_ENDIAN or BIG_ENDIAN
-**
 ** Ecriture (function + 1)
 ** Ecriture bytecode
 ** Ecriture sur 1 / 2 / 4 octets des values
@@ -30,6 +28,7 @@ typedef	struct		s_parsing
   unsigned char		bytecode;
   int			value[3];
   char			reg[3];
+  bool			isLabel[3];
   struct s_parsing	*next;
 }			t_parsing;
 
@@ -42,11 +41,12 @@ typedef	struct		s_data
   char			**ins;
   char			*str;
   int			(**list)(struct s_data *, t_parsing *, int *);
+  int			endianness;
 }			t_data;
 
 typedef	int (**ptrtab)(t_data *, t_parsing *, int *);
 
-typedef	int (**writetab)(int, t_parsing *);
+typedef	int (**writetab)(int, t_parsing *, int);
 
 writetab		selector_write(void);
 ptrtab			selector(void);
@@ -85,7 +85,7 @@ int			write_file(char *, t_data *);
 ** get*.c
 */
 int			getIndiValue(t_data *, t_parsing *, int *, int);
-int			getLabel(t_data *, t_parsing *, int *, int);
+int			getLabel(t_data *, char *);
 int			getFunction(t_data *, t_parsing *);
 int			getArgs(t_data *, t_parsing *, int);
 
@@ -117,16 +117,16 @@ int			zjmpCase(t_data *, t_parsing *, int *);
 /*
 ** Write
 */
-int			writeSti(int, t_parsing *);
-int			writeLd(int, t_parsing *);
-int			writeZjmp(int, t_parsing *);
-int			writeLive(int, t_parsing *);
-int			writeFork(int, t_parsing *);
-int			writeLfork(int, t_parsing *);
-int			writeAdd(int, t_parsing *);
-int			writeSub(int, t_parsing *);
-int			writeLld(int, t_parsing *);
-int			writeSt(int, t_parsing *);
-int			writeAff(int, t_parsing *);
+int			writeSti(int, t_parsing *, int);
+int			writeLd(int, t_parsing *, int);
+int			writeZjmp(int, t_parsing *, int);
+int			writeLive(int, t_parsing *, int);
+int			writeFork(int, t_parsing *, int);
+int			writeLfork(int, t_parsing *, int);
+int			writeAdd(int, t_parsing *, int);
+int			writeSub(int, t_parsing *, int);
+int			writeLld(int, t_parsing *, int);
+int			writeSt(int, t_parsing *, int);
+int			writeAff(int, t_parsing *, int);
 
 #endif /* !ASM_H_ */

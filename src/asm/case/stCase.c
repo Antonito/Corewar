@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 04:14:36 2016 Antoine Baché
+** Last update Tue Mar  1 15:32:58 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -13,7 +13,7 @@
 #include "tools.h"
 #include "errors.h"
 
-int	writeSt(int new, t_parsing *tmp)
+int	writeSt(int new, t_parsing *tmp, int endian)
 {
   int		i;
   int		code;
@@ -27,7 +27,7 @@ int	writeSt(int new, t_parsing *tmp)
   code = getByteCode(&byte);
   if (!code && write(new, &tmp->reg[i + 1], 1) < 0)
     return (1);
-  if (code == 2 && !reverseShort((short *)&tmp->value[i]) &&
+  if (code == 2 && !reverseShort((short *)&tmp->value[i], endian) &&
       write(new, &tmp->value[i], 2) < 0)
     return (1);
   if (code == 1)

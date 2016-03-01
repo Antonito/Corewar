@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Mon Feb 29 17:20:42 2016 Antoine Baché
+## Last update Tue Mar  1 15:00:05 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -26,6 +26,7 @@ SRC_ASM_FILES=		main.c			\
 			warnings.c		\
 			bytecode.c		\
 			epurstr.c		\
+			findEndian.c		\
 			case/stiWrite.c		\
 			case/addCase.c		\
 			case/ldCase.c		\

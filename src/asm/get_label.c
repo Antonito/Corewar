@@ -5,23 +5,33 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 05:41:59 2016 Antoine Baché
-** Last update Sat Feb 27 22:31:17 2016 Antoine Baché
+** Last update Tue Mar  1 13:30:18 2016 Antoine Baché
 */
 
 #include "asm.h"
 #include "errors.h"
 
-int	getLabel(t_data *data, t_parsing *elem, int *offset, int i)
+/*
+** On donne la ligne actuelle, on cherche la ligne de la premiere fonction du
+** label, si elle existe
+** /!\  Lseek pour save offset actuel du FD, lseek au debut du fichier pour
+**      recherche
+** Si la ligne du label est plus grande et qu'il contient une fonction:
+**  Save de cette ligne, lseek a l'ancienne position "actuelle" sauvegardee
+**  Read jusqu'a la ligne du label en checkant le bytecode a chaque fois
+**  Nb de byte = nb d'instruction +
+**               bytecode * nb d'instruction ou il est present +
+**               nb de byte par args, precise par le bytecode
+** Si la ligne du label est plus petite et qu'il contient une fonction:
+**  Save nb de ligne + lecture jusqu'a l'ancienne position "actuelle"
+**  sauvegardee, tout en faisaint la somme des bytes
+**
+** La somme des bytes est la valeur a mettre a la place du label
+*/
+int	getLabel(t_data *data, char *label)
 {
-  int	tmp;
-
-  tmp = *offset;
-  while (data->str[tmp] && data->str[tmp] != ',' &&
-	 data->str[tmp] != '\n' && ++tmp);
-  if (data->str[tmp] != ',' && data->str[tmp] != '\n')
-    return (errorSyntax(data->line));
-  *offset = tmp;
-  if (data->str[tmp] == ',' && data->str[++(*offset)] != ' ')
-    return (errorSyntax(data->line));
+  printf("Find label !!");
+  printf("Instruction line = %d\n", data->line);
+  printf("Label = %s\n", label);
   return (0);
 }

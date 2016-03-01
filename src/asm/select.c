@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 00:47:20 2016 Antoine Baché
-** Last update Tue Mar  1 02:21:48 2016 Antoine Baché
+** Last update Tue Mar  1 04:08:15 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -73,7 +73,7 @@ writetab       	selector_write(void)
   array[12] = &writeLld;
   array[13] = &lldiCase;
   array[14] = &writeLfork;
-  array[15] = &affCase;
+  array[15] = &writeAff;
   array[16] = &errorWrite;
   return (array);
 }

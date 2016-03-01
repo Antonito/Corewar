@@ -5,11 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 03:57:21 2016 Antoine Baché
+** Last update Tue Mar  1 04:14:36 2016 Antoine Baché
 */
 
 #include "asm.h"
 #include "bytecode.h"
+#include "tools.h"
+#include "errors.h"
 
 int	writeSt(int new, t_parsing *tmp)
 {

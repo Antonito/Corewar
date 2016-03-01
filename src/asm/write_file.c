@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 22:42:05 2016 Antoine Baché
-** Last update Sun Feb 28 18:16:41 2016 Antoine Baché
+** Last update Tue Mar  1 04:17:53 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -55,7 +55,7 @@ int		write_file(char *str, t_data *data)
   while (tmp)
     {
       ++tmp->function;
-      if (((tmp->function < 0x10) ? write(new, &tmp->function, 1) : 0) < 0 ||
+      if (((tmp->function <= 0x10) ? write(new, &tmp->function, 1) : 0) < 0 ||
 	  ((tmp->bytecode) ? write(new, &tmp->bytecode, 1) : 0) < 0)
 	return (errorWriting("test.cor"));
       if (write_args(new, tmp, tab))

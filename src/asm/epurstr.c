@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Feb 29 17:19:03 2016 Antoine Baché
-** Last update Tue Mar  1 00:59:39 2016 Antoine Baché
+** Last update Wed Mar  2 11:22:01 2016 Antoine Baché
 */
 
 #include <stdbool.h>
@@ -16,8 +16,8 @@ bool	checkLabel(char *str)
   int	i;
 
   i = 0;
-  while (str[i] && (str[i] == ' ' || str[i] == '\t') && ++i);
-  while (str[i] && (str[i] != ' ' || str[i] != '\t'))
+  while (str[i] && str[i] != '#' && (str[i] == ' ' || str[i] == '\t') && ++i);
+  while (str[i] && str[i] != '#' && (str[i] != ' ' || str[i] != '\t'))
     if (str[i++] == ':')
       return (true);
   return (false);
@@ -29,13 +29,13 @@ int	epurStrLabel(char *str, int len)
   int	j;
 
   i = 0;
-  while (str[i] && (str[i] != ' ' && str[i] != '\t') && ++i);
+  while (str[i] && str[i] != '#' && (str[i] != ' ' && str[i] != '\t') && ++i);
   if (i == len - 1 || !str[i])
     return (1);
-  while (str[i] && (str[i] == ' ' || str[i] == '\t') && ++i);
+  while (str[i] && str[i] != '#' && (str[i] == ' ' || str[i] == '\t') && ++i);
   if (!str[i])
     return (1);
-  while (str[i] && (str[i] != ' ' && str[i] != '\t') && ++i);
+  while (str[i] && str[i] != '#' && (str[i] != ' ' && str[i] != '\t') && ++i);
   if (!str[i])
     return (1);
   j = i;
@@ -43,13 +43,11 @@ int	epurStrLabel(char *str, int len)
   return (0);
 }
 
-int	epurStrBeginning(char *str, int len, bool isLabel)
+int	epurStrBeginning(char *str, int len, bool isLabel, int i)
 {
-  int	i;
   int	j;
 
-  i = -1;
-  while (str[++i] && (str[i] == ' ' || str[i] == '\t'));
+  while (str[++i] && str[i] != '#' && (str[i] == ' ' || str[i] == '\t'));
   if (!(j = 0) && isLabel && --j)
     {
       while (++j + i < len && (str[j] = str[j + i]));
@@ -63,8 +61,9 @@ int	epurStrBeginning(char *str, int len, bool isLabel)
     }
   if (isLabel && epurStrLabel(str, len))
     return (1);
-  while (str[i] && (str[i] != ' ' && str[i] != '\t') && ++i && (j = i));
-  while (str[i] && (str[i] == ' ' || str[i] == '\t') && ++i);
+  while (str[i] && str[i] != '#' && (str[i] != ' ' && str[i] != '\t')
+	 && ++i && (j = i));
+  while (str[i] && str[i] != '#' && (str[i] == ' ' || str[i] == '\t') && ++i);
   str[j] = ' ';
   i -= j;
   while (++j + (i - 1) < len && (str[j] = str[j + i - 1]));
@@ -82,34 +81,44 @@ void	epurStrFirstArg(char *str, int len, bool isLabel)
   while (str[++i] && str[i] != ',');
   if ((j = ++i) && !str[i - 1])
     return ;
-  while (str[i] && (str[i] == ' ' || str[i] == '\t') && ++i);
+  while (str[i] && str[i] != '#' && (str[i] == ' ' || str[i] == '\t') && ++i);
   i -= (j + 1);
   str[j++] = ' ';
   while (j + i < len && (str[j] = str[j + i]) && ++j);
   while (j < len && !(str[j++] = 0));
   j = i;
-  while (str[++i] && str[i] != ',');
-  while (str[++i] && str[i] != ',');
+  while (str[++i] && str[i] != '#' && str[i] != ',');
+  while (str[++i] && str[i] != '#' && str[i] != ',');
   if (!str[i])
     return ;
   j = i;
-  while (str[++i]);
+  while (str[++i] && str[i] != '#' && (str[i] == ' ' || str[i] == '\t'));
   str[++j] = ' ';
-  i -= (++j + 2);
-  while (j + i < len && (str[j] = str[j + i]) && ++j);
-  while (j < len && !(str[j++] = 0));
+  i -= j + 1;
+  while (j + i < len &&
+	 (str[j] = str[j + i]) && ++j);
+  while (j++ < len && !(str[j] = 0));
 }
 
 void	epurStr(char *str)
 {
   int	len;
   bool	isLabel;
+  int	i;
 
   if (!str)
     return ;
   len = my_strlen(str);
   isLabel = checkLabel(str);
-  if (epurStrBeginning(str, len, isLabel))
+  i = -1;
+  while (str[++i] && str[i] != '#');
+  if (str[i] == '#')
+    str[i] = 0;
+  if (epurStrBeginning(str, len, isLabel, -1))
     return ;
   epurStrFirstArg(str, len, isLabel);
+  i = -1;
+  while (str[++i]);
+  if (str[i - 1] == ' ' || str[i -1] == '\t')
+    str[i - 1] = 0;
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sun Feb 28 18:22:19 2016 Antoine Baché
+** Last update Wed Mar  2 03:02:38 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -30,6 +30,7 @@ int	getDirLd(t_data *data, t_parsing *elem, int *offset)
   char	*nb;
 
   tmp = (*offset)++;
+  elem->size += 4;
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
@@ -51,6 +52,7 @@ int	getRegLd(t_data *data, t_parsing *elem, int *offset)
   char	*nb;
 
   tmp = (*offset)++;
+  elem->size++;
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
@@ -69,12 +71,13 @@ int	getRegLd(t_data *data, t_parsing *elem, int *offset)
 
 int	ldCase(t_data *data, t_parsing *elem, int *offset)
 {
-  *offset += 1;
+  ++(*offset);
   if (data->str[++(*offset)] != ' ' || (data->str[(*offset) + 1] != '%' &&
 					(data->str[(*offset) + 1] < '0' ||
 					 data->str[(*offset) + 1] > '9')))
     return (errorSyntax(data->line));
-  if (data->str[(*offset + 1)] > '0' && data->str[(*offset) + 1] < '9' &&
+  if ((elem->size += 2) &&
+      data->str[(*offset + 1)] > '0' && data->str[(*offset) + 1] < '9' &&
       getIndiLd(data, elem, offset))
     return (1);
   else if (data->str[(*offset) + 1] == '%')

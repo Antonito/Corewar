@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 15:30:32 2016 Antoine Baché
+** Last update Wed Mar  2 03:01:54 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -33,5 +33,6 @@ int	addCase(t_data *data, t_parsing *elem, int *offset)
       getRegisterSti(data, elem, offset, 2) || !(*offset += 2) ||
       getRegisterSti(data, elem, offset, 3))
     return (1);
+  elem->size += 4;
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 22:42:05 2016 Antoine Baché
-** Last update Tue Mar  1 15:29:27 2016 Antoine Baché
+** Last update Wed Mar  2 02:50:42 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -24,7 +24,7 @@ int		errorWriting(char *str)
 
 int		write_args(int new, t_parsing *tmp, writetab tab, int endian)
 {
-  printf("Function = %d\n", tmp->function);
+  printf("Function = %d Offset = %d\n", tmp->function, tmp->offset);
   return (tab[(int)(tmp->function - 1)](new, tmp, endian));
 }
 

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Tue Mar  1 18:42:13 2016 Antoine Baché
+** Last update Wed Mar  2 02:59:33 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -24,6 +24,8 @@
 */
 typedef	struct		s_parsing
 {
+  int			offset;
+  int			size;
   char			function;
   unsigned char		bytecode;
   int			value[3];

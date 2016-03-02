@@ -6,7 +6,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 18:17:06 2016 Antoine Baché
+** Last update Wed Mar  2 03:03:06 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -15,6 +15,7 @@
 
 int	getIndirectSti(t_data *data, t_parsing *elem, int *offset, int i)
 {
+  elem->size += 2;
   if (data->str[++(*offset)] == ':')
     return (getLabel(data, elem));
   else if (data->str[*offset] >'0' && data->str[*offset] <= '9')
@@ -29,6 +30,7 @@ int	getRegisterSti(t_data *data, t_parsing *elem, int *offset, int i)
   int	tmp;
   char	size[3];
 
+  elem->size++;
   if (data->str[*offset] != 'r')
     return (errorSyntax(data->line));
   tmp = *offset;
@@ -54,6 +56,7 @@ int	stiCase(t_data *data, t_parsing *elem, int *offset)
   int	i;
 
   *offset += 4;
+  elem->size += 2;
   if (getRegisterSti(data, elem, offset, 1))
     return (1);
   if (data->str[*offset] != ',' || data->str[++(*offset)] != ' ')

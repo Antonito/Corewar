@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 15:32:58 2016 Antoine Baché
+** Last update Wed Mar  2 03:03:00 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -43,6 +43,7 @@ int	stCaseInDirect(t_data *data, t_parsing *elem, int *offset)
 
   elem->bytecode |= 48;
   tmp = *offset;
+  elem->size += 2;
   while (data->str[tmp++]);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
@@ -59,6 +60,7 @@ int	stCaseInDirect(t_data *data, t_parsing *elem, int *offset)
 int	stCase(t_data *data, t_parsing *elem, int *offset)
 {
   *offset += 2;
+  elem->size += 2;
   if (data->str[(*offset)++] != ' ' || data->str[*offset] != 'r')
     return (errorSyntax(data->line));
   if (getRegisterSti(data, elem, offset, 1))

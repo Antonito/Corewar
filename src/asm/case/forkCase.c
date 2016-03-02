@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 15:33:49 2016 Antoine Baché
+** Last update Wed Mar  2 03:02:32 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -48,6 +48,7 @@ int	getFork(t_data *data, t_parsing *elem, int *offset)
 int	forkCase(t_data *data, t_parsing *elem, int *offset)
 {
   *offset += 3;
+  elem->size += 3;
   if (data->str[++(*offset)] != ' ' || data->str[++(*offset)] != '%')
     return (errorSyntax(data->line));
   if (data->str[++(*offset)] == ':')

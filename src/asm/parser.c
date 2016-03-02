@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Tue Mar  1 15:23:03 2016 Antoine Baché
+** Last update Wed Mar  2 03:00:49 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -54,6 +54,7 @@ t_parsing      	*addElem(t_parsing *new, t_parsing *old)
   if (!(new = malloc(sizeof(t_parsing))))
     return (NULL);
   my_bzero(new, sizeof(t_parsing));
+  new->offset = old->offset + old->size;
   new->next = NULL;
   old->next = new;
   return (new);

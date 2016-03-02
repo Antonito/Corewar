@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 15:33:27 2016 Antoine Baché
+** Last update Wed Mar  2 03:03:32 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -32,6 +32,7 @@ int	getZjmp(t_data *data, t_parsing *elem, int *offset)
   char	*nb;
 
   tmp = (*offset) - 1;
+  elem->size += 2;
   while (data->str[++tmp]);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
@@ -48,6 +49,7 @@ int	getZjmp(t_data *data, t_parsing *elem, int *offset)
 int	zjmpCase(t_data *data, t_parsing *elem, int *offset)
 {
   *offset += 3;
+  elem->size++;
   if (data->str[++(*offset)] != ' ' || data->str[++(*offset)] != '%')
     return (errorSyntax(data->line));
   if (data->str[++(*offset)] == ':')

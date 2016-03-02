@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Tue Mar  1 18:39:15 2016 Antoine Baché
+** Last update Wed Mar  2 03:03:25 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -22,6 +22,7 @@ int	writeXor(int new, t_parsing *tmp, int endian)
 int	xorCase(t_data *data, t_parsing *elem, int *offset)
 {
   *offset += 3;
+  elem->size += 2;
   if (data->str[*offset] != ' ' || data->str[++(*offset)] != 'r')
     return (errorSyntax(data->line));
   if (getRegisterSti(data, elem, offset, 1))

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Wed Mar  2 02:59:33 2016 Antoine Baché
+** Last update Wed Mar  2 04:06:14 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -86,7 +86,7 @@ int			write_file(char *, t_data *);
 /*
 ** get*.c
 */
-int			getIndiValue(t_data *, t_parsing *, int *, int);
+int			getDirValue(t_data *, t_parsing *, int *, int);
 int			getLabel(t_data *, char *);
 int			getFunction(t_data *, t_parsing *);
 int			getArgs(t_data *, t_parsing *, int);

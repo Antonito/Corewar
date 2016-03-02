@@ -6,20 +6,20 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Wed Mar  2 03:03:06 2016 Antoine Baché
+** Last update Wed Mar  2 04:46:54 2016 Antoine Baché
 */
 
 #include "asm.h"
 #include "errors.h"
 #include "tools.h"
 
-int	getIndirectSti(t_data *data, t_parsing *elem, int *offset, int i)
+int	getDirectSti(t_data *data, t_parsing *elem, int *offset, int i)
 {
   elem->size += 2;
   if (data->str[++(*offset)] == ':')
     return (getLabel(data, elem));
   else if (data->str[*offset] >'0' && data->str[*offset] <= '9')
-    return (getIndiValue(data, elem, offset, i + 1));
+    return (getDirValue(data, elem, offset, i + 1));
   else
     return (errorSyntax(data->line));
   return (0);
@@ -47,7 +47,31 @@ int	getRegisterSti(t_data *data, t_parsing *elem, int *offset, int i)
     return (errorRegister(data->line));
   elem->bytecode |= 64 >> ((i - 1) << 1);
   *offset = tmp;
-  printf("STI = %d %d %d\n", elem->reg[0], elem->reg[1], elem->reg[2]);
+  return (0);
+}
+
+int	stiCheckInDir(t_data *data, t_parsing *elem, int *offset, int i)
+{
+  int	j;
+  int	tmp;
+  char	*nb;
+
+  if (data->str[*offset] < '0' || data->str[*offset] > '9')
+    return (errorSyntax(data->line));
+  tmp = (*offset);
+  elem->size += 2;
+  while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
+  if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
+    return (errorMalloc());
+  j = 0;
+  while ((*offset) + j < tmp && (nb[j] = data->str[(*offset) + j]))
+    if (nb[j] < '0' || nb[j++] > '9')
+      return (errorSyntax(data->line));
+  nb[tmp - (*offset)] = 0;
+  elem->value[i] = my_getnbr(nb);
+  elem->bytecode |= 192 >> (i << 1);
+  *offset = tmp + 1;
+  free(nb);
   return (0);
 }
 
@@ -66,16 +90,16 @@ int	stiCase(t_data *data, t_parsing *elem, int *offset)
     if (data->str[++(*offset)] == '%')
       {
 	elem->bytecode |= 128 >> ((i + 1) * 2);
-	if (getIndirectSti(data, elem, offset, i + 1))
+	if (getDirectSti(data, elem, offset, i + 1))
 	  return (1);
       }
     else if (data->str[*offset] == 'r')
       {
 	if (getRegisterSti(data, elem, offset, i + 2))
 	  return (1);
-	  ++(*offset);
+	++(*offset);
       }
-    else
-      return (errorSyntax(data->line));
+    else if (stiCheckInDir(data, elem, offset, i + 1))
+      return (1);
   return (0);
 }

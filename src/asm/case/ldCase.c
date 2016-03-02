@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Wed Mar  2 03:02:38 2016 Antoine Baché
+** Last update Wed Mar  2 06:21:36 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -14,7 +14,24 @@
 
 int	getIndiLd(t_data *data, t_parsing *elem, int *offset)
 {
-  elem->bytecode |= 127;
+  int	i;
+  int	tmp;
+  char	*nb;
+
+  tmp = (*offset)++;
+  elem->bytecode |= 192;
+  elem->size += 2;
+  while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
+  if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
+    return (errorMalloc());
+  i = 0;
+  while ((*offset) + i < tmp && (nb[i] = data->str[(*offset) + i]))
+    if (nb[i] < '0' || nb[i++] > '9')
+      return (errorSyntax(data->line));
+  nb[tmp - (*offset)] = 0;
+  elem->value[0] = my_getnbr(nb);
+  *offset = tmp;
+  free(nb);
   return (0);
 }
 

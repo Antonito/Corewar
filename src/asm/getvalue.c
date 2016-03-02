@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 06:31:20 2016 Antoine Baché
-** Last update Sun Feb 28 03:30:48 2016 Antoine Baché
+** Last update Wed Mar  2 04:06:17 2016 Antoine Baché
 */
 
 #include "asm.h"
 #include "errors.h"
 #include "tools.h"
 
-int	getIndiValue(t_data *data, t_parsing *elem, int *offset, int id)
+int	getDirValue(t_data *data, t_parsing *elem, int *offset, int id)
 {
   int	tmp;
   int	i;

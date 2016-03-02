@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Wed Mar  2 03:03:00 2016 Antoine Baché
+** Last update Wed Mar  2 03:54:36 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -68,11 +68,10 @@ int	stCase(t_data *data, t_parsing *elem, int *offset)
   if (data->str[*offset] != ',' || data->str[++(*offset)] != ' ')
     return (errorSyntax(data->line));
   if (data->str[++(*offset)] == 'r')
-    return (getRegisterSti(data, elem, offset, 1));
+    return (getRegisterSti(data, elem, offset, 2));
   else if (data->str[*offset] == '%')
-    return (printf("It's a direct !\n"), 1);
+    return (errorSyntax(data->line));
   else if (data->str[*offset] >= '0' && data->str[*offset] <= '9')
     return (stCaseInDirect(data, elem, offset));
-  printf("LD str[%d] = %c\n", *offset, data->str[*offset]);
   return (0);
 }

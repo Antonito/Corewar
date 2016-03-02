@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 23:17:16 2016 Antoine Baché
-** Last update Wed Mar  2 03:03:18 2016 Antoine Baché
+** Last update Wed Mar  2 04:38:05 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -19,14 +19,13 @@ int		writeLd(int new, t_parsing *tmp, int endian)
 
   byte.bytecode = tmp->bytecode;
   code = getByteCode(&byte);
+  printf("Code = %d\n", code);
   if (code == 1 && !reverseInt(&tmp->value[0], endian) &&
       write(new, &tmp->value[0], 4) < 0)
     return (1);
-  if (code == 2)
-    {
-      printf("LD Write indirect\n");
-      return (1);
-    }
+  if (code == 2 && !reverseShort((short *)&tmp->value[0], endian) &&
+      write(new, &tmp->value[0], 2) < 0)
+    return (1);
   if (write(new, &tmp->reg[0], 1) < 0)
     return (1);
   return (0);
@@ -48,7 +47,8 @@ int		writeSti(int new, t_parsing *tmp, int endian)
       if (code == 1 && !reverseShort((short *)&tmp->value[i], endian) &&
 	  write(new, &tmp->value[i], 2) < 0)
 	return (1);
-      if (code == 2)
+      if (code == 2 && !reverseShort((short *)&tmp->value[i], endian) &&
+	  write(new, &tmp->value[i], 2) < 0)
 	return (1);
       byte.bytecode <<= 2;
       ++i;

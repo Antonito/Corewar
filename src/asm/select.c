@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 00:47:20 2016 Antoine Baché
-** Last update Tue Mar  1 18:42:30 2016 Antoine Baché
+** Last update Wed Mar  2 07:16:00 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -68,11 +68,11 @@ writetab       	selector_write(void)
   array[6] = &writeOr;
   array[7] = &writeXor;
   array[8] = &writeZjmp;
-  array[9] = &ldiCase;
+  array[9] = &writeLdi;
   array[10] = &writeSti;
   array[11] = &writeFork;
   array[12] = &writeLld;
-  array[13] = &lldiCase;
+  array[13] = &writeLldi;
   array[14] = &writeLfork;
   array[15] = &writeAff;
   array[16] = &errorWrite;

@@ -5,12 +5,17 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sat Feb 27 22:12:26 2016 Antoine Baché
+** Last update Wed Mar  2 07:16:30 2016 Antoine Baché
 */
 
 #include "asm.h"
 
+int	writeLldi(int new, t_parsing *tmp, int endian)
+{
+  return (writeLdi(new, tmp, endian));
+}
+
 int	lldiCase(t_data *data, t_parsing *elem, int *offset)
 {
-  return (0);
+  return (ldiCase(data, elem, offset));
 }

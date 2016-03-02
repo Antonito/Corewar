@@ -5,12 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Wed Mar  2 06:22:37 2016 Antoine Baché
+** Last update Wed Mar  2 07:23:39 2016 Antoine Baché
 */
 
 #include "asm.h"
 #include "errors.h"
 #include "bytecode.h"
+#include "tools.h"
 
 int	writeXor(int new, t_parsing *tmp, int endian)
 {

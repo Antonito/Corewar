@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Wed Mar  2 07:15:27 2016 Antoine Baché
+** Last update Wed Mar  2 07:21:34 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -15,6 +15,9 @@
 
 # include <stdlib.h>
 # include <stdbool.h>
+# ifdef	DEBUG
+#  include <stdio.h>
+# endif /* DEBUG */
 # include "header.h"
 
 /*
@@ -81,7 +84,7 @@ int			prepareHeader(int, t_header *, int *);
 /*
 ** write_file.c
 */
-int			write_file(char *, t_data *);
+int			writeFile(t_data *);
 
 /*
 ** get*.c

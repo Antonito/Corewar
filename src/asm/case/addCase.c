@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Wed Mar  2 03:01:54 2016 Antoine Baché
+** Last update Wed Mar  2 07:24:57 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -15,6 +15,7 @@ int	writeAdd(int new, t_parsing *tmp, int endian)
 {
   int	i;
 
+  (void)endian;
   i = 0;
   while (i < 3)
     {

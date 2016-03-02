@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Wed Mar  2 03:00:49 2016 Antoine Baché
+** Last update Wed Mar  2 07:23:17 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -103,7 +103,7 @@ int		check_file(char *str)
       prepareHeader(data.fd, &data.header, &data.line) ||
       parseFile(data.fd, &data))
     return (free_elems(&data), 1);
-  if (close(data.fd) < 0 || write_file(str, &data))
+  if (close(data.fd) < 0 || writeFile(&data))
     return (free_elems(&data), 1);
   return (free_elems(&data), 0);
 }

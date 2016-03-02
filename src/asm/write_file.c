@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 22:42:05 2016 Antoine Baché
-** Last update Wed Mar  2 02:50:42 2016 Antoine Baché
+** Last update Wed Mar  2 07:21:54 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -22,13 +22,13 @@ int		errorWriting(char *str)
   return (1);
 }
 
-int		write_args(int new, t_parsing *tmp, writetab tab, int endian)
+int		writeArgs(int new, t_parsing *tmp, writetab tab, int endian)
 {
   printf("Function = %d Offset = %d\n", tmp->function, tmp->offset);
   return (tab[(int)(tmp->function - 1)](new, tmp, endian));
 }
 
-int		end_header(int new, t_data *data)
+int		endHeader(int new, t_data *data)
 {
   int		size;
 
@@ -41,7 +41,7 @@ int		end_header(int new, t_data *data)
   return (0);
 }
 
-int		write_file(char *str, t_data *data)
+int		writeFile(t_data *data)
 {
   t_parsing	*tmp;
   writetab	tab;
@@ -58,12 +58,12 @@ int		write_file(char *str, t_data *data)
       if (((tmp->function <= 0x10) ? write(new, &tmp->function, 1) : 0) < 0 ||
 	  ((tmp->bytecode) ? write(new, &tmp->bytecode, 1) : 0) < 0)
 	return (errorWriting("test.cor"));
-      if (write_args(new, tmp, tab, data->endianness))
+      if (writeArgs(new, tmp, tab, data->endianness))
 	return (errorWriting("test.cor"));
       tmp = tmp->next;
     }
   free(tab);
-  if (end_header(new, data) || close(new) < 0)
+  if (endHeader(new, data) || close(new) < 0)
     return (errorWriting("test.cor"));
   return (0);
 }

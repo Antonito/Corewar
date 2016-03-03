@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Wed Mar  2 07:21:34 2016 Antoine Baché
+** Last update Thu Mar  3 17:56:14 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -57,6 +57,7 @@ writetab		selector_write(void);
 ptrtab			selector(void);
 
 int			getRegisterSti(t_data *, t_parsing *, int *, int);
+char			*parseLabel(t_data *, t_parsing *, int *);
 
 /*
 **  ________________________________________________________________________
@@ -90,7 +91,7 @@ int			writeFile(t_data *);
 ** get*.c
 */
 int			getDirValue(t_data *, t_parsing *, int *, int);
-int			getLabel(t_data *, char *);
+int			getLabel(t_data *, char *, t_parsing *, int);
 int			getFunction(t_data *, t_parsing *);
 int			getArgs(t_data *, t_parsing *, int);
 

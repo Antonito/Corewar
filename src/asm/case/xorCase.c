@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Thu Mar  3 16:24:50 2016 Antoine Baché
+** Last update Thu Mar  3 17:57:22 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -65,7 +65,7 @@ int	checkDirXor(t_data *data, t_parsing *elem, int *offset, int i)
 {
   elem->size += 2;
   if (data->str[++(*offset)] == ':')
-    return (getLabel(data, "Label"));
+    return (getLabel(data, parseLabel(data, elem, offset), elem, i));
   else if (data->str[*offset] >'0' && data->str[*offset] <= '9')
     {
       if (getDirXor(data, elem, offset, i))

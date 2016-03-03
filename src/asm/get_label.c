@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 05:41:59 2016 Antoine Baché
-** Last update Tue Mar  1 13:30:18 2016 Antoine Baché
+** Last update Thu Mar  3 17:46:48 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -28,9 +28,9 @@
 **
 ** La somme des bytes est la valeur a mettre a la place du label
 */
-int	getLabel(t_data *data, char *label)
+int	getLabel(t_data *data, char *label, t_parsing *elem, int i)
 {
-  printf("Find label !!");
+  printf("Find label !!\n");
   printf("Instruction line = %d\n", data->line);
   printf("Label = %s\n", label);
   return (0);

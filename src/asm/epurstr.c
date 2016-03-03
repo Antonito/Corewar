@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Feb 29 17:19:03 2016 Antoine Baché
-** Last update Thu Mar  3 14:39:05 2016 Antoine Baché
+** Last update Thu Mar  3 17:32:35 2016 Antoine Baché
 */
 
 #include <stdbool.h>
@@ -17,7 +17,7 @@ bool	checkLabel(char *str)
 
   i = 0;
   while (str[i] && str[i] != '#' && (str[i] == ' ' || str[i] == '\t') && ++i);
-  while (str[i] && str[i] != '#' && (str[i] != ' ' || str[i] != '\t'))
+  while (str[i] && str[i] != '#' && (str[i] != ' ' && str[i] != '\t'))
     if (str[i++] == ':')
       return (true);
   return (false);
@@ -51,7 +51,7 @@ int	epurStrBeginning(char *str, int len, bool isLabel, int i)
   if (!(j = 0) && isLabel && --j)
     {
       while (++j + i < len && (str[j] = str[j + i]));
-      if (!(i = 0) && str[j - 1] == ':' && !(str[j] = 0))
+      if (!(i = 0) && str[j - 1] == ':' && str[j] != ':' && !(str[j] = 0))
 	return (1);
     }
   else if ((str[0] = '\t'))

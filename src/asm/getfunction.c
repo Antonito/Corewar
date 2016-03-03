@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 11:04:59 2016 Antoine Baché
-** Last update Thu Mar  3 14:40:40 2016 Antoine Baché
+** Last update Thu Mar  3 17:48:39 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -37,7 +37,6 @@ int	getFunction(t_data *data, t_parsing *elem)
       while (data->str[i] && data->str[i] != ':' && ++i);
       ++i;
     }
-  printf("data->str[0] = %d\n", data->str[2]);
   if ((data->str[0] == '\0' || !data->str[i]) &&
       (elem->function = 16) && !(elem->bytecode = 0))
     return (0);

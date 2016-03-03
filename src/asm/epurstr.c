@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Feb 29 17:19:03 2016 Antoine Baché
-** Last update Wed Mar  2 11:22:01 2016 Antoine Baché
+** Last update Thu Mar  3 14:39:05 2016 Antoine Baché
 */
 
 #include <stdbool.h>
@@ -104,6 +104,7 @@ void	epurStr(char *str)
 {
   int	len;
   bool	isLabel;
+  bool	correct;
   int	i;
 
   if (!str)
@@ -111,7 +112,12 @@ void	epurStr(char *str)
   len = my_strlen(str);
   isLabel = checkLabel(str);
   i = -1;
-  while (str[++i] && str[i] != '#');
+  correct = false;
+  while (str[++i] && str[i] != '#')
+    if (str[i] != ' ' && str[i] != '\t' && str[i] != '\0')
+      correct = true;
+  if (correct == false && !(str[0] = '\0'))
+    return ;
   if (str[i] == '#')
     str[i] = 0;
   if (epurStrBeginning(str, len, isLabel, -1))
@@ -119,6 +125,6 @@ void	epurStr(char *str)
   epurStrFirstArg(str, len, isLabel);
   i = -1;
   while (str[++i]);
-  if (str[i - 1] == ' ' || str[i -1] == '\t')
+  if (i < 0 && (str[i - 1] == ' ' || str[i -1] == '\t'))
     str[i - 1] = 0;
 }

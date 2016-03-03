@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Thu Mar  3 17:56:14 2016 Antoine Baché
+** Last update Fri Mar  4 00:37:22 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -34,6 +34,7 @@ typedef	struct		s_parsing
   int			value[3];
   char			reg[3];
   bool			isLabel[3];
+  int			line;
   struct s_parsing	*next;
 }			t_parsing;
 
@@ -58,6 +59,7 @@ ptrtab			selector(void);
 
 int			getRegisterSti(t_data *, t_parsing *, int *, int);
 char			*parseLabel(t_data *, t_parsing *, int *);
+int			calcOffset(t_parsing *, t_parsing *, bool);
 
 /*
 **  ________________________________________________________________________

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Wed Mar  2 07:23:17 2016 Antoine Baché
+** Last update Thu Mar  3 23:42:54 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -45,6 +45,7 @@ int		prepareElems(t_data *data)
   if (!(data->elem = malloc(sizeof(t_parsing))))
     return (1);
   my_bzero(data->elem, sizeof(t_parsing));
+  data->elem->line = data->line;
   data->elem->next = NULL;
   return (0);
 }
@@ -74,6 +75,7 @@ int		parseFile(int fd, t_data *data)
 	    return (free(data->str), errorMalloc());
 	  printf("Line %d: %s\n", data->line, data->str);
 	  epurStr(data->str);
+	  elem->line = data->line;
 	  printf("Epured Line %d : %s\n", data->line, data->str);
 	  if (getFunction(data, elem))
 	    return (free(data->str), 1);

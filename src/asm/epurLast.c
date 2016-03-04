@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar  4 16:57:40 2016 Antoine Baché
-** Last update Fri Mar  4 17:20:13 2016 Antoine Baché
+** Last update Fri Mar  4 18:27:30 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -20,7 +20,7 @@ char	*addSpaces(char *str)
 
   i = -1;
   spaces = 0;
-  while (str[++i])
+  while (str && str[++i])
     if (str[i] == ',' && (str[i + 1] != ' ' && str[i + 1] != '\t'))
       ++spaces;
   if (!spaces)

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 06:31:20 2016 Antoine Baché
-** Last update Wed Mar  2 04:06:17 2016 Antoine Baché
+** Last update Fri Mar  4 17:35:18 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -20,7 +20,8 @@ int	getDirValue(t_data *data, t_parsing *elem, int *offset, int id)
 
   tmp = (*offset) - 1;
   while (data->str[++tmp] && data->str[tmp] != ',' && data->str[tmp] != '\n')
-    if (data->str[tmp] < '1' && data->str[tmp] > '9')
+    if (data->str[tmp] != '-' &&
+	(data->str[tmp] < '0' || data->str[tmp] > '9'))
       return (errorSyntax(data->line));
   if (data->str[tmp] != 0 && data->str[tmp] != ',' && data->str[tmp] != '\n')
     return (errorSyntax(data->line));

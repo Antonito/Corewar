@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 01:03:33 2016 Antoine Baché
+** Last update Fri Mar  4 18:40:52 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -65,7 +65,13 @@ int	checkDirLdi(t_data *data, t_parsing *elem, int *offset, int i)
 {
   elem->size += 2;
   if (data->str[++(*offset)] == ':')
-    return (getLabel(data, parseLabel(data, offset), elem, i));
+    {
+      elem->bytecode |= 128 >> (i << 1);
+      if (getLabel(data, parseLabel(data, offset), elem, i))
+	return (1);
+      --(*offset);
+      return (0);
+    }
   else if (data->str[*offset] >'0' && data->str[*offset] <= '9')
     {
       if (getDirLdi(data, elem, offset, i))
@@ -117,7 +123,7 @@ int	ldiCase(t_data *data, t_parsing *elem, int *offset)
 	     && i < 3)
       {
 	if (checkDirLdi(data, elem, offset, i - 1))
-	  return (0);
+	  return (1);
       }
     else if (data->str[(*offset) - 1] == ' ' && i < 2 &&
 	     data->str[*offset] >= '0' && data->str[*offset] <= '9')

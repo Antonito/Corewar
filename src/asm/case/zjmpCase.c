@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 04:33:32 2016 Antoine Baché
+** Last update Fri Mar  4 17:58:18 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -31,9 +31,9 @@ int	getZjmp(t_data *data, t_parsing *elem, int *offset)
   while (data->str[++tmp]);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
-  i = 0;
-  while ((*offset) + i < tmp && (nb[i] = data->str[(*offset + i)]))
-    if (nb[i] < '0' || nb[i++] > '9')
+  i = -1;
+  while ((*offset) + ++i < tmp && (nb[i] = data->str[(*offset + i)]))
+    if (nb[i] != '-' && (nb[i] < '0' || nb[i] > '9'))
       return (errorSyntax(data->line));
   nb[tmp - (*offset)] = 0;
   elem->value[0] = my_getnbr(nb);
@@ -49,7 +49,8 @@ int	zjmpCase(t_data *data, t_parsing *elem, int *offset)
     return (errorSyntax(data->line));
   if (data->str[++(*offset)] == ':' && (elem->size += 2))
     return (getLabel(data, parseLabel(data, offset), elem, 0));
-  else if (data->str[*offset] > '0' && data->str[*offset] <= '9')
+  else if (data->str[*offset] == '-' ||
+	   (data->str[*offset] >= '0' && data->str[*offset] <= '9'))
     return (getZjmp(data, elem, offset));
   else
     return (errorSyntax(data->line));

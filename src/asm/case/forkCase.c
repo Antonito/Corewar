@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 01:02:34 2016 Antoine Baché
+** Last update Fri Mar  4 18:25:39 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -48,7 +48,7 @@ int	forkCase(t_data *data, t_parsing *elem, int *offset)
     return (errorSyntax(data->line));
   if (data->str[++(*offset)] == ':')
     return (getLabel(data, parseLabel(data, offset), elem, 0));
-  else if (data->str[*offset] > '0' && data->str[*offset] <= '9')
+  else if (data->str[*offset] >= '0' && data->str[*offset] <= '9')
     return (getFork(data, elem, offset));
   else
     return (errorSyntax(data->line));

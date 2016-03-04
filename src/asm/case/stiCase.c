@@ -1,4 +1,3 @@
-
 /*
 ** stiCase.c for Corewar in /CPE_2015_corewar/src/asm/case
 **
@@ -6,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 02:49:09 2016 Antoine Baché
+** Last update Fri Mar  4 18:04:12 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -18,7 +17,8 @@ int	getDirectSti(t_data *data, t_parsing *elem, int *offset, int i)
   elem->size += 2;
   if (data->str[++(*offset)] == ':')
     return (getLabel(data, parseLabel(data, offset), elem, i));
-  else if (data->str[*offset] >'0' && data->str[*offset] <= '9')
+  else if ((data->str[*offset] >= '0' && data->str[*offset] <= '9') ||
+	   data->str[*offset] == '-')
     return (getDirValue(data, elem, offset, i + 1));
   else
     return (errorSyntax(data->line));
@@ -40,7 +40,7 @@ int	getRegisterSti(t_data *data, t_parsing *elem, int *offset, int i)
   if ((size[0] = data->str[*offset + 1]) > '9' || size[0] < '1')
     return (errorSyntax(data->line));
   if (tmp - *offset == 3 && ((size[1] = data->str[*offset + 2]) > '9' ||
-			     size[1] < '1'))
+			     size[1] < '0'))
     return (errorSyntax(data->line));
   if ((elem->reg[i - 1] = my_getnbr(size)) > 16 || elem->reg[i - 1] < 1 ||
       tmp - *offset > 3)

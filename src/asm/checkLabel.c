@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Mar  3 16:31:23 2016 Antoine Baché
-** Last update Fri Mar  4 05:14:25 2016 Antoine Baché
+** Last update Fri Mar  4 16:18:20 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -48,7 +48,6 @@ int		calcOffset(t_parsing *tmp, t_parsing *elem, bool isSmaller)
     }
   else
     {
-      printf("Coucou\n");
       while (another_tmp != NULL && tmp != another_tmp)
 	{
 	  printf("Size += %d\n", another_tmp->size);
@@ -68,12 +67,15 @@ int		completeLastLabels(t_data *data)
   tmp = data->elem;
   while (tmp && (i = -1))
     {
+      printf("[LastLabel] Inst : %d\n", tmp->function);
       while (++i < 3 && (tmp2 = data->label))
 	if (tmp->labelId[i] != 0)
 	  while (tmp2)
 	    {
+	      printf("[LastLabel] Label = %s\n", tmp2->label);
 	      if (tmp2->id && tmp2->id == tmp->labelId[i])
 		{
+		  printf("Found label %s at line %d\n", tmp2->label, tmp2->id);
 		  loopLastLabels(tmp2->id, data, tmp, i);
 		  break;
 		}

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 05:41:59 2016 Antoine Baché
-** Last update Fri Mar  4 05:16:03 2016 Antoine Baché
+** Last update Fri Mar  4 16:26:33 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -80,7 +80,6 @@ void		loopLastLabels(int line, t_data *data, t_parsing *elem, int j)
   t_parsing	*label;
 
   label = data->elem;
-  printf("Line = %d\n", line);
   while (label && label->line != line)
     label = label->next;
   elem->value[j] = calcOffset(label, elem, 0);
@@ -90,9 +89,13 @@ int		prepareInfosLabel(t_data *data, t_parsing *elem,
 				  int i, char *label)
 {
   t_label	*new;
+  t_label	*tmp;
 
+  tmp = data->label;
+  while (tmp->next)
+    tmp = tmp->next;
   new = NULL;
-  if (!(new = addLabel(new, data->label)) ||
+  if (!(new = addLabel(new, tmp)) ||
       !(new->label = my_strdup(label)))
     return (1);
   new->id = elem->labelId[i];
@@ -112,14 +115,14 @@ int	getLabel(t_data *data, char *label, t_parsing *elem, int i)
     }
   else
     {
-      printf("Line = %d\n", line);
+      printf("[Affter Label] Line = %d\n", line);
       elem->labelId[i] = line;
       if (prepareInfosLabel(data, elem, i, label))
 	return (1);
     }
-  printf("Instruction line = %d\n", line);
-  printf("Label = %s\n", label);
-  printf("Value = %d\n", elem->value[i]);
+  printf("[Label] Instruction line = %d\n", line);
+  printf("[Label] Label = %s\n", label);
+  printf("[Label] Value = %d\n", elem->value[i]);
   free(label);
   return (0);
 }

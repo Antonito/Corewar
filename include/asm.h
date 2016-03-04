@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Fri Mar  4 05:13:23 2016 Antoine Baché
+** Last update Fri Mar  4 16:18:24 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -42,7 +42,6 @@ typedef	struct		s_label
 {
   char			*label;
   int			id;
-  int			line;
   struct s_label	*next;
 }			t_label;
 

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Wed Mar  2 03:02:23 2016 Antoine Baché
+** Last update Fri Mar  4 16:37:37 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -34,6 +34,7 @@ int	writeAff(int new, t_parsing *tmp, int endian)
 int	affCase(t_data *data, t_parsing *elem, int *offset)
 {
   *offset += 4;
+  ++elem->size;
   if (data->str[*offset] == 'r' && ++(elem->size))
     return (getRegisterSti(data, elem, offset, 1));
   else

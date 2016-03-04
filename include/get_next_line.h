@@ -5,13 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Jan  4 10:26:37 2016 Antoine Baché
-** Last update Sun Jan 17 09:27:35 2016 Antoine Baché
+** Last update Fri Mar  4 04:12:27 2016 Antoine Baché
 */
 
 #ifndef GET_NEXT_LINE_H_
 # define GET_NEXT_LINE_H_
 # ifndef READ_SIZE
-#  define READ_SIZE (14)
+#  define READ_SIZE (1)
 # endif	/* !READ_SIZE */
 
 # include <unistd.h>

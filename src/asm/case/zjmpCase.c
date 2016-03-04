@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Thu Mar  3 23:47:57 2016 Antoine Baché
+** Last update Fri Mar  4 04:33:32 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -47,8 +47,8 @@ int	zjmpCase(t_data *data, t_parsing *elem, int *offset)
   elem->size++;
   if (data->str[++(*offset)] != ' ' || data->str[++(*offset)] != '%')
     return (errorSyntax(data->line));
-  if (data->str[++(*offset)] == ':')
-    return (getLabel(data, parseLabel(data, elem, offset), elem, 0));
+  if (data->str[++(*offset)] == ':' && (elem->size += 2))
+    return (getLabel(data, parseLabel(data, offset), elem, 0));
   else if (data->str[*offset] > '0' && data->str[*offset] <= '9')
     return (getZjmp(data, elem, offset));
   else

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Wed Mar  2 03:02:32 2016 Antoine Baché
+** Last update Fri Mar  4 01:02:34 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -17,11 +17,6 @@ int	writeFork(int new, t_parsing *tmp, int endian)
   if (!reverseShort((short *)&tmp->value[0], endian) &&
       write(new, &tmp->value[0], 2) < 0)
     return (1);
-  return (0);
-}
-
-int	getLabelFork(t_data *data, t_parsing *elem, int *offset)
-{
   return (0);
 }
 
@@ -52,7 +47,7 @@ int	forkCase(t_data *data, t_parsing *elem, int *offset)
   if (data->str[++(*offset)] != ' ' || data->str[++(*offset)] != '%')
     return (errorSyntax(data->line));
   if (data->str[++(*offset)] == ':')
-    return (getLabelFork(data, elem, offset));
+    return (getLabel(data, parseLabel(data, offset), elem, 0));
   else if (data->str[*offset] > '0' && data->str[*offset] <= '9')
     return (getFork(data, elem, offset));
   else

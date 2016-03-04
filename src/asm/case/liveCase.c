@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Wed Mar  2 03:02:49 2016 Antoine Baché
+** Last update Fri Mar  4 01:01:06 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -16,11 +16,6 @@ int	writeLive(int new, t_parsing *tmp, int endian)
 {
   if (!reverseInt(&tmp->value[0], endian) && write(new, &tmp->value[0], 4) < 0)
     return (1);
-  return (0);
-}
-
-int	getLabelLive(t_data *data, t_parsing *elem, int *offset)
-{
   return (0);
 }
 
@@ -57,7 +52,7 @@ int	liveCase(t_data *data, t_parsing *elem, int *offset)
   if (data->str[++(*offset)] != ' ' || data->str[++(*offset)] != '%')
     return (errorSyntax(data->line));
   if (data->str[++(*offset)] == ':')
-    return (getLabelLive(data, elem, offset));
+    return (getLabel(data, parseLabel(data, offset), elem, 0));
   else if (data->str[*offset] > '0' && data->str[*offset] <= '9')
     return (getLive(data, elem, offset));
   else

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 05:41:59 2016 Antoine Baché
-** Last update Fri Mar  4 00:43:43 2016 Antoine Baché
+** Last update Fri Mar  4 04:57:30 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -29,28 +29,32 @@
 **
 ** La somme des bytes est la valeur a mettre a la place du label
 */
-int	getLabelLine(int fd, char *label)
+int	getLabelLine(int fd, char *label, int dataline)
 {
-  int	saved_pos;
   char	*line;
   int	nb_line;
   int	size;
+  int	i;
 
-  if ((saved_pos = lseek(fd, 0, SEEK_CUR)) < 0 ||
-      lseek(fd, 0, SEEK_END) < 0 ||
-      (free(get_next_line(fd)), lseek(fd, 0, SEEK_SET) < 0))
+  if (!(nb_line = 0) && (i = -1) && (size = my_strlen(label)) &&
+      (lseek(fd, 0, SEEK_END) < 0 ||
+       (free(get_next_line(fd)), lseek(fd, 0, SEEK_SET) < 0)))
     return (1);
-  nb_line = 0;
-  size = my_strlen(label);
   while (++nb_line && (line = get_next_line(fd)))
     {
-      epurStr(line);
-      if (nb_line > 1 && !my_strncmp(line, label, size))
-	return (free(line), (lseek(fd, saved_pos, SEEK_CUR) < 0) ? 1 : nb_line);
+      if (epurStr(line), nb_line > 1 && !my_strncmp(line, label, size))
+	{
+	  if (lseek(fd, 0, SEEK_SET) == -1)
+	    return (1);
+	  while (++i < dataline)
+	    free(get_next_line(fd));
+	  return (free(line), nb_line);
+	}
       free(line);
     }
-  if (lseek(fd, saved_pos, SEEK_CUR) < 0)
-    return (1);
+  lseek(fd, 0, SEEK_SET);
+  while (++i < dataline)
+    free(get_next_line(fd));
   return (1);
 }
 
@@ -71,16 +75,48 @@ int		getLowerLabel(t_data *data, t_parsing *elem, int line, int i)
   return (0);
 }
 
+void		loopLastLabels(int line, t_data *data, t_parsing *elem)
+{
+  int		i;
+  t_parsing	*label;
+
+  i = 0;
+  label = data->elem;
+  while (++i < line && label)
+    label = label->next;
+  elem->value[i] = calcOffset(label, elem, 0);
+}
+
+int		prepareInfosLabel(t_data *data, t_parsing *elem,
+				  int i, char *label)
+{
+  t_label	*new;
+
+  new = NULL;
+  if (!(new = addLabel(new, data->label)) ||
+      !(new->label = my_strdup(label)))
+    return (1);
+  new->id = elem->labelId[i];
+  return (0);
+}
+
 int	getLabel(t_data *data, char *label, t_parsing *elem, int i)
 {
   int	line;
 
-  if ((line = getLabelLine(data->fd, label)) == 1)
+  if ((line = getLabelLine(data->fd, label, data->line)) == 1)
     return (1);
-  if (line < data->line && getLowerLabel(data, elem, line, i))
-    return (1);
+  if (line < data->line)
+    {
+      if (getLowerLabel(data, elem, line, i))
+	return (1);
+    }
   else
-    printf("Label is after inst\n");
+    {
+      elem->labelId[i] = line;
+      if (prepareInfosLabel(data, elem, i, label))
+	return (1);
+    }
   printf("Instruction line = %d\n", line);
   printf("Label = %s\n", label);
   printf("Value = %d\n", elem->value[i]);

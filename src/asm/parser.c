@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Thu Mar  3 23:42:54 2016 Antoine Baché
+** Last update Fri Mar  4 02:43:51 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -96,7 +96,7 @@ int		check_file(char *str)
   data.line = 0;
   data.endianness = findEndian();
   if (!(data.ins = malloc(sizeof(char *) * 17)) || prepare_ins(data.ins) ||
-      !(data.list = selector()))
+      !(data.list = selector()) || prepareLabels(&data))
     return (errorMalloc());
   my_bzero(&data.header, sizeof(t_header));
   if ((data.fd = open(str, O_RDONLY)) < 0)
@@ -105,7 +105,7 @@ int		check_file(char *str)
       prepareHeader(data.fd, &data.header, &data.line) ||
       parseFile(data.fd, &data))
     return (free_elems(&data), 1);
-  if (close(data.fd) < 0 || writeFile(&data))
+  if (close(data.fd) < 0 || completeLastLabels(&data) || writeFile(&data))
     return (free_elems(&data), 1);
   return (free_elems(&data), 0);
 }

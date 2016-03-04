@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Fri Mar  4 00:37:22 2016 Antoine Baché
+** Last update Fri Mar  4 04:57:58 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -33,10 +33,18 @@ typedef	struct		s_parsing
   unsigned char		bytecode;
   int			value[3];
   char			reg[3];
-  bool			isLabel[3];
+  int			labelId[3];
   int			line;
   struct s_parsing	*next;
 }			t_parsing;
+
+typedef	struct		s_label
+{
+  char			*label;
+  int			id;
+  int			line;
+  struct s_label	*next;
+}			t_label;
 
 typedef	struct		s_data
 {
@@ -44,6 +52,7 @@ typedef	struct		s_data
   int			line;
   t_header		header;
   t_parsing		*elem;
+  t_label		*label;
   char			**ins;
   char			*str;
   int			(**list)(struct s_data *, t_parsing *, int *);
@@ -58,8 +67,12 @@ writetab		selector_write(void);
 ptrtab			selector(void);
 
 int			getRegisterSti(t_data *, t_parsing *, int *, int);
-char			*parseLabel(t_data *, t_parsing *, int *);
+char			*parseLabel(t_data *, int *);
+int			completeLastLabels(t_data *);
 int			calcOffset(t_parsing *, t_parsing *, bool);
+int			prepareLabels(t_data *);
+t_label			*addLabel(t_label *, t_label *);
+void			loopLastLabels(int, t_data *, t_parsing *);
 
 /*
 **  ________________________________________________________________________

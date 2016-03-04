@@ -6,7 +6,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Thu Mar  3 23:47:25 2016 Antoine Baché
+** Last update Fri Mar  4 02:49:09 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -17,7 +17,7 @@ int	getDirectSti(t_data *data, t_parsing *elem, int *offset, int i)
 {
   elem->size += 2;
   if (data->str[++(*offset)] == ':')
-    return (getLabel(data, parseLabel(data, elem, offset), elem, i));
+    return (getLabel(data, parseLabel(data, offset), elem, i));
   else if (data->str[*offset] >'0' && data->str[*offset] <= '9')
     return (getDirValue(data, elem, offset, i + 1));
   else

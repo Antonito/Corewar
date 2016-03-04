@@ -5,10 +5,11 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Feb 29 17:19:03 2016 Antoine Baché
-** Last update Thu Mar  3 17:32:35 2016 Antoine Baché
+** Last update Fri Mar  4 17:02:32 2016 Antoine Baché
 */
 
 #include <stdbool.h>
+#include "asm.h"
 #include "tools.h"
 
 bool	checkLabel(char *str)
@@ -123,8 +124,5 @@ void	epurStr(char *str)
   if (epurStrBeginning(str, len, isLabel, -1))
     return ;
   epurStrFirstArg(str, len, isLabel);
-  i = -1;
-  while (str[++i]);
-  if (i < 0 && (str[i - 1] == ' ' || str[i -1] == '\t'))
-    str[i - 1] = 0;
+  epurLast(str);
 }

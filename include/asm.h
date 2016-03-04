@@ -1,11 +1,11 @@
 /*
-** asm.h for Corewar in /CPE_2015_corewar/include
+1;4204;0c** asm.h for Corewar in /CPE_2015_corewar/include
 **
 ** Made by Antoine Baché
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Fri Mar  4 16:18:24 2016 Antoine Baché
+** Last update Fri Mar  4 17:09:49 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -85,6 +85,8 @@ void			loopLastLabels(int, t_data *, t_parsing *, int);
 ** \________________________________________________________________________/
 */
 void			epurStr(char *);
+void			epurLast(char *);
+char			*addSpaces(char *);
 
 /*
 ** parser.c

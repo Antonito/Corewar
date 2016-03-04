@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Fri Mar  4 16:22:52 2016 Antoine Baché
+** Last update Fri Mar  4 17:08:42 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -67,7 +67,7 @@ int		parseFile(int fd, t_data *data)
   t_parsing	*elem;
 
   tmp_parse = data->elem;
-  while ((data->str = get_next_line(fd)) && ++data->line)
+  while ((data->str = addSpaces(get_next_line(fd))) && ++data->line)
     {
       if (data->str[0])
 	{
@@ -75,6 +75,7 @@ int		parseFile(int fd, t_data *data)
 	    return (free(data->str), errorMalloc());
 	  epurStr(data->str);
 	  elem->line = data->line;
+	  printf("Line = %s\n", data->str);
 	  if (getFunction(data, elem))
 	    return (free(data->str), 1);
 	  tmp_parse = tmp_parse->next;

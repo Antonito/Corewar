@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Fri Mar  4 04:57:58 2016 Antoine Baché
+** Last update Fri Mar  4 05:13:23 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -72,7 +72,7 @@ int			completeLastLabels(t_data *);
 int			calcOffset(t_parsing *, t_parsing *, bool);
 int			prepareLabels(t_data *);
 t_label			*addLabel(t_label *, t_label *);
-void			loopLastLabels(int, t_data *, t_parsing *);
+void			loopLastLabels(int, t_data *, t_parsing *, int);
 
 /*
 **  ________________________________________________________________________

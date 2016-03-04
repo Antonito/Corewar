@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 05:41:59 2016 Antoine Baché
-** Last update Fri Mar  4 04:57:30 2016 Antoine Baché
+** Last update Fri Mar  4 05:16:03 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -75,16 +75,15 @@ int		getLowerLabel(t_data *data, t_parsing *elem, int line, int i)
   return (0);
 }
 
-void		loopLastLabels(int line, t_data *data, t_parsing *elem)
+void		loopLastLabels(int line, t_data *data, t_parsing *elem, int j)
 {
-  int		i;
   t_parsing	*label;
 
-  i = 0;
   label = data->elem;
-  while (++i < line && label)
+  printf("Line = %d\n", line);
+  while (label && label->line != line)
     label = label->next;
-  elem->value[i] = calcOffset(label, elem, 0);
+  elem->value[j] = calcOffset(label, elem, 0);
 }
 
 int		prepareInfosLabel(t_data *data, t_parsing *elem,
@@ -113,6 +112,7 @@ int	getLabel(t_data *data, char *label, t_parsing *elem, int i)
     }
   else
     {
+      printf("Line = %d\n", line);
       elem->labelId[i] = line;
       if (prepareInfosLabel(data, elem, i, label))
 	return (1);

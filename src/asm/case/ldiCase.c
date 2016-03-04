@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 18:40:52 2016 Antoine Baché
+** Last update Fri Mar  4 23:44:37 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -49,14 +49,14 @@ int	getDirLdi(t_data *data, t_parsing *elem, int *offset, int j)
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
-  i = 0;
-  while ((*offset) + i < tmp && (nb[i] = data->str[(*offset) + i]))
-    if (nb[i] < '0' || nb[i++] > '9')
+  i = -1;
+  while ((*offset) + ++i < tmp && (nb[i] = data->str[(*offset) + i]))
+    if (nb[i] != '-' && (nb[i] < '0' || nb[i] > '9'))
       return (errorSyntax(data->line));
   nb[tmp - (*offset)] = 0;
   elem->value[j] = my_getnbr(nb);
   *offset = tmp;
-  elem->bytecode |= 128 >> (i << 1);
+  elem->bytecode |= 128 >> (j << 1);
   free(nb);
   return (0);
 }
@@ -72,7 +72,8 @@ int	checkDirLdi(t_data *data, t_parsing *elem, int *offset, int i)
       --(*offset);
       return (0);
     }
-  else if (data->str[*offset] >'0' && data->str[*offset] <= '9')
+  else if (data->str[*offset] == '-' ||
+	   (data->str[*offset] >= '0' && data->str[*offset] <= '9'))
     {
       if (getDirLdi(data, elem, offset, i))
 	return (1);

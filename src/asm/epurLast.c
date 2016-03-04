@@ -5,10 +5,11 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar  4 16:57:40 2016 Antoine Baché
-** Last update Fri Mar  4 18:27:30 2016 Antoine Baché
+** Last update Fri Mar  4 23:22:47 2016 Antoine Baché
 */
 
 #include <stdlib.h>
+#include <stdbool.h>
 #include "tools.h"
 
 char	*addSpaces(char *str)

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 01:03:12 2016 Antoine Baché
+** Last update Fri Mar  4 23:44:45 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -56,7 +56,8 @@ int	getDirXor(t_data *data, t_parsing *elem, int *offset, int j)
   nb[tmp - (*offset)] = 0;
   elem->value[j] = my_getnbr(nb);
   *offset = tmp;
-  elem->bytecode |= 128 >> (i << 1);
+  printf("[VALUE] Elem = %d Line = %d\n", elem->value[j], data->line);
+  elem->bytecode |= 128 >> (j << 1);
   free(nb);
   return (0);
 }
@@ -65,7 +66,10 @@ int	checkDirXor(t_data *data, t_parsing *elem, int *offset, int i)
 {
   elem->size += 2;
   if (data->str[++(*offset)] == ':')
-    return (getLabel(data, parseLabel(data, offset), elem, i));
+    {
+      elem->bytecode |= 128 >> (i << 1);
+      return (getLabel(data, parseLabel(data, offset), elem, i));
+    }
   else if (data->str[*offset] >'0' && data->str[*offset] <= '9')
     {
       if (getDirXor(data, elem, offset, i))

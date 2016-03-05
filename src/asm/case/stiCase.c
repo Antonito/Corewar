@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sat Mar  5 08:11:16 2016 Antoine Baché
+** Last update Sat Mar  5 20:06:13 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -47,7 +47,6 @@ int	getRegisterSti(t_data *data, t_parsing *elem, int *offset, int i)
     return (errorRegister(data->line));
   elem->bytecode |= 64 >> ((i - 1) << 1);
   *offset = tmp;
-  ++(*offset);
   return (0);
 }
 
@@ -102,6 +101,7 @@ int	stiCase(t_data *data, t_parsing *elem, int *offset)
       {
 	if (getRegisterSti(data, elem, offset, i + 2))
 	  return (1);
+	++(*offset);
       }
     else if (stiCheckInDir(data, elem, offset, i + 1))
       return (1);

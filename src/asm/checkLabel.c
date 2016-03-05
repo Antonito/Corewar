@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Mar  3 16:31:23 2016 Antoine Baché
-** Last update Sat Mar  5 06:55:53 2016 Antoine Baché
+** Last update Sat Mar  5 07:19:10 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -50,7 +50,6 @@ int		calcOffset(t_parsing *tmp, t_parsing *elem, bool isSmaller)
     {
       while (another_tmp != NULL && tmp != another_tmp)
 	{
-	  printf("Size += %d\n", another_tmp->size);
 	  total += another_tmp->size;
 	  another_tmp = another_tmp->next;
 	}

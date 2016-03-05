@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 23:17:16 2016 Antoine Baché
-** Last update Wed Mar  2 04:38:05 2016 Antoine Baché
+** Last update Sat Mar  5 07:19:30 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -19,7 +19,6 @@ int		writeLd(int new, t_parsing *tmp, int endian)
 
   byte.bytecode = tmp->bytecode;
   code = getByteCode(&byte);
-  printf("Code = %d\n", code);
   if (code == 1 && !reverseInt(&tmp->value[0], endian) &&
       write(new, &tmp->value[0], 4) < 0)
     return (1);

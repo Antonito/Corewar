@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 23:44:37 2016 Antoine Baché
+** Last update Sat Mar  5 04:55:34 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -54,7 +54,8 @@ int	getDirLdi(t_data *data, t_parsing *elem, int *offset, int j)
     if (nb[i] != '-' && (nb[i] < '0' || nb[i] > '9'))
       return (errorSyntax(data->line));
   nb[tmp - (*offset)] = 0;
-  elem->value[j] = my_getnbr(nb);
+  if ((elem->value[j] = my_getnbr(nb)) < 0)
+    warningTooBig(data->line);
   *offset = tmp;
   elem->bytecode |= 128 >> (j << 1);
   free(nb);
@@ -70,7 +71,6 @@ int	checkDirLdi(t_data *data, t_parsing *elem, int *offset, int i)
       if (getLabel(data, parseLabel(data, offset), elem, i))
 	return (1);
       --(*offset);
-      return (0);
     }
   else if (data->str[*offset] == '-' ||
 	   (data->str[*offset] >= '0' && data->str[*offset] <= '9'))
@@ -89,19 +89,23 @@ int	getIndirLdi(t_data *data, t_parsing *elem, int *offset, int i)
   int	tmp;
   char	*nb;
 
-  if (data->str[*offset] < '0' || data->str[*offset] > '9')
+  if (data->str[*offset] == ':')
+    return (getLabel(data, parseLabel(data, offset), elem, i));
+  if (data->str[*offset] != '-' &&
+      (data->str[*offset] < '0' || data->str[*offset] > '9'))
     return (errorSyntax(data->line));
   tmp = (*offset);
   elem->size += 2;
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
-  j = 0;
-  while ((*offset) + j < tmp && (nb[j] = data->str[(*offset) + j]))
-    if (nb[j] < '0' || nb[j++] > '9')
+  j = -1;
+  while ((*offset) + ++j < tmp && (nb[j] = data->str[(*offset) + j]))
+    if (nb[j] != '-' && (nb[j] < '0' || nb[j] > '9'))
       return (errorSyntax(data->line));
   nb[tmp - (*offset)] = 0;
-  elem->value[i] = my_getnbr(nb);
+  if ((elem->value[i] = my_getnbr(nb)) < 0)
+    warningIndirection(data->line);
   elem->bytecode |= 192 >> (i << 1);
   *offset = tmp;
   free(nb);
@@ -112,22 +116,23 @@ int	ldiCase(t_data *data, t_parsing *elem, int *offset)
 {
   int	i;
 
-  if ((*offset += 2) && (elem->size += 2) && (i = 0))
-    return (1);
+  if ((*offset += 2) && (elem->size += 2) && !(i = 0) &&
+      data->str[++(*offset)] != ' ')
+    return (errorSyntax(data->line));
   while (++i < 4)
-    if (data->str[++(*offset)] == ' ' && data->str[++(*offset)] == 'r')
+    if (data->str[++(*offset)] == 'r')
       {
 	if (getRegisterSti(data, elem, offset, i))
 	  return (1);
       }
-    else if (data->str[(*offset) - 1] == ' ' && data->str[*offset] == '%'
-	     && i < 3)
+    else if (data->str[*offset] == '%' && i < 3)
       {
 	if (checkDirLdi(data, elem, offset, i - 1))
 	  return (1);
       }
-    else if (data->str[(*offset) - 1] == ' ' && i < 2 &&
-	     data->str[*offset] >= '0' && data->str[*offset] <= '9')
+    else if (i < 2 &&
+	     (((data->str[*offset] >= '0' && data->str[*offset] <= '9')) ||
+	      data->str[*offset] == '-' || data->str[*offset] == ':'))
       {
 	if (getIndirLdi(data, elem, offset, i - 1))
 	  return (1);

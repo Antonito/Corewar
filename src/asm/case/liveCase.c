@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 18:25:27 2016 Antoine Baché
+** Last update Sat Mar  5 04:47:38 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -30,12 +30,13 @@ int	getLive(t_data *data, t_parsing *elem, int *offset)
   while (data->str[++tmp]);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
-  i = 0;
-  while ((*offset) + i < tmp && (nb[i] = data->str[(*offset + i)]))
-    if (nb[i] < '0' || nb[i++] > '9')
+  i = -1;
+  while ((*offset) + ++i < tmp && (nb[i] = data->str[(*offset + i)]))
+    if (nb[i] != '-' && (nb[i] < '0' || nb[i] > '9'))
       return (errorSyntax(data->line));
   nb[tmp - (*offset)] = 0;
-  elem->value[0] = my_getnbr(nb);
+  if ((elem->value[0] = my_getnbr(nb)) < 0)
+    warningTooBig(data->line);
   free(nb);
 #ifdef	DEBUG
   write(1, "[INFOS] Live ", 13);
@@ -53,7 +54,8 @@ int	liveCase(t_data *data, t_parsing *elem, int *offset)
     return (errorSyntax(data->line));
   if (data->str[++(*offset)] == ':')
     return (getLabel(data, parseLabel(data, offset), elem, 0));
-  else if (data->str[*offset] >= '0' && data->str[*offset] <= '9')
+  else if (data->str[*offset] == '-' ||
+	   (data->str[*offset] >= '0' && data->str[*offset] <= '9'))
     return (getLive(data, elem, offset));
   else
     return (errorSyntax(data->line));

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 06:31:20 2016 Antoine Baché
-** Last update Fri Mar  4 17:35:18 2016 Antoine Baché
+** Last update Sat Mar  5 04:54:43 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -31,7 +31,8 @@ int	getDirValue(t_data *data, t_parsing *elem, int *offset, int id)
   while (++i < (tmp - (*offset)))
     nb[i] = data->str[(*offset) + i];
   nb[(tmp - *offset)] = 0;
-  elem->value[id - 1] = my_getnbr(nb);
+  if ((elem->value[id - 1] = my_getnbr(nb)) < 0)
+    warningTooBig(data->line);
   *offset = ++tmp;
   free(nb);
   return (0);

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 18:04:12 2016 Antoine Baché
+** Last update Sat Mar  5 04:53:09 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -56,19 +56,23 @@ int	stiCheckInDir(t_data *data, t_parsing *elem, int *offset, int i)
   int	tmp;
   char	*nb;
 
-  if (data->str[*offset] < '0' || data->str[*offset] > '9')
+  if (data->str[*offset] != '-' && data->str[*offset] != ':' &&
+      (data->str[*offset] < '0' || data->str[*offset] > '9'))
     return (errorSyntax(data->line));
+  if (data->str[*offset] == ':')
+    return (getLabel(data, parseLabel(data, offset), elem, i));
   tmp = (*offset);
   elem->size += 2;
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
-  j = 0;
-  while ((*offset) + j < tmp && (nb[j] = data->str[(*offset) + j]))
-    if (nb[j] < '0' || nb[j++] > '9')
+  j = -1;
+  while ((*offset) + ++j < tmp && (nb[j] = data->str[(*offset) + j]))
+    if (nb[j] != '-' && (nb[j] < '0' || nb[j] > '9'))
       return (errorSyntax(data->line));
   nb[tmp - (*offset)] = 0;
-  elem->value[i] = my_getnbr(nb);
+  if ((elem->value[i] = my_getnbr(nb)) < 0)
+    warningIndirection(data->line);
   elem->bytecode |= 192 >> (i << 1);
   *offset = tmp + 1;
   free(nb);

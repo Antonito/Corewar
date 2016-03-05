@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 22:42:05 2016 Antoine Baché
-** Last update Sat Mar  5 07:18:53 2016 Antoine Baché
+** Last update Sat Mar  5 22:08:09 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -51,9 +51,8 @@ char	*getName(char *str)
   int	size;
 
   i = -1;
-  location = -1;
-  if (!(new = malloc((size = my_strlen(str)) + 3)) ||
-      !(new = my_strncpy(new, str, size + 3)))
+  if (!(location = -1) || !(new = malloc((size = my_strlen(str)) + 3)) ||
+      (my_bzero(new, size + 3), !(new = my_strncpy(new, str, size + 3))))
     return (NULL);
   while (new[++i])
     if (new[i] == '/')

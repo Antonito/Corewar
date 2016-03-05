@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sat Mar  5 20:06:13 2016 Antoine Baché
+** Last update Sat Mar  5 21:58:53 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -37,7 +37,7 @@ int	getRegisterSti(t_data *data, t_parsing *elem, int *offset, int i)
   while (data->str[++tmp] && data->str[tmp] != ',');
   size[2] = 0;
   size[1] = 0;
-  if ((size[0] = data->str[*offset + 1]) > '9' || size[0] < '1')
+  if ((size[0] = data->str[*offset + 1]) > '9' || size[0] < '0')
     return (errorSyntax(data->line));
   if (tmp - *offset == 3 && ((size[1] = data->str[*offset + 2]) > '9' ||
 			     size[1] < '0'))

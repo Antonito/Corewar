@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 22:42:05 2016 Antoine Baché
-** Last update Sat Mar  5 06:50:58 2016 Antoine Baché
+** Last update Sat Mar  5 06:52:52 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -70,7 +70,6 @@ char	*getName(char *str)
   if ((new[i++] = 'c') && (new[i++] = 'o') && (new[i++] = 'r') &&
       (new[i] = 0))
     return (NULL);
-  printf("Name = %s\n", new);
   return (new);
 }
 

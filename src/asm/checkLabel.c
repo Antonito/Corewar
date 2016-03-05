@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Mar  3 16:31:23 2016 Antoine Baché
-** Last update Fri Mar  4 16:18:20 2016 Antoine Baché
+** Last update Sat Mar  5 06:55:53 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -67,15 +67,12 @@ int		completeLastLabels(t_data *data)
   tmp = data->elem;
   while (tmp && (i = -1))
     {
-      printf("[LastLabel] Inst : %d\n", tmp->function);
       while (++i < 3 && (tmp2 = data->label))
 	if (tmp->labelId[i] != 0)
 	  while (tmp2)
 	    {
-	      printf("[LastLabel] Label = %s\n", tmp2->label);
 	      if (tmp2->id && tmp2->id == tmp->labelId[i])
 		{
-		  printf("Found label %s at line %d\n", tmp2->label, tmp2->id);
 		  loopLastLabels(tmp2->id, data, tmp, i);
 		  break;
 		}

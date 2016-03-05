@@ -1,11 +1,11 @@
 /*
-1;4204;0c** select.c for Corewar in /CPE_2015_corewar/src/asm
+** select.c for Corewar in /CPE_2015_corewar/src/asm
 **
 ** Made by Antoine Baché
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 00:47:20 2016 Antoine Baché
-** Last update Wed Mar  2 07:16:00 2016 Antoine Baché
+** Last update Sat Mar  5 06:53:13 2016 Antoine Baché
 */
 
 #include <stdlib.h>

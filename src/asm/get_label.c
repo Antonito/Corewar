@@ -5,30 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 05:41:59 2016 Antoine Baché
-** Last update Fri Mar  4 17:51:09 2016 Antoine Baché
+** Last update Sat Mar  5 06:55:21 2016 Antoine Baché
 */
 
 #include "asm.h"
 #include "tools.h"
 #include "errors.h"
 
-/*
-** On donne la ligne actuelle, on cherche la ligne de la premiere fonction du
-** label, si elle existe
-** /!\  Lseek pour save offset actuel du FD, lseek au debut du fichier pour
-**      recherche
-** Si la ligne du label est plus grande et qu'il contient une fonction:
-**  Save de cette ligne, lseek a l'ancienne position "actuelle" sauvegardee
-**  Read jusqu'a la ligne du label en checkant le bytecode a chaque fois
-**  Nb de byte = nb d'instruction +
-**               bytecode * nb d'instruction ou il est present +
-**               nb de byte par args, precise par le bytecode
-** Si la ligne du label est plus petite et qu'il contient une fonction:
-**  Save nb de ligne + lecture jusqu'a l'ancienne position "actuelle"
-**  sauvegardee, tout en faisaint la somme des bytes
-**
-** La somme des bytes est la valeur a mettre a la place du label
-*/
 int	getLabelLine(int fd, char *label, int dataline)
 {
   char	*line;
@@ -115,14 +98,10 @@ int	getLabel(t_data *data, char *label, t_parsing *elem, int i)
     }
   else
     {
-      printf("[Affter Label] Line = %d\n", line);
       elem->labelId[i] = line;
       if (prepareInfosLabel(data, elem, i, label))
 	return (1);
     }
-  printf("[Label] Instruction line = %d\n", line);
-  printf("[Label] Label = %s\n", label);
-  printf("[Label] Value = %d\n", elem->value[i]);
   free(label);
   return (0);
 }

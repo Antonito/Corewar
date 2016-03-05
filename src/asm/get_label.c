@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 05:41:59 2016 Antoine Baché
-** Last update Sat Mar  5 06:55:21 2016 Antoine Baché
+** Last update Sat Mar  5 22:24:42 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -38,7 +38,7 @@ int	getLabelLine(int fd, char *label, int dataline)
   lseek(fd, 0, SEEK_SET);
   while (++i < dataline)
     free(get_next_line(fd));
-  return (1);
+  return (errorLabel(label, dataline));
 }
 
 int		getLowerLabel(t_data *data, t_parsing *elem, int line, int i)

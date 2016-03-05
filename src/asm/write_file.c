@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 22:42:05 2016 Antoine Baché
-** Last update Wed Mar  2 07:21:54 2016 Antoine Baché
+** Last update Sat Mar  5 06:50:58 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -17,8 +17,11 @@
 int		errorWriting(char *str)
 {
   write(2, "Error while writing file ", 25);
-  write(2, str, my_strlen(str));
+  if (str)
+    write(2, str, my_strlen(str));
   write(2, "\n", 1);
+  if (str)
+    free(str);
   return (1);
 }
 
@@ -41,29 +44,60 @@ int		endHeader(int new, t_data *data)
   return (0);
 }
 
-int		writeFile(t_data *data)
+char	*getName(char *str)
 {
+  int	i;
+  char	*new;
+  int	location;
+  int	size;
+
+  i = -1;
+  location = -1;
+  if (!(new = malloc((size = my_strlen(str)) + 3)) ||
+      !(new = my_strncpy(new, str, size + 3)))
+    return (NULL);
+  while (new[++i])
+    if (new[i] == '/')
+      location = i;
+  if (!(i = 0) && location != -1)
+    {
+      while (i + location < size && (new[i] = new[i + location]) && ++i);
+      i = 0;
+      while (new[i] && (new[i] = new[i + 1]) && ++i);
+    }
+  i = 0;
+  while (new[i] && new[i++] != '.');
+  if ((new[i++] = 'c') && (new[i++] = 'o') && (new[i++] = 'r') &&
+      (new[i] = 0))
+    return (NULL);
+  printf("Name = %s\n", new);
+  return (new);
+}
+
+int		writeFile(t_data *data, char *str)
+{
+  char		*name;
   t_parsing	*tmp;
   writetab	tab;
   int		new;
 
-  if (!(tab = selector_write()) ||
-      (new = open("test.cor", O_RDWR | O_CREAT | O_TRUNC, 00644)) < 0 ||
+  if (!(tab = selector_write()) || !(name = getName(str)) ||
+      (new = open(name, O_RDWR | O_CREAT | O_TRUNC, 00644)) < 0 ||
       write(new, &data->header, sizeof(t_header)) < 0)
-    return (errorWriting("test.cor"));
+    return (errorWriting(name));
   tmp = data->elem->next;
   while (tmp)
     {
       ++tmp->function;
       if (((tmp->function <= 0x10) ? write(new, &tmp->function, 1) : 0) < 0 ||
 	  ((tmp->bytecode) ? write(new, &tmp->bytecode, 1) : 0) < 0)
-	return (errorWriting("test.cor"));
+	return (errorWriting(name));
       if (writeArgs(new, tmp, tab, data->endianness))
-	return (errorWriting("test.cor"));
+	return (errorWriting(name));
       tmp = tmp->next;
     }
   free(tab);
   if (endHeader(new, data) || close(new) < 0)
-    return (errorWriting("test.cor"));
-  return (0);
+    return (errorWriting(name));
+  return (free(name), 0);
 }

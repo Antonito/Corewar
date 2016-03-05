@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Feb 29 17:19:03 2016 Antoine Baché
-** Last update Sat Mar  5 01:28:11 2016 Antoine Baché
+** Last update Sat Mar  5 21:41:04 2016 Antoine Baché
 */
 
 #include <stdbool.h>
@@ -63,9 +63,9 @@ int	epurStrBeginning(char *str, int len, bool isLabel, int i)
     }
   if (isLabel && epurStrLabel(str, len))
     return (1);
-  while (str[i] && str[i] != '#' && (str[i] != ' ' && str[i] != '\t')
-	 && ++i && (j = i));
-  while (str[i] && str[i] != '#' && (str[i] == ' ' || str[i] == '\t') && ++i);
+  while ((j = i) >= 0 &&
+	 str[i] && str[i] != '#' && (str[i] != ' ' && str[i] != '\t') && ++i);
+  while (i < len && str[i] != '#' && (str[i] == ' ' || str[i] == '\t') && ++i);
   str[j] = ' ';
   i -= j;
   while (++j + (i - 1) < len && (str[j] = str[j + i - 1]));
@@ -89,13 +89,13 @@ void	epurStrFirstArg(char *str, int len, bool isLabel)
   while (j + i < len && (str[j] = str[j + i]) && ++j);
   while (j < len && !(str[j++] = 0));
   j = i;
-  while (str[++i] && str[i] != '#' && str[i] != ',');
-  while (str[++i] && str[i] != '#' && str[i] != ',');
-  if (!str[i])
+  while (str[++i] && i < len && str[i] != '#' && str[i] != ',');
+  while (str[++i] && i < len && str[i] != '#' && str[i] != ',');
+  if ((j = i) && !str[i])
     return ;
-  j = i;
-  while (str[++i] && str[i] != '#' && (str[i] == ' ' || str[i] == '\t'));
-  str[++j] = ' ';
+  while (++i < len && str[i] &&
+	 str[i] != '#' && (str[i] == ' ' || str[i] == '\t'));
+  (j < len) ? (str[++j] = ' ') : (str[j++] = ' ');
   i -= j + 1;
   while (j + i < len &&
 	 (str[j] = str[j + i]) && ++j);
@@ -125,5 +125,5 @@ void	epurStr(char *str)
   if (epurStrBeginning(str, len, isLabel, -1))
     return ;
   epurStrFirstArg(str, len, isLabel);
-  epurLast(str);
+  epurLast(str, len);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sat Mar  5 06:58:44 2016 Antoine Baché
+** Last update Sat Mar  5 08:43:30 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -89,17 +89,17 @@ int	getIndirLdi(t_data *data, t_parsing *elem, int *offset, int i)
   int	tmp;
   char	*nb;
 
-  elem->size += 2;
-  if (data->str[*offset] == ':')
+  if (((data->str[*offset] < '0' || data->str[*offset] > '9')) &&
+      data->str[*offset] != '-' && data->str[*offset] != ':')
+    return (errorSyntax(data->line));
+  if ((elem->size += 2) && data->str[*offset] == ':')
     return (getLabel(data, parseLabel(data, offset), elem, i));
-  if (data->str[*offset] != '-' &&
+  if (data->str[*offset] != '-' && (tmp = (*offset)) &&
       (data->str[*offset] < '0' || data->str[*offset] > '9'))
     return (errorSyntax(data->line));
-  tmp = (*offset);
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
-  if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
+  if ((j = -1) && !(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
-  j = -1;
   while ((*offset) + ++j < tmp && (nb[j] = data->str[(*offset) + j]))
     if (nb[j] != '-' && (nb[j] < '0' || nb[j] > '9'))
       return (errorSyntax(data->line));
@@ -108,8 +108,7 @@ int	getIndirLdi(t_data *data, t_parsing *elem, int *offset, int i)
     warningIndirection(data->line);
   elem->bytecode |= 192 >> (i << 1);
   *offset = tmp;
-  free(nb);
-  return (0);
+  return (free(nb), 0);
 }
 
 int	ldiCase(t_data *data, t_parsing *elem, int *offset)
@@ -131,9 +130,7 @@ int	ldiCase(t_data *data, t_parsing *elem, int *offset)
 	if (checkDirLdi(data, elem, offset, i - 1))
 	  return (1);
       }
-    else if (i < 2 &&
-	     (((data->str[*offset] >= '0' && data->str[*offset] <= '9')) ||
-	      data->str[*offset] == '-' || data->str[*offset] == ':'))
+    else if (i < 2)
       {
 	if (getIndirLdi(data, elem, offset, i - 1))
 	  return (1);

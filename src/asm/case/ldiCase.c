@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sat Mar  5 04:55:34 2016 Antoine Baché
+** Last update Sat Mar  5 06:31:52 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -45,7 +45,6 @@ int	getDirLdi(t_data *data, t_parsing *elem, int *offset, int j)
   char	*nb;
 
   tmp = *offset;
-  elem->size += 2;
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
@@ -77,6 +76,7 @@ int	checkDirLdi(t_data *data, t_parsing *elem, int *offset, int i)
     {
       if (getDirLdi(data, elem, offset, i))
 	return (1);
+      ++(*offset);
     }
   else
     return (errorSyntax(data->line));
@@ -89,13 +89,13 @@ int	getIndirLdi(t_data *data, t_parsing *elem, int *offset, int i)
   int	tmp;
   char	*nb;
 
+  elem->size += 2;
   if (data->str[*offset] == ':')
     return (getLabel(data, parseLabel(data, offset), elem, i));
   if (data->str[*offset] != '-' &&
       (data->str[*offset] < '0' || data->str[*offset] > '9'))
     return (errorSyntax(data->line));
   tmp = (*offset);
-  elem->size += 2;
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
@@ -124,6 +124,7 @@ int	ldiCase(t_data *data, t_parsing *elem, int *offset)
       {
 	if (getRegisterSti(data, elem, offset, i))
 	  return (1);
+	++(*offset);
       }
     else if (data->str[*offset] == '%' && i < 3)
       {

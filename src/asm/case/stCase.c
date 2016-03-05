@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sat Mar  5 04:46:15 2016 Antoine Baché
+** Last update Sat Mar  5 06:26:05 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -54,7 +54,8 @@ int	stCaseInDirect(t_data *data, t_parsing *elem, int *offset)
     if (nb[i] != '-' && (nb[i] < '0' || nb[i] > '9'))
       return (errorSyntax(data->line));
   nb[tmp - (*offset)] = 0;
-  elem->value[0] = my_getnbr(nb);
+  if ((elem->value[0] = my_getnbr(nb)) < 0)
+    warningTooBig(data->line);
   free(nb);
   return (0);
 }

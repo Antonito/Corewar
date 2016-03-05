@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Sat Mar  5 07:18:25 2016 Antoine Baché
+## Last update Sat Mar  5 17:38:01 2016 Antoine Baché
 ##
 
 DEBUG=			no
@@ -14,6 +14,7 @@ SRC_ASM_PREFIX=		src/asm/
 
 SRC_ASM_FILES=		main.c			\
 			header.c		\
+			getHeader.c		\
 			parser.c		\
 			write_file.c		\
 			errors.c		\

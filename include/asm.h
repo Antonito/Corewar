@@ -1,11 +1,11 @@
 /*
-1;4204;0c** asm.h for Corewar in /CPE_2015_corewar/include
+** asm.h for Corewar in /CPE_2015_corewar/include
 **
 ** Made by Antoine Baché
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sat Mar  5 06:46:29 2016 Antoine Baché
+** Last update Sat Mar  5 17:31:51 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -97,6 +97,7 @@ int			check_file(char *);
 ** header.c
 */
 int			prepareHeader(int, t_header *, int *);
+char			*getHeaderLine(int, int *);
 
 /*
 ** write_file.c

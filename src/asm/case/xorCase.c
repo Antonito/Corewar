@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 23:44:45 2016 Antoine Baché
+** Last update Sat Mar  5 03:54:30 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -45,18 +45,16 @@ int	getDirXor(t_data *data, t_parsing *elem, int *offset, int j)
   char	*nb;
 
   tmp = *offset;
-  elem->size += 4;
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
-  i = 0;
-  while ((*offset) + i < tmp && (nb[i] = data->str[(*offset) + i]))
-    if (nb[i] < '0' || nb[i++] > '9')
+  i = -1;
+  while ((*offset) + ++i < tmp && (nb[i] = data->str[(*offset + i)]))
+    if (nb[i] != '-' && (nb[i] < '0' || nb[i] > '9'))
       return (errorSyntax(data->line));
   nb[tmp - (*offset)] = 0;
   elem->value[j] = my_getnbr(nb);
   *offset = tmp;
-  printf("[VALUE] Elem = %d Line = %d\n", elem->value[j], data->line);
   elem->bytecode |= 128 >> (j << 1);
   free(nb);
   return (0);
@@ -64,13 +62,14 @@ int	getDirXor(t_data *data, t_parsing *elem, int *offset, int j)
 
 int	checkDirXor(t_data *data, t_parsing *elem, int *offset, int i)
 {
-  elem->size += 2;
+  elem->size += 4;
   if (data->str[++(*offset)] == ':')
     {
       elem->bytecode |= 128 >> (i << 1);
       return (getLabel(data, parseLabel(data, offset), elem, i));
     }
-  else if (data->str[*offset] >'0' && data->str[*offset] <= '9')
+  else if (data->str[*offset] == '-' ||
+	   (data->str[*offset] >= '0' && data->str[*offset] <= '9'))
     {
       if (getDirXor(data, elem, offset, i))
 	return (1);
@@ -121,7 +120,7 @@ int	xorCase(t_data *data, t_parsing *elem, int *offset)
 	     && i < 3)
       {
 	if (checkDirXor(data, elem, offset, i - 1))
-	  return (0);
+	  return (1);
       }
     else if (data->str[(*offset) - 1] == ' ' && i < 3 &&
 	     data->str[*offset] >= '0' && data->str[*offset] <= '9')

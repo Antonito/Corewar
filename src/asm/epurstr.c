@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Feb 29 17:19:03 2016 Antoine Baché
-** Last update Fri Mar  4 22:32:29 2016 Antoine Baché
+** Last update Sat Mar  5 01:28:11 2016 Antoine Baché
 */
 
 #include <stdbool.h>
@@ -100,7 +100,6 @@ void	epurStrFirstArg(char *str, int len, bool isLabel)
   while (j + i < len &&
 	 (str[j] = str[j + i]) && ++j);
   while (j++ < len && !(str[j] = 0));
-
 }
 
 void	epurStr(char *str)

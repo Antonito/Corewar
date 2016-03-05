@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 23:55:09 2016 Antoine Baché
+** Last update Sat Mar  5 00:28:22 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -51,9 +51,9 @@ int	getDirLd(t_data *data, t_parsing *elem, int *offset)
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
-  i = 0;
-  while ((*offset) + i < tmp && (nb[i] = data->str[(*offset) + i]))
-    if (nb[i] < '0' || nb[i++] > '9')
+  i = -1;
+  while ((*offset) + ++i < tmp && (nb[i] = data->str[(*offset) + i]))
+    if (nb[i] != '-' && (nb[i] < '0' || nb[i] > '9'))
       return (errorSyntax(data->line));
   nb[tmp - (*offset)] = 0;
   elem->value[0] = my_getnbr(nb);
@@ -73,9 +73,9 @@ int	getRegLd(t_data *data, t_parsing *elem, int *offset)
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
-  i = 0;
-  while ((*offset) + i < tmp && (nb[i] = data->str[(*offset) + i]))
-    if (nb[i] < '0' || nb[i++] > '9')
+  i = -1;
+  while ((*offset) + ++i < tmp && (nb[i] = data->str[(*offset) + i]))
+    if (nb[i] < '0' || nb[i] > '9')
       return (errorSyntax(data->line));
   nb[tmp - (*offset)] = 0;
   if ((elem->reg[0] = my_getnbr(nb)) > 16 || elem->reg[0] < 1)
@@ -88,22 +88,23 @@ int	getRegLd(t_data *data, t_parsing *elem, int *offset)
 
 int	ldCase(t_data *data, t_parsing *elem, int *offset)
 {
-  ++(*offset);
-  if (data->str[++(*offset)] != ' ' || (data->str[(*offset) + 1] != '%' &&
-					(data->str[(*offset) + 1] < '0' ||
-					 data->str[(*offset) + 1] > '9')))
+  if ((*offset += 1) &&
+      (data->str[++(*offset)] != ' ' ||
+       (data->str[(*offset) + 1] != '%' &&
+	(data->str[(*offset) + 1] < '0' || data->str[(*offset) + 1] > '9'))))
     return (errorSyntax(data->line));
-  if ((elem->size += 2) &&
-      data->str[(*offset + 1)] > '0' && data->str[(*offset) + 1] < '9' &&
-      getIndiLd(data, elem, offset))
+  if ((elem->size += 2) && data->str[(*offset + 1)] > '0' &&
+      data->str[(*offset) + 1] < '9' && getIndiLd(data, elem, offset))
     return (1);
   else if (data->str[(*offset) + 1] == '%')
     {
       elem->bytecode |= 128;
       if (data->str[++(*offset) + 1] == ':' && getLabelLd(data, elem, offset))
 	return (1);
-      else if (data->str[(*offset) + 1] >= '0' &&
-	       data->str[(*offset) + 1] <='9' && getDirLd(data, elem, offset))
+      else if ((data->str[(*offset) + 1] == '-' ||
+		(data->str[(*offset) + 1] >= '0' &&
+		 data->str[(*offset) + 1] <= '9')) &&
+	       getDirLd(data, elem, offset))
 	return (1);
     }
   if (data->str[*offset] != ',' || data->str[++(*offset)] != ' ' ||

@@ -5,12 +5,30 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar  4 16:57:40 2016 Antoine Baché
-** Last update Sat Mar  5 21:51:25 2016 Antoine Baché
+** Last update Sat Mar  5 23:40:56 2016 Antoine Baché
 */
 
 #include <stdlib.h>
 #include <stdbool.h>
 #include "tools.h"
+
+char	*labelize(char *str)
+{
+  int	i;
+  int	len;
+  char	*new;
+
+  len = my_strlen(str);
+  if (!(new = malloc(sizeof(char) * (len + 2))))
+    return (NULL);
+  i = -1;
+  while (++i < len)
+    new[i] = str[i];
+  new[len] = ':';
+  new[len + 1] = '\0';
+  printf("Label = %s\n", new);
+  return (free(str), new);
+}
 
 char	*addSpaces(char *str)
 {

@@ -5,24 +5,10 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Feb 28 00:42:07 2016 Antoine Baché
-** Last update Tue Mar  1 15:18:32 2016 Antoine Baché
+** Last update Sat Mar  5 23:42:23 2016 Antoine Baché
 */
 
 #include "endianness.h"
-
-int	reverseChar(char *nb, int endian)
-{
-  char	tmp;
-
-  if (endian == LITTLE_ENDIAN)
-    {
-      tmp = 0;
-      tmp |= (*nb & 0xF0) >> 4;
-      tmp |= (*nb & 0x0F) << 4;
-      *nb = tmp;
-    }
-  return (0);
-}
 
 int	reverseInt(int *nb, int endian)
 {

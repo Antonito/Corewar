@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 05:41:59 2016 Antoine Baché
-** Last update Sat Mar  5 23:37:08 2016 Antoine Baché
+** Last update Sat Mar  5 23:42:47 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -54,7 +54,6 @@ int		getLowerLabel(t_data *data, t_parsing *elem, int line, int i)
     }
   if (!tmp)
     return (1);
-  printf("Line = %d\n", tmp->line);
   elem->value[i] = calcOffset(tmp, elem, 1);
   return (0);
 }
@@ -95,7 +94,6 @@ int	getLabel(t_data *data, char *label, t_parsing *elem, int i)
     return (1);
   if (line < data->line)
     {
-      printf("LabelIsLowe\n");
       if (getLowerLabel(data, elem, line, i))
 	return (1);
     }

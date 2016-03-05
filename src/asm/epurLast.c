@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar  4 16:57:40 2016 Antoine Baché
-** Last update Sat Mar  5 23:40:56 2016 Antoine Baché
+** Last update Sat Mar  5 23:41:59 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -26,7 +26,6 @@ char	*labelize(char *str)
     new[i] = str[i];
   new[len] = ':';
   new[len + 1] = '\0';
-  printf("Label = %s\n", new);
   return (free(str), new);
 }
 

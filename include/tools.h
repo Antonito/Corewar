@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:04:32 2016 Antoine Baché
-** Last update Tue Mar  1 15:19:09 2016 Antoine Baché
+** Last update Sat Mar  5 23:42:31 2016 Antoine Baché
 */
 
 #ifndef	TOOLS_H_
@@ -29,7 +29,6 @@ char	*my_strcpy(char *, const char *);
 void	my_bzero(void *, int);
 int	my_write_nb(int, int, int);
 int	my_write(char, int);
-int	reverseChar(char *, int);
 int	reverseShort(short *, int);
 int	reverseInt(int *, int);
 

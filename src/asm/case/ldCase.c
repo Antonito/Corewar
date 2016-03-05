@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sat Mar  5 06:04:48 2016 Antoine Baché
+** Last update Sat Mar  5 20:15:55 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -98,13 +98,13 @@ int	ldCase(t_data *data, t_parsing *elem, int *offset)
 {
   if ((*offset += 1) &&
       (data->str[++(*offset)] != ' ' ||
-       (data->str[(*offset) + 1] != '%' && data->str[(*offset) + 1] != ':' &&
+       (data->str[(*offset) + 1] != '%' && data->str[(*offset) + 1] != '-' &&
+	data->str[(*offset) + 1] != ':' &&
 	(data->str[(*offset) + 1] < '0' || data->str[(*offset) + 1] > '9'))))
     return (errorSyntax(data->line));
   if ((elem->size += 2) &&
       (data->str[(*offset) + 1] == ':' || data->str[(*offset) + 1] == '-' ||
-       (data->str[(*offset + 1)] > '0' &&
-	data->str[(*offset) + 1] < '9')) &&
+       (data->str[(*offset + 1)] > '0' && data->str[(*offset) + 1] < '9')) &&
       getIndiLd(data, elem, offset))
     return (1);
   else if (data->str[(*offset) + 1] == '%')

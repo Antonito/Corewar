@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sat Mar  5 08:43:30 2016 Antoine Baché
+** Last update Sat Mar  5 20:01:09 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -69,7 +69,6 @@ int	checkDirLdi(t_data *data, t_parsing *elem, int *offset, int i)
       elem->bytecode |= 128 >> (i << 1);
       if (getLabel(data, parseLabel(data, offset), elem, i))
 	return (1);
-      --(*offset);
     }
   else if (data->str[*offset] == '-' ||
 	   (data->str[*offset] >= '0' && data->str[*offset] <= '9'))

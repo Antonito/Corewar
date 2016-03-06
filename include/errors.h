@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 19:45:15 2016 Antoine Baché
-** Last update Thu Feb 25 19:53:08 2016 Antoine Baché
+** Last update Sun Mar  6 02:27:12 2016 Antoine Baché
 */
 
 #ifndef	ERRORS_H_
@@ -19,12 +19,14 @@
 int	errorRegister(int);
 int	errorLabel(char *, int);
 int	errorSyntax(int);
+int	errorName(int, char *);
 
 /*
 ** Warnings
 */
 int	warningTooBig(int);
 int	warningIndirection(int);
+int	warningComment(int, char *);
 
 /*
 ** Common Errors

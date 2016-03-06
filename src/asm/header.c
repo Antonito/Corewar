@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 21:45:58 2016 Antoine Baché
-** Last update Sat Mar  5 17:37:04 2016 Antoine Baché
+** Last update Sun Mar  6 02:24:09 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -39,10 +39,11 @@ int	getComment(char *tmp, t_header *header, int *line, int fd)
   int	j;
 
   i = 0;
-  while (tmp[i] && tmp[i] != '.' && ++i);
-  if ((!tmp[i] || tmp[++i] != 'c' || tmp[++i] != 'o' || tmp[++i] != 'm' ||
-      tmp[++i] != 'm' || tmp[++i] != 'e' || tmp [++i] != 'n' ||
-       tmp[++i] != 't') && (*line)--)
+  while (tmp && tmp[i] && tmp[i] != '.' && ++i);
+  if (!tmp ||
+      ((!tmp[i] || tmp[++i] != 'c' || tmp[++i] != 'o' || tmp[++i] != 'm' ||
+	tmp[++i] != 'm' || tmp[++i] != 'e' || tmp [++i] != 'n' ||
+	tmp[++i] != 't') && (*line)--))
     return (((lseek(fd, 0, SEEK_CUR) != -1) ?
 	     warningComment(*line + 1, NULL) : 1));
   ++i;
@@ -87,13 +88,13 @@ int	prepareHeader(int fd, t_header *header, int *line)
   char	*tmp;
 
   header->magic = (int)0xF383EA00;
-  if (!(tmp = getHeaderLine(fd, line)))
+  if (!(tmp = getHeaderLine(fd, line, 0)))
     return (errorName(*line, NULL));
   if (getHeaderName(tmp, header, *line))
     return (free(tmp), 1);
   free(tmp);
-  if (!(tmp = getHeaderLine(fd, line)))
-    return (errorName(*line, NULL));
+  if (!(tmp = getHeaderLine(fd, line, 1)))
+    return (0);
   if (getComment(tmp, header, line, fd))
     return (free(tmp), 1);
   return (free(tmp), 0);

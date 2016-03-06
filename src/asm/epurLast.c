@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar  4 16:57:40 2016 Antoine Baché
-** Last update Sat Mar  5 23:41:59 2016 Antoine Baché
+** Last update Sun Mar  6 01:54:52 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -78,6 +78,23 @@ void	fixEpur(char *str)
     str[j++] = '\0';
 }
 
+void	epurLastComma(char *str, int len)
+{
+  int	i;
+  int	j;
+
+  i = -1;
+  j = 0;
+  while (str[++i])
+    {
+      if ((str[i] == ' ' || str[i] == '\t') && str[i + 1] == ',');
+      else
+	str[j++] = str[i];
+    }
+  while (j < len)
+    str[j++] = '\0';
+}
+
 void	epurLast(char *str, int len)
 {
   int	i;
@@ -87,4 +104,5 @@ void	epurLast(char *str, int len)
   while (--i > 0 && (str[i] == ' ' || str[i] == '\t'))
     str[i] = '\0';
   fixEpur(str);
+  epurLastComma(str, len);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sat Mar  5 23:35:44 2016 Antoine Baché
+** Last update Sun Mar  6 02:18:57 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -98,7 +98,7 @@ int			check_file(char *);
 ** header.c
 */
 int			prepareHeader(int, t_header *, int *);
-char			*getHeaderLine(int, int *);
+char			*getHeaderLine(int, int *, char);
 
 /*
 ** write_file.c

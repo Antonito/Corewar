@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 22:42:05 2016 Antoine Baché
-** Last update Sat Mar  5 22:08:09 2016 Antoine Baché
+** Last update Sun Mar  6 05:00:15 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -63,10 +63,11 @@ char	*getName(char *str)
       i = 0;
       while (new[i] && (new[i] = new[i + 1]) && ++i);
     }
-  i = 0;
-  while (new[i] && new[i++] != '.');
-  if ((new[i++] = 'c') && (new[i++] = 'o') && (new[i++] = 'r') &&
-      (new[i] = 0))
+  i = -1;
+  while (new[++i] && new[i] != '.');
+  if (!new[i] && (free(new), (new = malloc(9)) || 1))
+    return (my_bzero(new, 9), (new = my_strncpy(new, "file.cor", 8)));
+  if ((new[i++] = 'c') && (new[i++] = 'o') && (new[i++] = 'r') && (new[i] = 0))
     return (NULL);
   return (new);
 }

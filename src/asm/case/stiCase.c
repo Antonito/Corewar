@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sun Mar  6 04:23:02 2016 Antoine Baché
+** Last update Sun Mar  6 04:40:07 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -105,6 +105,5 @@ int	stiCase(t_data *data, t_parsing *elem, int *offset)
       }
     else if (stiCheckInDir(data, elem, offset, i + 1))
       return (1);
-  printf("Size = %d\n", elem->size);
   return (0);
 }

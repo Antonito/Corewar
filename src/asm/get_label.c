@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 05:41:59 2016 Antoine Baché
-** Last update Sun Mar  6 04:23:30 2016 Antoine Baché
+** Last update Sun Mar  6 04:39:12 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -106,7 +106,6 @@ int	getLabel(t_data *data, char *label, t_parsing *elem, int i)
     }
   else
     {
-      printf("LabelLine = %d\n", line);
       elem->labelId[i] = line;
       if (prepareInfosLabel(data, elem, i, label))
 	return (1);

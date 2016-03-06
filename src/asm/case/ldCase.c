@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sun Mar  6 04:36:09 2016 Antoine Baché
+** Last update Sun Mar  6 04:39:57 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -99,7 +99,6 @@ int	getRegLd(t_data *data, t_parsing *elem, int *offset)
   *offset = tmp;
   elem->bytecode |= 64 >> 2;
   free(nb);
-  printf("Size = %d\n", elem->size);
   return (0);
 }
 

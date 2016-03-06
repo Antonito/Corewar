@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 05:41:59 2016 Antoine Baché
-** Last update Sat Mar  5 23:42:47 2016 Antoine Baché
+** Last update Sun Mar  6 04:23:30 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -92,6 +92,13 @@ int	getLabel(t_data *data, char *label, t_parsing *elem, int i)
   if (!(label = labelize(label)) ||
       (line = getLabelLine(data->fd, label, data->line)) == 1)
     return (1);
+#ifdef	DEBUG
+  write(1, "Label [", 7);
+  my_put_nbr(line);
+  write(1, "] : ", 4);
+  write(1, label, my_strlen(label));
+  write(1, "\n", 1);
+#endif
   if (line < data->line)
     {
       if (getLowerLabel(data, elem, line, i))
@@ -99,10 +106,10 @@ int	getLabel(t_data *data, char *label, t_parsing *elem, int i)
     }
   else
     {
+      printf("LabelLine = %d\n", line);
       elem->labelId[i] = line;
       if (prepareInfosLabel(data, elem, i, label))
 	return (1);
     }
-  free(label);
-  return (0);
+  return (free(label), 0);
 }

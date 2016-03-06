@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Fri Mar  4 16:37:15 2016 Antoine Baché
+** Last update Sun Mar  6 04:19:10 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -29,11 +29,12 @@ int	writeAdd(int new, t_parsing *tmp, int endian)
 int	addCase(t_data *data, t_parsing *elem, int *offset)
 {
   *offset += 4;
+  elem->size += 2;
   elem->bytecode = 84;
   if (getRegisterSti(data, elem, offset, 1) || !(*offset += 2) ||
       getRegisterSti(data, elem, offset, 2) || !(*offset += 2) ||
       getRegisterSti(data, elem, offset, 3))
     return (1);
-  elem->size += 2;
+  printf("Size = %d\n", elem->size);
   return (0);
 }

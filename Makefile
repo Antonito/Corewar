@@ -5,10 +5,10 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Sun Mar  6 02:25:26 2016 Antoine Baché
+## Last update Sun Mar  6 02:31:39 2016 Antoine Baché
 ##
 
-DEBUG=			no
+DEBUG=			yes
 
 SRC_ASM_PREFIX=		src/asm/
 

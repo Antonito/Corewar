@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sat Mar  5 20:15:55 2016 Antoine Baché
+** Last update Sun Mar  6 04:36:09 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -42,7 +42,11 @@ int	getIndiLd(t_data *data, t_parsing *elem, int *offset)
 
 int	getLabelLd(t_data *data, t_parsing *elem, int *offset)
 {
-  return (getLabel(data, parseLabel(data, offset), elem, 0));
+  ++(*offset);
+  if (getLabel(data, parseLabel(data, offset), elem, 0))
+    return (1);
+  --(*offset);
+  return (0);
 }
 
 int	getDirLd(t_data *data, t_parsing *elem, int *offset)
@@ -54,7 +58,11 @@ int	getDirLd(t_data *data, t_parsing *elem, int *offset)
   tmp = (*offset)++;
   elem->size += 4;
   if (data->str[*offset] == ':')
-    return (getLabel(data, parseLabel(data, offset), elem, 0));
+    {
+      if (getLabel(data, parseLabel(data, offset), elem, 0))
+	return (1);
+      return (--*offset, 0);
+    }
   while (data->str[tmp] && data->str[tmp] != ',' && ++tmp);
   if (!(nb = malloc(sizeof(char) * (tmp - (*offset) + 1))))
     return (errorMalloc());
@@ -91,6 +99,7 @@ int	getRegLd(t_data *data, t_parsing *elem, int *offset)
   *offset = tmp;
   elem->bytecode |= 64 >> 2;
   free(nb);
+  printf("Size = %d\n", elem->size);
   return (0);
 }
 
@@ -110,12 +119,11 @@ int	ldCase(t_data *data, t_parsing *elem, int *offset)
   else if (data->str[(*offset) + 1] == '%')
     {
       elem->bytecode |= 128;
-      if (data->str[++(*offset) + 1] == ':' && getLabelLd(data, elem, offset))
-	return (1);
-      else if ((data->str[(*offset) + 1] == '-' ||
-		(data->str[(*offset) + 1] >= '0' &&
-		 data->str[(*offset) + 1] <= '9')) &&
-	       getDirLd(data, elem, offset))
+      if ((data->str[++(*offset) + 1] == ':' ||
+	   data->str[(*offset) + 1] == '-' ||
+	   (data->str[(*offset) + 1] >= '0' &&
+	    data->str[(*offset) + 1] <= '9')) &&
+	  getDirLd(data, elem, offset))
 	return (1);
     }
   return ((data->str[*offset] != ',' || data->str[++(*offset)] != ' ' ||

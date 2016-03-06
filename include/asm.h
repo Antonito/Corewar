@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sun Mar  6 02:18:57 2016 Antoine Baché
+** Last update Sun Mar  6 04:48:35 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -77,7 +77,7 @@ void			loopLastLabels(int, t_data *, t_parsing *, int);
 **  ________________________________________________________________________
 ** /                                                                        \
 ** | EpurStr -> Formate les lignes afin qu'elles correspondent à la syntaxe |
-** |            attendue par le compilo                                     |
+** |            attendue par l'assembleur                                   |
 ** | Si une ligne contient un label elle est formatée ainsi :               |
 ** | "label: instruction arg1 arg2 arg3"                                    |
 ** | Si une ligne ne contient pas de label elle est formatée ainsi :        |

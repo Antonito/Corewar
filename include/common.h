@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 19:54:22 2016 Antoine Baché
-** Last update Thu Feb 25 20:02:06 2016 Antoine Baché
+** Last update Sun Mar  6 04:47:53 2016 Antoine Baché
 */
 
 #ifndef	COMMON_H_
@@ -23,7 +23,7 @@
 # define	DIR_SIZE		REG_SIZE
 # define	NAME_CMD_STRING		".name"
 # define	COMMENT_CMD_STRING	".comment"
-# define       	LABEL_CHARS             "abcdefghijklmnopqrstuvwxyz_0123456789"
+# define       	LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789"
 # define	COMMENT_CHAR		'#'
 # define	LABEL_CHAR		':'
 # define	DIRECT_CHAR		'%'

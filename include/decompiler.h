@@ -1,11 +1,11 @@
 /*
-1;4204;0c** decompiler.h for Corewar in /CPE_2015_corewar/include
+** decompiler.h for Corewar in /CPE_2015_corewar/include
 **
 ** Made by Antoine Baché
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 15:57:16 2016 Antoine Baché
-** Last update Fri Feb 26 14:37:29 2016 Antoine Baché
+** Last update Sun Mar  6 04:48:01 2016 Antoine Baché
 */
 
 #ifndef	DECOMPILER_H_

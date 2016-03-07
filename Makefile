@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Sun Mar  6 04:38:58 2016 Antoine Baché
+## Last update Mon Mar  7 14:43:50 2016 Antoine Baché
 ##
 
 DEBUG=			no
@@ -48,9 +48,10 @@ SRC_ASM_FILES=		main.c			\
 			case/lldiCase.c		\
 			case/affCase.c
 
-SRC_CORE_PREFIX=	src/corewar/
+SRC_CORE_PREFIX=	src/vm/
 
-SRC_CORE_FILES=		main.c
+SRC_CORE_FILES=		main.c			\
+			check_args.c
 
 SRC_DECOMPILER_PREFIX=	src/decompiler/
 

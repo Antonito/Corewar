@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Jan  4 10:26:17 2016 Antoine Baché
-** Last update Sun Jan 17 09:25:27 2016 Antoine Baché
+** Last update Tue Mar  8 23:32:04 2016 Antoine Baché
 */
 
 #include "get_next_line.h"
@@ -100,7 +100,7 @@ char		*get_next_line(const int fd)
   while (fd >= 0 && (i[1] = read(fd, &buff, READ_SIZE)) > 0 &&
 	 !(buff[i[1]] = '\0') && (i[0] = find_n(buff, 0)) > -2)
     if (i[0] > -1 && (res = my_realloc(res, i[0])) &&
-	buffToStr(res + my_strlen1(res), buff, '\n') && find_n(buff, 1 ) > -1)
+	buffToStr(res + my_strlen1(res), buff, '\n') && find_n(buff, 1) > -1)
       return (res);
     else if ((res = my_realloc(res, i[1])) != NULL)
       buffToStr(res + my_strlen1(res), buff, '\0');

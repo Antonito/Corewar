@@ -1,3 +1,3 @@
-# Khewouar
+# Kheurouar
 
-AAAAHHHHHHN TOINE
+Corewar

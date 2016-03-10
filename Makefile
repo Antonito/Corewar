@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Mon Mar  7 14:43:50 2016 Antoine Baché
+## Last update Thu Mar 10 14:02:31 2016 Antoine Baché
 ##
 
 DEBUG=			no
@@ -51,7 +51,8 @@ SRC_ASM_FILES=		main.c			\
 SRC_CORE_PREFIX=	src/vm/
 
 SRC_CORE_FILES=		main.c			\
-			check_args.c
+			check_args.c		\
+			writeUsage.c
 
 SRC_DECOMPILER_PREFIX=	src/decompiler/
 
@@ -104,6 +105,8 @@ SRC_CORE=		$(addprefix $(SRC_CORE_PREFIX),$(SRC_CORE_FILES))
 SRC_DECOMPILER=		$(addprefix $(SRC_DECOMPILER_PREFIX),$(SRC_DECOMPILER_FILES))
 
 SRC_TOOLS=		$(addprefix $(SRC_TOOLS_PREFIX),$(SRC_TOOLS_FILES))
+
+SRC_CORE+=		$(SRC_TOOLS)
 
 SRC_ASM+=		$(SRC_TOOLS)
 

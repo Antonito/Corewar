@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sun Mar  6 17:15:16 2016 Antoine Baché
+** Last update Fri Mar 11 16:15:17 2016 Antoine Baché
 */
 
 #ifndef	ASM_H_
@@ -84,7 +84,8 @@ void			loopLastLabels(int, t_data *, t_parsing *, int);
 ** | "\tinstruction arg1 arg2 arg3"                                         |
 ** \________________________________________________________________________/
 */
-void			epurStr(char *);
+char			*checkStrTab(char *);
+char			*epurStr(char *);
 void			epurLast(char *, int);
 char			*addSpaces(char *);
 char			*labelize(char *);

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Fri Mar 11 05:59:04 2016 Antoine Baché
+** Last update Fri Mar 11 06:27:49 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -20,6 +20,7 @@ typedef struct		s_hero
   int			loadAddress;
   char			*name;
   char			*comment;
+  char			*data;
   int			pc;
   bool			isAlive;
   struct s_hero		*next;

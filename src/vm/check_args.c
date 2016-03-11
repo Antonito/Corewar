@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Mar  7 14:43:06 2016 Antoine Baché
-** Last update Fri Mar 11 06:00:11 2016 Antoine Baché
+** Last update Fri Mar 11 06:13:44 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -15,10 +15,10 @@ int	checkHerosOptions(int ac, char **av, int *i, t_hero *heros)
 {
   while (*i < ac)
     {
-      if (my_strncmp("-n", av[*i], 3) && (*i += 2) &&
+      if (!my_strncmp("-n", av[*i], 3) && (*i += 2) &&
 	  nOption(heros, *i - 1, av))
 	return (1);
-      if (my_strncmp("-a", av[*i], 3) && (*i += 2) &&
+      if (!my_strncmp("-a", av[*i], 3) && (*i += 2) &&
 	  aOption(heros, *i - 1, av))
 	return (1);
       if (av[*i][0] == '-')

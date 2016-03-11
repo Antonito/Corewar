@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Mar  7 14:43:06 2016 Antoine Baché
-** Last update Fri Mar 11 08:18:48 2016 Antoine Baché
+** Last update Fri Mar 11 08:27:30 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -26,7 +26,11 @@ int	checkHerosOptions(int ac, char **av, int *i, t_hero *heros)
       else if (++*i && loadHero(heros, av[*i - 1]))
 	return (1);
       if (*i < ac)
-	return (printf("Should add a new hero\n"), 0);
+	{
+	  if (addHero(heros))
+	    return (1);
+	  heros = heros->next;
+	}
     }
   return (0);
 }

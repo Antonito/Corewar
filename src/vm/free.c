@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 08:12:31 2016 Antoine Baché
-** Last update Fri Mar 11 08:15:09 2016 Antoine Baché
+** Last update Fri Mar 11 08:46:26 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -19,7 +19,8 @@ void		freeHero(t_hero *hero)
     {
       free(hero->name);
       free(hero->comment);
-      free(hero->data);
+      if (hero->data)
+	free(hero->data);
       tmp = hero;
       hero = hero->next;
       free(tmp);

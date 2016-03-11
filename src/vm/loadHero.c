@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 05:33:52 2016 Antoine Baché
-** Last update Fri Mar 11 08:19:29 2016 Antoine Baché
+** Last update Fri Mar 11 08:46:58 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -18,12 +18,23 @@
 #include "errors.h"
 #include "endianness.h"
 
+void		debugHero(const t_hero *heros, const char *prog)
+{
+  write(1, "File: ", 6);
+  write(1, prog, my_strlen(prog));
+  write(1, "\nName: ", 7);
+  write(1, heros->name, my_strlen(heros->name));
+  write(1, "\nComment: ", 10);
+  write(1, heros->comment, my_strlen(heros->comment));
+  write(1, "\n", 1);
+}
+
 int		loadHeroData(t_hero *heros, int fd, int size)
 {
   if (size)
     {
       if (size > MEM_SIZE)
-	return (write(2, "Hero is too big\n", 16), 1);
+	return (heros->data = NULL, write(2, "Hero is too big\n", 16), 1);
       if (!(heros->data = malloc(sizeof(char) * size)))
 	return (errorMalloc());
       if (read(fd, heros->data, size) < 0)
@@ -59,5 +70,8 @@ int		loadHero(t_hero *heros, char *prog)
     return (close(fd), 1);
   if (close(fd) < 0)
     return (write(2, "Cannot close file\n", 18), 1);
+#ifdef	DEBUG
+  debugHero(heros, prog);
+#endif
   return (0);
 }

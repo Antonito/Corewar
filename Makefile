@@ -5,10 +5,10 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Thu Mar 10 14:02:31 2016 Antoine Baché
+## Last update Fri Mar 11 06:01:39 2016 Antoine Baché
 ##
 
-DEBUG=			no
+DEBUG=			yes
 
 SRC_ASM_PREFIX=		src/asm/
 
@@ -52,7 +52,14 @@ SRC_CORE_PREFIX=	src/vm/
 
 SRC_CORE_FILES=		main.c			\
 			check_args.c		\
-			writeUsage.c
+			errors.c		\
+			init.c			\
+			statusMsg.c		\
+			writeUsage.c		\
+			loadHero.c		\
+			options/n.c		\
+			options/a.c		\
+			options/dump.c
 
 SRC_DECOMPILER_PREFIX=	src/decompiler/
 

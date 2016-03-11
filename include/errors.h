@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 19:45:15 2016 Antoine Baché
-** Last update Thu Mar 10 14:07:39 2016 Antoine Baché
+** Last update Fri Mar 11 05:53:51 2016 Antoine Baché
 */
 
 #ifndef	ERRORS_H_
@@ -20,7 +20,7 @@ int	errorRegister(int);
 int	errorLabel(char *, int);
 int	errorSyntax(int);
 int	errorName(int, char *);
-int	errorFileName(char *);
+int	errorFileType(const char *);
 int	errorUsed(int);
 
 /*
@@ -33,7 +33,7 @@ int	warningComment(int, char *);
 /*
 ** Common Errors
 */
-int	errorFileName(char *);
+int	errorFileName(const char *);
 int	errorMalloc(void);
 
 #endif /* ERRORS_H_ */

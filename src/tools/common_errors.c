@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 19:50:27 2016 Antoine Baché
-** Last update Thu Feb 25 19:52:56 2016 Antoine Baché
+** Last update Fri Mar 11 05:53:04 2016 Antoine Baché
 */
 
 #include "errors.h"
@@ -17,7 +17,7 @@ int	errorMalloc(void)
   return (1);
 }
 
-int	errorFileName(char *name)
+int	errorFileName(const char *name)
 {
   write(2, "File ", 5);
   write(2, name, my_strlen(name));

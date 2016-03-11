@@ -5,15 +5,17 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:04:32 2016 Antoine Baché
-** Last update Fri Mar 11 06:45:37 2016 Antoine Baché
+** Last update Fri Mar 11 08:06:24 2016 Antoine Baché
 */
 
 #ifndef	TOOLS_H_
 # define TOOLS_H_
 
 # include <unistd.h>
+# include <stdbool.h>
 # include "get_next_line.h"
 
+bool	isNum(const char *);
 int	my_put_nbr(int);
 char	*my_strncpy(char *, char *, int);
 int	my_strncmp(const char *, const char *, int);

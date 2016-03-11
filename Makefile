@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Fri Mar 11 06:44:55 2016 Antoine Baché
+## Last update Fri Mar 11 08:05:52 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -102,6 +102,7 @@ SRC_TOOLS_FILES=	my_bzero.c		\
 			my_write.c		\
 			common_errors.c		\
 			get_next_line.c		\
+			isNum.c			\
 			findEndian.c		\
 			reverse_byte.c
 

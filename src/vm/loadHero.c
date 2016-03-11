@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 05:33:52 2016 Antoine Baché
-** Last update Fri Mar 11 06:37:06 2016 Antoine Baché
+** Last update Fri Mar 11 06:48:58 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -16,6 +16,7 @@
 #include "tools.h"
 #include "header.h"
 #include "errors.h"
+#include "endianness.h"
 
 int		loadHeroData(t_hero *heros, int fd, int size)
 {
@@ -23,7 +24,6 @@ int		loadHeroData(t_hero *heros, int fd, int size)
     {
       if (size > MEM_SIZE)
 	return (write(2, "Hero is too big\n", 16), 1);
-      printf("size = %d\n", size);
       if (!(heros->data = malloc(sizeof(char) * size)))
 	return (errorMalloc());
       if (read(fd, heros->data, size) < 0)
@@ -43,7 +43,9 @@ int		loadHeader(t_hero *heros, int fd, const char *prog)
   if (!(heros->name = my_strdup(header.name)) ||
       !(heros->comment = my_strdup(header.comment)))
     return (errorMalloc());
-  return (loadHeroData(heros, fd, header.prog_size));
+  return (reverseInt(&header.prog_size, findEndian()),
+	  loadHeroData(heros, fd, header.prog_size));
+
 }
 
 int		loadHero(t_hero *heros, char *prog)

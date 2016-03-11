@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Fri Mar 11 06:01:39 2016 Antoine Baché
+## Last update Fri Mar 11 06:44:55 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -28,7 +28,6 @@ SRC_ASM_FILES=		main.c			\
 			bytecode.c		\
 			epurstr.c		\
 			epurLast.c		\
-			findEndian.c		\
 			checkLabel.c		\
 			case/stiWrite.c		\
 			case/addCase.c		\
@@ -103,6 +102,7 @@ SRC_TOOLS_FILES=	my_bzero.c		\
 			my_write.c		\
 			common_errors.c		\
 			get_next_line.c		\
+			findEndian.c		\
 			reverse_byte.c
 
 SRC_ASM=		$(addprefix $(SRC_ASM_PREFIX),$(SRC_ASM_FILES))

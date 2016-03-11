@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Fri Mar 11 16:17:22 2016 Antoine Baché
+** Last update Fri Mar 11 16:50:23 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -73,7 +73,7 @@ int		parseFile(int fd, t_data *data)
 	{
 	  if (!(elem = addElem(elem, tmp_parse)))
 	    return (free(data->str), errorMalloc());
-	  if (!(data->str = epurStr(data->str)))
+	  if (!(data->str = epurStr(data->str, true)))
 	    return (1);
 	  elem->line = data->line;
 #ifdef	DEBUG

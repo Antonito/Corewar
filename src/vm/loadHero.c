@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 05:33:52 2016 Antoine Baché
-** Last update Fri Mar 11 06:48:58 2016 Antoine Baché
+** Last update Fri Mar 11 08:19:29 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -45,7 +45,6 @@ int		loadHeader(t_hero *heros, int fd, const char *prog)
     return (errorMalloc());
   return (reverseInt(&header.prog_size, findEndian()),
 	  loadHeroData(heros, fd, header.prog_size));
-
 }
 
 int		loadHero(t_hero *heros, char *prog)

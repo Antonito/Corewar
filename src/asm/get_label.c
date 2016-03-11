@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Feb 27 05:41:59 2016 Antoine Baché
-** Last update Sun Mar  6 04:39:12 2016 Antoine Baché
+** Last update Fri Mar 11 16:51:03 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -25,7 +25,7 @@ int	getLabelLine(int fd, char *label, int dataline)
     return (1);
   while (++nb_line && (line = get_next_line(fd)))
     {
-      if (epurStr(line), nb_line > 1 && !my_strncmp(line, label, size))
+      if (epurStr(line, false), nb_line > 1 && !my_strncmp(line, label, size))
 	{
 	  if (lseek(fd, 0, SEEK_SET) == -1)
 	    return (1);

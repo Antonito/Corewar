@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 16:01:08 2016 Antoine Baché
-** Last update Fri Mar 11 16:17:34 2016 Antoine Baché
+** Last update Fri Mar 11 16:49:28 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -17,8 +17,10 @@ char	*checkStrTab(char *str)
   char	*new;
   int	i;
 
+  printf("str[0] = %d\n", str[0]);
   if (str && str[0] != ' ' && str[0] != '\t')
     {
+      printf("WTF\n");
       i = 0;
       if (!(new = malloc(sizeof(char) * (my_strlen(str) + 2))))
 	return (errorMalloc(), NULL);

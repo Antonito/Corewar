@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Mar  7 14:43:06 2016 Antoine Baché
-** Last update Fri Mar 11 08:11:12 2016 Antoine Baché
+** Last update Fri Mar 11 08:18:48 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -56,6 +56,6 @@ int		check_args(int ac, char **av)
   if (ac < 2)
     return (writeUsage(av[0]), 1);
   if (checkOptions(ac, av, &data, heros))
-    return (1);
-  return (0);
+    return (freeHero(heros), 1);
+  return (freeHero(heros), 0);
 }

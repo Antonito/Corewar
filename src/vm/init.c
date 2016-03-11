@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Fri Mar 11 08:38:27 2016 Antoine Baché
+** Last update Fri Mar 11 14:48:23 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -19,7 +19,7 @@ int		addHero(t_hero *hero)
 
   if (!(new = malloc(sizeof(t_hero))))
     return (errorMalloc());
-  new->id = 1;
+  new->id = hero->id + 1;
   new->loadAddress = -1;
   new->name = NULL;
   new->comment = NULL;
@@ -53,4 +53,20 @@ void		initParams(t_params *data)
   data->nbHeros = 0;
   data->nbrCycleDump = -1;
   data->isRunning = true;
+}
+
+int		initVm(t_params *data, t_hero *heros)
+{
+  char		*map;
+
+  /* Penser a trier les heros */
+  if (!(map = malloc(sizeof(char) * MEM_SIZE)))
+    return (errorMalloc());
+  my_bzero(map, MEM_SIZE);
+  /* Penser a placer les champions */
+  if (vm(data, hero, map))
+#ifdef	DEBUG
+    debugInitVm(data, heros);
+#endif
+  return (0);
 }

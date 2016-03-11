@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Fri Mar 11 08:15:44 2016 Antoine Baché
+## Last update Fri Mar 11 11:03:08 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -57,6 +57,7 @@ SRC_CORE_FILES=		main.c			\
 			writeUsage.c		\
 			loadHero.c		\
 			free.c			\
+			debug.c			\
 			options/n.c		\
 			options/a.c		\
 			options/dump.c

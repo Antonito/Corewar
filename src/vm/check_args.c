@@ -5,13 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Mar  7 14:43:06 2016 Antoine Baché
-** Last update Fri Mar 11 08:27:30 2016 Antoine Baché
+** Last update Fri Mar 11 11:18:53 2016 Antoine Baché
 */
 
 #include "corewar.h"
 #include "tools.h"
 
-int	checkHerosOptions(int ac, char **av, int *i, t_hero *heros)
+int		checkHerosOptions(int ac, char **av, int *i, t_hero *heros)
 {
   while (*i < ac)
     {
@@ -35,16 +35,22 @@ int	checkHerosOptions(int ac, char **av, int *i, t_hero *heros)
   return (0);
 }
 
-int	checkOptions(int ac, char **av, t_params *data, t_hero *heros)
+int		checkOptions(int ac, char **av, t_params *data, t_hero *heros)
 {
-  int	i;
+  int		i;
+  t_hero	*tmp;
+  int		count;
 
   i = 1;
   if (!my_strncmp("-dump", av[i], 6) && (i += 2) && dumpOption(av, data))
     return (1);
   if (checkHerosOptions(ac, av, &i, heros))
     return (1);
-  /* Penser a set data->nbHeros */
+  count = 0;
+  tmp = heros;
+  while (tmp && ++count)
+    tmp = tmp->next;
+  data->nbHeros = count;
   return (0);
 }
 
@@ -59,7 +65,7 @@ int		check_args(int ac, char **av)
     return (1);
   if (ac < 2)
     return (writeUsage(av[0]), 1);
-  if (checkOptions(ac, av, &data, heros))
+  if (checkOptions(ac, av, &data, heros) || initVm(&data, heros))
     return (freeHero(heros), 1);
   return (freeHero(heros), 0);
 }

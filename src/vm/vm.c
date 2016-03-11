@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Fri Mar 11 14:54:50 2016 Antoine Baché
+** Last update Fri Mar 11 15:09:33 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -13,11 +13,13 @@
 
 int	vm(t_params *data, t_hero *heros, char *map)
 {
-  while (++totalCyle, ++cycle, data->isRunning)
+  (void)heros;
+  (void)map;
+  while (++data->totalCycle, ++data->cycle, data->isRunning)
     {
-      if (cycle == CYCLE_TO_DIE)
+      if (data->cycle == CYCLE_TO_DIE)
 	{
-	  cycle = 0;
+	  data->cycle = 0;
 	  /* Check si heros envoient 'live' */
 	}
     }

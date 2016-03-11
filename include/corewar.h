@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Fri Mar 11 14:24:06 2016 Antoine Baché
+** Last update Fri Mar 11 15:07:48 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -36,6 +36,8 @@ typedef	struct		s_params
   int			nbrCycleDump;
   bool			isRunning;
 }			t_params;
+
+int			vm(t_params *, t_hero *, char *);
 
 /*
 ** Arg parsing

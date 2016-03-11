@@ -5,10 +5,10 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Fri Mar 11 11:03:08 2016 Antoine Baché
+## Last update Fri Mar 11 15:08:36 2016 Antoine Baché
 ##
 
-DEBUG=			yes
+DEBUG=			no
 
 SRC_ASM_PREFIX=		src/asm/
 
@@ -58,6 +58,7 @@ SRC_CORE_FILES=		main.c			\
 			loadHero.c		\
 			free.c			\
 			debug.c			\
+			vm.c			\
 			options/n.c		\
 			options/a.c		\
 			options/dump.c

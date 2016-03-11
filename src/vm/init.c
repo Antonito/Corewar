@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Fri Mar 11 14:48:23 2016 Antoine Baché
+** Last update Fri Mar 11 15:08:16 2016 Antoine Baché
 */
 
 #include <stdlib.h>
 #include "corewar.h"
 #include "common.h"
 #include "errors.h"
+#include "tools.h"
 
 int		addHero(t_hero *hero)
 {
@@ -64,7 +65,8 @@ int		initVm(t_params *data, t_hero *heros)
     return (errorMalloc());
   my_bzero(map, MEM_SIZE);
   /* Penser a placer les champions */
-  if (vm(data, hero, map))
+  if (vm(data, heros, map))
+    return (1);
 #ifdef	DEBUG
     debugInitVm(data, heros);
 #endif

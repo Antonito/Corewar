@@ -5,22 +5,43 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Fri Mar 11 16:21:09 2016 Antoine Baché
+** Last update Sat Mar 12 08:59:50 2016 Antoine Baché
 */
 
 #include "corewar.h"
 #include "common.h"
 
-int	vm(t_params *data, t_hero *heros, char *map)
+int		executeOrders(t_hero *heros, char *map)
 {
-  (void)heros;
-  (void)map;
-  while (++data->totalCycle, ++data->cycle, data->isRunning)
+  return (0);
+}
+
+int		liveCheck(t_params *data)
+{
+  if (data->cycle == data->cycleToDie)
     {
-      if (data->cycle == CYCLE_TO_DIE)
+      data->cycle = 0;
+      (data->cycleToDie - 4 > 0) ? (data->cycleToDie -= 4) :
+	(data->cycleToDie = 0);
+    }
+  return (0);
+}
+
+int		vm(t_params *data, t_hero *heros, char *map)
+{
+  int		i;
+  t_hero	*tmp;
+;
+  while (tmp = heros, i = 0, ++data->totalCycle, ++data->cycle,
+	 data->isRunning)
+    {
+      while (i < data->nbHeros)
 	{
-	  data->cycle = 0;
+	  executeOrders(tmp, map);
+	  tmp = tmp->next;
+	  ++i;
 	}
+      liveCheck(data);
     }
   return (0);
 }

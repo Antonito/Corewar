@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sat Mar 12 06:14:36 2016 Antoine Baché
+** Last update Sat Mar 12 11:28:51 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -13,6 +13,13 @@
 # define MAX_HERO	4
 
 #include <stdbool.h>
+
+typedef struct		s_instruct
+{
+  int			type;
+  int			count;
+  struct s_instruct	*next;
+}			t_instruct;
 
 typedef struct		s_hero
 {
@@ -25,6 +32,7 @@ typedef struct		s_hero
   int			size;
   bool			customId;
   bool			customAddress;
+  bool			carry;
   bool			isAlive;
   struct s_hero		*next;
 }			t_hero;

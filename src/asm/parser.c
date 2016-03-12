@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 20:59:17 2016 Antoine Baché
-** Last update Fri Mar 11 16:50:23 2016 Antoine Baché
+** Last update Sat Mar 12 07:05:05 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -67,14 +67,14 @@ int		parseFile(int fd, t_data *data)
   t_parsing	*elem;
 
   tmp_parse = data->elem;
-  while ((data->str = addSpaces(get_next_line(fd))) && ++data->line)
+  while ((data->str = addSpaces(checkStrTab(get_next_line(fd)))) &&
+	 ++data->line)
     {
       if (data->str[0])
 	{
 	  if (!(elem = addElem(elem, tmp_parse)))
 	    return (free(data->str), errorMalloc());
-	  if (!(data->str = epurStr(data->str, true)))
-	    return (1);
+	  epurStr(data->str);
 	  elem->line = data->line;
 #ifdef	DEBUG
 	  write(1, "Line : ", 7);

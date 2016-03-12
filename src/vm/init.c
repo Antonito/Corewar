@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Fri Mar 11 16:21:04 2016 Antoine Baché
+** Last update Sat Mar 12 06:26:27 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -25,6 +25,9 @@ int		addHero(t_hero *hero)
   new->name = NULL;
   new->comment = NULL;
   new->pc = 0;
+  new->size = 0;
+  new->customId = false;
+  new->customAddress = false;
   new->isAlive = true;
   new->next = NULL;
   hero->next = new;
@@ -40,6 +43,9 @@ t_hero		*initHero(t_hero *hero)
   hero->name = NULL;
   hero->comment = NULL;
   hero->pc = 0;
+  hero->size = 0;
+  hero->customId = false;
+  hero->customAddress = false;
   hero->isAlive = true;
   hero->next = NULL;
   return (hero);
@@ -56,17 +62,28 @@ void		initParams(t_params *data)
   data->isRunning = true;
 }
 
+/*
+** On bosse avec une liste simplement chainee, puis on la rend circulaire
+*/
 int		initVm(t_params *data, t_hero *heros)
 {
+  t_hero	*tmp;
   char		*map;
 
+  /* orderHeros(heros); */
+  if (placeHeros(heros, data->nbHeros))
+    return (1);
   if (!(map = malloc(sizeof(char) * MEM_SIZE)))
     return (errorMalloc());
   my_bzero(map, MEM_SIZE);
+  tmp = heros;
+  while (tmp->next)
+    tmp = tmp->next;
+  tmp->next = heros;
+#ifdef	DEBUG
+  debugInitVm(data, heros);
+#endif
   if (vm(data, heros, map))
     return (1);
-#ifdef	DEBUG
-    debugInitVm(data, heros);
-#endif
   return (0);
 }

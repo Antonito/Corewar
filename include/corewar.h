@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Fri Mar 11 15:07:48 2016 Antoine Baché
+** Last update Sat Mar 12 06:14:36 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -22,6 +22,9 @@ typedef struct		s_hero
   char			*comment;
   char			*data;
   int			pc;
+  int			size;
+  bool			customId;
+  bool			customAddress;
   bool			isAlive;
   struct s_hero		*next;
 }			t_hero;
@@ -60,6 +63,11 @@ int			addHero(t_hero *);
 t_hero			*initHero(t_hero *);
 void			initParams(t_params *);
 int			initVm(t_params *, t_hero *);
+
+/*
+** Place
+*/
+int			placeHeros(t_hero *, int);
 
 /*
 ** Free

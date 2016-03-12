@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 05:33:52 2016 Antoine Baché
-** Last update Fri Mar 11 09:13:52 2016 Antoine Baché
+** Last update Sat Mar 12 05:53:49 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -54,8 +54,9 @@ int		loadHeader(t_hero *heros, int fd, const char *prog)
   if (!(heros->name = my_strdup(header.name)) ||
       !(heros->comment = my_strdup(header.comment)))
     return (errorMalloc());
-  return (reverseInt(&header.prog_size, findEndian()),
-	  loadHeroData(heros, fd, header.prog_size));
+  reverseInt(&header.prog_size, findEndian());
+  heros->size = header.prog_size;
+  return (loadHeroData(heros, fd, header.prog_size));
 }
 
 int		loadHero(t_hero *heros, char *prog)

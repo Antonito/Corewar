@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Fri Mar 11 16:58:35 2016 Antoine Baché
+## Last update Sat Mar 12 06:10:29 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -60,6 +60,8 @@ SRC_CORE_FILES=		main.c			\
 			free.c			\
 			debug.c			\
 			vm.c			\
+			place.c			\
+			order.c			\
 			options/n.c		\
 			options/a.c		\
 			options/dump.c

@@ -5,24 +5,30 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 08:12:31 2016 Antoine Baché
-** Last update Fri Mar 11 08:46:26 2016 Antoine Baché
+** Last update Sat Mar 12 19:05:13 2016 Antoine Baché
 */
 
 #include <stdlib.h>
 #include "corewar.h"
 
-void		freeHero(t_hero *hero)
+void		freeHero(t_hero *hero, int nbHero)
 {
+  int		i;
   t_hero	*tmp;
 
-  while (hero)
+  i = 0;
+  while (i < nbHero)
     {
-      free(hero->name);
-      free(hero->comment);
+      if (hero->name)
+	free(hero->name);
+      if (hero->comment)
+	free(hero->comment);
       if (hero->data)
 	free(hero->data);
       tmp = hero;
       hero = hero->next;
       free(tmp);
+      tmp = NULL;
+      i++;
     }
 }

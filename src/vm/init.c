@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Sat Mar 12 10:56:40 2016 Antoine Baché
+** Last update Sat Mar 12 19:06:38 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -86,6 +86,6 @@ int		initVm(t_params *data, t_hero *heros)
   debugInitVm(data, heros);
 #endif
   if (vm(data, heros, map))
-    return (1);
-  return (0);
+    return (free(map), 1);
+  return (free(map), 0);
 }

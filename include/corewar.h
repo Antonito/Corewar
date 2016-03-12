@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sat Mar 12 17:31:53 2016 Antoine Baché
+** Last update Sat Mar 12 19:03:30 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -80,7 +80,7 @@ int			placeHeros(t_hero *, int);
 /*
 ** Free
 */
-void			freeHero(t_hero *);
+void			freeHero(t_hero *, int);
 
 /*
 ** Status messages

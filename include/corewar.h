@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sat Mar 12 11:28:51 2016 Antoine Baché
+** Last update Sat Mar 12 17:31:53 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -87,6 +87,11 @@ void			freeHero(t_hero *);
 */
 int			playerAlive(int, char *);
 int			playerWins(int, char *);
+
+/*
+** Dump
+*/
+int			dumpMem(char *);
 
 /*
 ** Debug

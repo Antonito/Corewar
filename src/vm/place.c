@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Mar 12 05:50:51 2016 Antoine Baché
-** Last update Sat Mar 12 06:42:30 2016 Antoine Baché
+** Last update Sat Mar 12 17:34:37 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -59,7 +59,7 @@ int		placeHeros(t_hero *heros, int nbHeros)
   int		loop;
 
   totalSize = calcSize(heros);
-  if (nbHeros > MEM_SIZE / totalSize)
+  if (totalSize && nbHeros > MEM_SIZE / totalSize)
     return (write(2, "Not enough space to place heros\n", 32), 1);
   offset = MEM_SIZE / nbHeros;
   tmp = heros;
@@ -68,6 +68,7 @@ int		placeHeros(t_hero *heros, int nbHeros)
     {
       if (tmp->customAddress == false)
 	tmp->loadAddress = offset * loop;
+      tmp->loadAddress = tmp->loadAddress % MEM_SIZE;
       tmp = tmp->next;
       ++loop;
     }

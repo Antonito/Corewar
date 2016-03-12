@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Mar  7 14:43:06 2016 Antoine Baché
-** Last update Fri Mar 11 11:18:53 2016 Antoine Baché
+** Last update Sat Mar 12 17:38:47 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -48,9 +48,10 @@ int		checkOptions(int ac, char **av, t_params *data, t_hero *heros)
     return (1);
   count = 0;
   tmp = heros;
-  while (tmp && ++count)
+  while (tmp && tmp->name && count++)
     tmp = tmp->next;
-  data->nbHeros = count;
+  if (!(data->nbHeros = count))
+    return (write(2, "Error : Invalid number of file\n", 31), 1);
   return (0);
 }
 

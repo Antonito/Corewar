@@ -5,27 +5,26 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Mar 12 17:15:35 2016 Antoine Baché
-** Last update Sat Mar 12 17:58:48 2016 Antoine Baché
+** Last update Sat Mar 12 18:57:20 2016 Antoine Baché
 */
 
 #include "common.h"
 #include "tools.h"
 
-int	writeMem(char nb)
-{
-  if (nb > 57)
-    nb += 7;
-  if (write(1, &nb, 1) < 0)
-    return (1);
-  return (0);
-}
-
 int	writeMemNb(int nb, bool first)
 {
-  if (first && nb < 10)
+  if (first && nb < 16)
     write(1, "0", 1);
-  (nb >= 10) ? writeMemNb(nb / 16, false) : 4;
-  return (writeMem(nb % 16 + 48));
+  if (nb < 10)
+    my_putchar(nb + 48);
+  else if (nb >= 10 && nb < 16)
+    my_putchar(nb + 55);
+  else
+    {
+      writeMemNb(nb / 16, false);
+      writeMemNb(nb % 16, false);
+    }
+  return (0);
 }
 
 int	dumpMem(char *map)
@@ -34,7 +33,6 @@ int	dumpMem(char *map)
   int	j;
 
   i = 0;
-
   while (j = 0, i < MEM_SIZE)
     {
       if (writeMemNb(i, true) || write(1, "\t:", 2) < 0)

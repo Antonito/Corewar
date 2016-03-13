@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Mar  7 14:43:06 2016 Antoine Baché
-** Last update Sat Mar 12 19:05:37 2016 Antoine Baché
+** Last update Sun Mar 13 06:31:36 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -42,13 +42,13 @@ int		checkOptions(int ac, char **av, t_params *data, t_hero *heros)
   int		count;
 
   i = 1;
+  tmp = heros;
   if (!my_strncmp("-dump", av[i], 6) && (i += 2) && dumpOption(av, data))
     return (1);
   if (checkHerosOptions(ac, av, &i, heros))
     return (1);
   count = 0;
-  tmp = heros;
-  while (tmp && tmp->name && count++)
+  while (tmp && ++count)
     tmp = tmp->next;
   if (!(data->nbHeros = count))
     return (write(2, "Error : Invalid number of file\n", 31), 1);

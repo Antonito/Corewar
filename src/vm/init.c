@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Sun Mar 13 04:57:41 2016 Antoine Baché
+** Last update Sun Mar 13 06:33:52 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -71,7 +71,6 @@ void		writeHero(unsigned char *map, t_hero *hero)
   i = -1;
   while (++i < hero->size)
     {
-      printf("Data[%d] = %d\n", i, hero->data[i]);
       map[hero->loadAddress + i] = hero->data[i];
     }
 }
@@ -94,8 +93,8 @@ int		initVm(t_params *data, t_hero *heros)
   writeHero(map, tmp);
   while (tmp->next)
     {
-      writeHero(map, tmp);
       tmp = tmp->next;
+      writeHero(map, tmp);
     }
   tmp->next = heros;
 #ifdef	DEBUG

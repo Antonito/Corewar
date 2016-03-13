@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 05:33:52 2016 Antoine Baché
-** Last update Sat Mar 12 05:53:49 2016 Antoine Baché
+** Last update Sun Mar 13 04:44:07 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -31,14 +31,27 @@ void		debugHero(const t_hero *heros, const char *prog)
 
 int		loadHeroData(t_hero *heros, int fd, int size)
 {
+  char		buff[BUFF_SIZE];
+  int		i;
+  int		check;
+  int		readed;
+
   if (size)
     {
       if (size > MEM_SIZE)
 	return (heros->data = NULL, write(2, "Hero is too big\n", 16), 1);
       if (!(heros->data = malloc(sizeof(char) * size)))
 	return (errorMalloc());
-      if (read(fd, heros->data, size) < 0)
-	return (write(2, "Error reading hero\n", 19), 1);
+      my_bzero(buff, BUFF_SIZE);
+      check = 0;
+      while (i = -1, (readed = read(fd, buff, BUFF_SIZE - 1)) > 0)
+	{
+	  if (readed < 0)
+	    return (write(2, "Error while reading file\n", 25), 1);
+	  while (++i < readed && ++check > -1)
+	    heros->data[check] = buff[i];
+	  my_bzero(buff, BUFF_SIZE);
+	}
     }
   return (0);
 }

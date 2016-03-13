@@ -1,16 +1,17 @@
 /*
-** corewar.h for Corewar in /CPE_2015_corewar/include
+1;4204;0c** corewar.h for Corewar in /CPE_2015_corewar/include
 **
 ** Made by Antoine Baché
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sat Mar 12 19:03:30 2016 Antoine Baché
+** Last update Sun Mar 13 04:32:32 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
 # define COREWAR_H_
 # define MAX_HERO	4
+# define BUFF_SIZE	4096
 
 #include <stdbool.h>
 

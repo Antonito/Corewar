@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Sat Mar 12 19:06:38 2016 Antoine Baché
+** Last update Sun Mar 13 04:36:50 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -64,6 +64,18 @@ void		initParams(t_params *data)
   data->isRunning = true;
 }
 
+void		writeHero(char *map, t_hero *hero)
+{
+  int		i;
+
+  i = -1;
+  while (++i < hero->size)
+    {
+      printf("Data[%d] = %d\n", i, hero->data[i]);
+      map[hero->loadAddress + i] = hero->data[i];
+    }
+}
+
 /*
 ** On bosse avec une liste simplement chainee, puis on la rend circulaire
 */
@@ -79,8 +91,12 @@ int		initVm(t_params *data, t_hero *heros)
     return (errorMalloc());
   my_bzero(map, MEM_SIZE);
   tmp = heros;
+  writeHero(map, tmp);
   while (tmp->next)
-    tmp = tmp->next;
+    {
+      writeHero(map, tmp);
+      tmp = tmp->next;
+    }
   tmp->next = heros;
 #ifdef	DEBUG
   debugInitVm(data, heros);

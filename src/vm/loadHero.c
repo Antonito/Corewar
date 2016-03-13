@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 05:33:52 2016 Antoine Baché
-** Last update Sun Mar 13 04:44:07 2016 Antoine Baché
+** Last update Sun Mar 13 05:04:09 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -43,7 +43,7 @@ int		loadHeroData(t_hero *heros, int fd, int size)
       if (!(heros->data = malloc(sizeof(char) * size)))
 	return (errorMalloc());
       my_bzero(buff, BUFF_SIZE);
-      check = 0;
+      check = -1;
       while (i = -1, (readed = read(fd, buff, BUFF_SIZE - 1)) > 0)
 	{
 	  if (readed < 0)

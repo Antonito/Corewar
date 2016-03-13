@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sun Mar 13 04:32:32 2016 Antoine Baché
+** Last update Sun Mar 13 04:59:57 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -28,7 +28,7 @@ typedef struct		s_hero
   int			loadAddress;
   char			*name;
   char			*comment;
-  char			*data;
+  unsigned char		*data;
   int			pc;
   int			size;
   bool			customId;
@@ -49,7 +49,7 @@ typedef	struct		s_params
   bool			isRunning;
 }			t_params;
 
-int			vm(t_params *, t_hero *, char *);
+int			vm(t_params *, t_hero *, unsigned char *);
 
 /*
 ** Arg parsing
@@ -92,7 +92,7 @@ int			playerWins(int, char *);
 /*
 ** Dump
 */
-int			dumpMem(char *);
+int			dumpMem(unsigned char *);
 
 /*
 ** Debug

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Sun Mar 13 04:36:50 2016 Antoine Baché
+** Last update Sun Mar 13 04:57:41 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -64,7 +64,7 @@ void		initParams(t_params *data)
   data->isRunning = true;
 }
 
-void		writeHero(char *map, t_hero *hero)
+void		writeHero(unsigned char *map, t_hero *hero)
 {
   int		i;
 
@@ -82,7 +82,7 @@ void		writeHero(char *map, t_hero *hero)
 int		initVm(t_params *data, t_hero *heros)
 {
   t_hero	*tmp;
-  char		*map;
+  unsigned char	*map;
 
   /* orderHeros(heros); */
   if (placeHeros(heros, data->nbHeros))

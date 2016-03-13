@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Mar 12 17:15:35 2016 Antoine Baché
-** Last update Sat Mar 12 18:57:20 2016 Antoine Baché
+** Last update Sun Mar 13 04:59:40 2016 Antoine Baché
 */
 
 #include "common.h"
@@ -27,7 +27,7 @@ int	writeMemNb(int nb, bool first)
   return (0);
 }
 
-int	dumpMem(char *map)
+int	dumpMem(unsigned char *map)
 {
   int	i;
   int	j;

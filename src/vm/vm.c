@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Sun Mar 13 04:59:24 2016 Antoine Baché
+** Last update Mon Mar 14 09:25:41 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -31,7 +31,7 @@ int		vm(t_params *data, t_hero *heros, unsigned char *map)
 {
   int		i;
   t_hero	*tmp;
-;
+
   while (tmp = heros, i = 0, ++data->totalCycle, ++data->cycle,
 	 data->isRunning)
     {
@@ -39,9 +39,9 @@ int		vm(t_params *data, t_hero *heros, unsigned char *map)
 	{
 	  executeOrders(tmp, map);
 	  tmp = tmp->next;
-	  if (data->totalCycle == data->nbrCycleDump)
-	    return (dumpMem(map));
-	  ++i;
+	 if (data->totalCycle == data->nbrCycleDump)
+	   return (dumpMem(map));
+	 ++i;
 	}
       liveCheck(data);
     }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sun Mar  6 04:40:07 2016 Antoine Baché
+** Last update Mon Mar 14 19:44:37 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -56,8 +56,8 @@ int	stiCheckInDir(t_data *data, t_parsing *elem, int *offset, int i)
   int	tmp;
   char	*nb;
 
-  if (data->str[*offset] != '-' && data->str[*offset] != ':' &&
-      (data->str[*offset] < '0' || data->str[*offset] > '9'))
+  if (i == 2 || (data->str[*offset] != '-' && data->str[*offset] != ':' &&
+		 (data->str[*offset] < '0' || data->str[*offset] > '9')))
     return (errorSyntax(data->line));
   if (data->str[*offset] == ':')
     return (getLabel(data, parseLabel(data, offset), elem, i));

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Feb 26 14:46:22 2016 Antoine Baché
-** Last update Sat Mar  5 20:01:09 2016 Antoine Baché
+** Last update Mon Mar 14 19:34:18 2016 Antoine Baché
 */
 
 #include "asm.h"
@@ -106,7 +106,7 @@ int	getIndirLdi(t_data *data, t_parsing *elem, int *offset, int i)
   if ((elem->value[i] = my_getnbr(nb)) < 0)
     warningIndirection(data->line);
   elem->bytecode |= 192 >> (i << 1);
-  *offset = tmp;
+  *offset = tmp + 1;
   return (free(nb), 0);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 21:45:58 2016 Antoine Baché
-** Last update Sun Mar  6 02:24:09 2016 Antoine Baché
+** Last update Mon Mar 14 18:53:34 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -53,7 +53,7 @@ int	getComment(char *tmp, t_header *header, int *line, int fd)
   j = 0;
   while (tmp[++i] && tmp[i] != '"' && (header->comment[j] = tmp[i]) &&
 	 ++j < 2047);
-  if (tmp[i] != '"')
+  if (tmp[i] != '"' || tmp[i + 1] != '\0')
     return (((j == 2047) ?
 	     write(2, "The program name is too long. It will be truncated.\n",
 		   52) : errorSyntax(* line)));
@@ -76,7 +76,7 @@ int	getHeaderName(char *tmp, t_header *header, int line)
     return (errorName(line, tmp));
   j = 0;
   while (tmp[++i] && tmp[i] != '"' && (header->name[j] = tmp[i]) && ++j < 127);
-  if (tmp[i] != '"')
+  if (tmp[i] != '"' || tmp[i + 1] != '\0')
     return (((j == 127) ?
 	     write(2, "The program name is too long. It will be truncated.\n",
 		   52) : errorSyntax(line)));

@@ -1,11 +1,11 @@
 /*
-1;4204;0c** corewar.h for Corewar in /CPE_2015_corewar/include
+** corewar.h for Corewar in /CPE_2015_corewar/include
 **
 ** Made by Antoine Baché
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sun Mar 13 04:59:57 2016 Antoine Baché
+** Last update Mon Mar 14 08:11:42 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_

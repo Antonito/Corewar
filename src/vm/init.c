@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Sun Mar 13 06:33:52 2016 Antoine Baché
+** Last update Tue Mar 15 10:45:03 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -75,16 +75,13 @@ void		writeHero(unsigned char *map, t_hero *hero)
     }
 }
 
-/*
-** On bosse avec une liste simplement chainee, puis on la rend circulaire
-*/
 int		initVm(t_params *data, t_hero *heros)
 {
   t_hero	*tmp;
   unsigned char	*map;
 
-  /* orderHeros(heros); */
-  if (placeHeros(heros, data->nbHeros))
+
+  if (orderHeros(heros) || placeHeros(heros, data->nbHeros))
     return (1);
   if (!(map = malloc(sizeof(char) * MEM_SIZE)))
     return (errorMalloc());

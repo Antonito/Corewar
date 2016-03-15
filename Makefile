@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Tue Mar 15 08:43:39 2016 Antoine Baché
+## Last update Tue Mar 15 10:01:45 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -151,14 +151,19 @@ OBJ_CORE=		$(SRC_CORE:.c=.o)
 
 OBJ_DECOMPILER=		$(SRC_DECOMPILER:.c=.o)
 
-$(NAME_CORE):	$(NAME_ASM) $(NAME_DECOMPILER) $(OBJ_CORE)
+$(NAME_CORE):	$(SHOW_FLAGS) $(NAME_ASM) $(NAME_DECOMPILER) $(OBJ_CORE)
+	@echo -n "Flags: "
+	@echo $(CFLAGS)
 	@echo -n "[ "
 	@echo -n "OK"
 	@echo -n " ] "
 	@echo "Compiled corewar"
 	@$(CC) $(OBJ_CORE) -o $(NAME_CORE)
 
+
 $(NAME_DECOMPILER):	$(OBJ_DECOMPILER)
+	@echo -n "Flags: "
+	@echo $(CFLAGS)
 	@echo -n "[ "
 	@echo -n "OK"
 	@echo -n " ] "
@@ -174,6 +179,8 @@ ifeq ($(DEBUG), yes)
 	@echo " |____/|_____|____/ \___/ \____| |_|  |_|\___/|____/|_____|";
 	@echo "                                                           ";
 endif
+	@echo -n "Flags: "
+	@echo $(CFLAGS)
 	@echo -n "[ "
 	@echo -n "OK"
 	@echo -n " ] "

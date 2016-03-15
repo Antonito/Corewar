@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Mon Mar 14 08:11:42 2016 Antoine Baché
+** Last update Tue Mar 15 15:26:08 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -13,7 +13,7 @@
 # define MAX_HERO	4
 # define BUFF_SIZE	4096
 
-#include <stdbool.h>
+# include <stdbool.h>
 
 typedef struct		s_instruct
 {

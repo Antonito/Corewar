@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Mar  5 17:11:28 2016 Antoine Baché
-** Last update Sun Mar  6 02:26:21 2016 Antoine Baché
+** Last update Wed Mar 16 23:00:27 2016 Antoine Baché
 */
 
 #include "tools.h"
@@ -49,6 +49,8 @@ char	*getHeaderLine(int fd, int *line, char mod)
   while ((++line_tmp) && (tmp = get_next_line(fd)))
     {
       epurLine(tmp);
+      if (tmp[0] != '#' && tmp[0] != '.' && tmp[0] != ' ' && tmp[0] != '\t')
+	return ((*line)++, NULL);
 #ifdef	DEBUG
       write(1, "Line : ", 7);
       write(1, tmp, my_strlen(tmp));
@@ -60,5 +62,5 @@ char	*getHeaderLine(int fd, int *line, char mod)
     }
   if (mod)
     resetLine(fd, *line);
-  return (NULL);
+  return ((*line)++, NULL);
 }

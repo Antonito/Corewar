@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Tue Mar 15 10:45:03 2016 Antoine Baché
+** Last update Wed Mar 16 14:12:49 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -79,11 +79,11 @@ int		initVm(t_params *data, t_hero *heros)
 {
   t_hero	*tmp;
   unsigned char	*map;
-
+  ptrtab	array;
 
   if (orderHeros(heros) || placeHeros(heros, data->nbHeros))
     return (1);
-  if (!(map = malloc(sizeof(char) * MEM_SIZE)))
+  if (!(map = malloc(sizeof(char) * MEM_SIZE)) || !(array = selector()))
     return (errorMalloc());
   my_bzero(map, MEM_SIZE);
   tmp = heros;
@@ -97,7 +97,7 @@ int		initVm(t_params *data, t_hero *heros)
 #ifdef	DEBUG
   debugInitVm(data, heros);
 #endif
-  if (vm(data, heros, map))
-    return (free(map), 1);
-  return (free(map), 0);
+  if (vm(data, heros, map, array))
+    return (free(map), free(array), 1);
+  return (free(map), free(array), 0);
 }

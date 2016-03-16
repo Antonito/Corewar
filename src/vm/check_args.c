@@ -5,25 +5,38 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Mar  7 14:43:06 2016 Antoine Baché
-** Last update Sun Mar 13 06:31:36 2016 Antoine Baché
+** Last update Wed Mar 16 16:30:26 2016 Antoine Baché
 */
 
 #include "corewar.h"
 #include "tools.h"
 
+int		checkHerosLoading(int *i, char **av, t_hero *heros)
+{
+  if (av[*i][0] == '-')
+    return (write(2, "Corewar executable missing\n", 27), 1);
+  else if (++*i && loadHero(heros, av[*i - 1]))
+    return (1);
+  return (0);
+}
+
 int		checkHerosOptions(int ac, char **av, int *i, t_hero *heros)
 {
-  while (*i < ac)
+  int		opt;
+
+  while (opt = 0, *i < ac)
     {
-      if (!my_strncmp("-n", av[*i], 3) && (*i += 2) &&
-	  nOption(heros, *i - 1, av))
+      if ((!my_strncmp("-n", av[*i], 3) && (*i += 2) && (opt = N_OPTION) &&
+	   nOption(heros, *i - 1, av)) ||
+	  (!opt && !my_strncmp("-a", av[*i], 3) && (*i += 2) &&
+	   (opt = A_OPTION) && aOption(heros, *i - 1, av)))
 	return (1);
-      if (!my_strncmp("-a", av[*i], 3) && (*i += 2) &&
-	  aOption(heros, *i - 1, av))
+      if ((opt == N_OPTION && !my_strncmp("-a", av[*i], 3) && (*i += 2) &&
+	   aOption(heros, *i - 1, av)) ||
+	  (opt == A_OPTION && !my_strncmp("-n", av[*i], 3) && (*i += 2) &&
+	   nOption(heros, *i - 1, av)))
 	return (1);
-      if (av[*i][0] == '-')
-	return (write(2, "Corewar executable missing\n", 27), 1);
-      else if (++*i && loadHero(heros, av[*i - 1]))
+      if (checkHerosLoading(i, av, heros))
 	return (1);
       if (*i < ac)
 	{

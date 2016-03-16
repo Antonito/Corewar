@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Tue Mar 15 10:01:45 2016 Antoine Baché
+## Last update Wed Mar 16 15:05:14 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -63,9 +63,28 @@ SRC_CORE_FILES=		main.c			\
 			place.c			\
 			order.c			\
 			dump.c			\
+			exec.c			\
+			select.c		\
+			value.c			\
 			options/n.c		\
 			options/a.c		\
-			options/dump.c
+			options/dump.c		\
+			case/addCase.c		\
+			case/ldCase.c		\
+			case/liveCase.c		\
+			case/stCase.c		\
+			case/subCase.c		\
+			case/andCase.c		\
+			case/orCase.c		\
+			case/xorCase.c		\
+			case/zjmpCase.c		\
+			case/ldiCase.c		\
+			case/stiCase.c		\
+			case/forkCase.c		\
+			case/lforkCase.c	\
+			case/lldCase.c		\
+			case/lldiCase.c		\
+			case/affCase.c
 
 SRC_DECOMPILER_PREFIX=	src/decompiler/
 

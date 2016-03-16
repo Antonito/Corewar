@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Wed Mar 16 16:43:57 2016 Antoine Baché
+** Last update Wed Mar 16 22:18:59 2016 Lucas Troncy
 */
 
 #ifndef	COREWAR_H_

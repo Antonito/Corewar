@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 13:59:41 2016 Antoine Baché
-** Last update Wed Mar 16 15:45:46 2016 Antoine Baché
+** Last update Wed Mar 16 16:55:36 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -13,6 +13,9 @@
 #include "errors.h"
 #include "tools.h"
 
+/*
+** Execution -> Lecture -> Ajout a la liste d'exec -> return (0)
+*/
 int		executeOrders(t_hero *heros, unsigned char *map, ptrtab array,
 			      int endianness)
 {

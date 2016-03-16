@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Wed Mar 16 22:11:32 2016 Lucas Troncy
+** Last update Thu Mar 17 00:14:46 2016 Antoine Baché
 */
 
 #include "corewar.h"
+#include "bytecode.h"
 
-int	stCase(t_hero *hero, t_instruct *new, unsigned char *map,
-	       int endianness)
+int		stCase(t_hero *hero, t_instruct *new, unsigned char *map,
+		       int endianness)
 {
   int		ret;
   int		i;
@@ -23,12 +24,13 @@ int	stCase(t_hero *hero, t_instruct *new, unsigned char *map,
     {
       ret = getByteCode(&code);
       if (ret == 0)
-	new->args[i] = hero->reg[(((int)map[hero->loadAddress +
-				  hero->pc++]) -1 ) % REG_SIZE] % IDX_MOD;
+	new->args[i] =
+	  hero->reg[(((int)map[hero->loadAddress + hero->pc++]) -1)
+		    % REG_SIZE] % IDX_MOD;
       else if (ret == 1 && i != 0)
 	new->args[i] = readInt(hero, map, endianness) % IDX_MOD;
       else if (ret == 2 && i != 0)
-	new->args[i] = readShort(hero, map, endiannes) % IDX_MOD;
+	new->args[i] = readShort(hero, map, endianness) % IDX_MOD;
       code.bytecode <<= 2;
     }
   new->time = ST_TIME;

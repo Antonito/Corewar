@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Wed Mar 16 22:16:58 2016 Lucas Troncy
+** Last update Thu Mar 17 00:16:10 2016 Antoine Baché
 */
 
 #include "corewar.h"
+#include "bytecode.h"
 
-int	forkCase(t_hero *hero, t_instruct *new, unsigned char *map,
-		 int endianness)
+int		forkCase(t_hero *hero, t_instruct *new, unsigned char *map,
+			 int endianness)
 {
   int		ret;
   int		i;
@@ -23,7 +24,7 @@ int	forkCase(t_hero *hero, t_instruct *new, unsigned char *map,
     {
       ret = getByteCode(&code);
       if (ret == 1)
-	new->args[i] = readShort(hero, map, endiannes) % IDX_MOD;
+	new->args[i] = readShort(hero, map, endianness) % IDX_MOD;
       code.bytecode <<= 2;
     }
   new->time = FORK_TIME;

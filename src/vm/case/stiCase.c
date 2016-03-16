@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Wed Mar 16 22:23:03 2016 Antoine Baché
+** Last update Thu Mar 17 00:15:07 2016 Antoine Baché
 */
 
 #include "corewar.h"
+#include "bytecode.h"
 
-int	stiCase(t_hero *hero, t_instruct *new, unsigned char *map,
-		int endianness)
+int		stiCase(t_hero *hero, t_instruct *new, unsigned char *map,
+			int endianness)
 {
   int		i;
   int		check;

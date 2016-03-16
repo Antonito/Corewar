@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 19:45:15 2016 Antoine Baché
-** Last update Fri Mar 11 05:53:51 2016 Antoine Baché
+** Last update Wed Mar 16 19:08:53 2016 Antoine Baché
 */
 
 #ifndef	ERRORS_H_
@@ -19,6 +19,7 @@
 int	errorRegister(int);
 int	errorLabel(char *, int);
 int	errorSyntax(int);
+int	errorChamp(void);
 int	errorName(int, char *);
 int	errorFileType(const char *);
 int	errorUsed(int);

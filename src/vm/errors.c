@@ -5,11 +5,17 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Mar 10 14:03:37 2016 Antoine Baché
-** Last update Fri Mar 11 05:59:42 2016 Antoine Baché
+** Last update Wed Mar 16 19:09:28 2016 Antoine Baché
 */
 
 #include <unistd.h>
 #include "tools.h"
+
+int	errorChamp(void)
+{
+  write(2, "Corrupted champion\n", 19);
+  return (1);
+}
 
 int	errorFileType(const char *name)
 {

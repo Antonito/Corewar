@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Wed Mar 16 15:50:38 2016 Antoine Baché
+** Last update Wed Mar 16 16:43:57 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -21,6 +21,26 @@ typedef enum		e_options
     N_OPTION		= 1,
     A_OPTION		= 2
   }			t_options;
+
+typedef enum		e_time
+  {
+    AFF_TIME		= 2,
+    LD_TIME		= 5,
+    AND_TIME		= 6,
+    OR_TIME		= AND_TIME,
+    XOR_TIME		= AND_TIME,
+    ST_TIME		= 8,
+    LIVE_TIME		= 10,
+    LLD_TIME		= LIVE_TIME,
+    ADD_TIME		= LIVE_TIME,
+    SUB_TIME		= LIVE_TIME,
+    ZJMP_TIME		= 20,
+    LDI_TIME		= 25,
+    STI_TIME		= LDI_TIME,
+    LLDI_TIME		= 50,
+    FORK_TIME		= 800,
+    LFORK_TIME		= 1000
+  }			t_time;
 
 typedef struct		s_instruct
 {

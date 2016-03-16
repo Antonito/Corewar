@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Wed Mar 16 14:54:50 2016 Antoine Baché
+** Last update Wed Mar 16 16:53:30 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -13,5 +13,6 @@
 int	zjmpCase(t_hero *hero, t_instruct *new, unsigned char *map,
 		 int endianness)
 {
+  new->time = ZJMP_TIME;
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Wed Mar 16 14:53:55 2016 Antoine Baché
+** Last update Wed Mar 16 16:52:14 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -13,5 +13,6 @@
 int	lforkCase(t_hero *hero, t_instruct *new, unsigned char *map,
 		  int endianness)
 {
+  new->time = LFORK_TIME;
   return (0);
 }

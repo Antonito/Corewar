@@ -5,13 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Wed Mar 16 22:00:34 2016 Antoine Baché
+** Last update Wed Mar 16 22:02:08 2016 Antoine Baché
 */
 
 #include "corewar.h"
 
-int	affCase(t_hero *hero, t_instruct *new, unsigned char *map,
-		int endianness)
+int		affCase(t_hero *hero, t_instruct *new, unsigned char *map,
+			int endianness)
 {
   int		check;
   t_bytecode	byte;

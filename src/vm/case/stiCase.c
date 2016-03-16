@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Wed Mar 16 16:53:01 2016 Antoine Baché
+** Last update Wed Mar 16 22:23:03 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -13,6 +13,24 @@
 int	stiCase(t_hero *hero, t_instruct *new, unsigned char *map,
 		int endianness)
 {
+  int		i;
+  int		check;
+  t_bytecode	byte;
+
+  i = -1;
+  byte.bytecode = (char)map[hero->loadAddress + hero->pc++];
+  while (++i < 3)
+    {
+      if (!(check = getByteCode(&byte)))
+	new->args[i] =
+	  hero->reg[((map[hero->loadAddress + hero->pc++] -1) % REG_SIZE)]
+	  % IDX_MOD;
+      else if (i && check == 1)
+	new->args[i] = readShort(hero, map, endianness) % IDX_MOD;
+      else if (i && i < 2 && check == 2)
+	new->args[i] = readShort(hero, map, endianness) % IDX_MOD;
+      byte.bytecode <<= 2;
+    }
   new->time = STI_TIME;
   return (0);
 }

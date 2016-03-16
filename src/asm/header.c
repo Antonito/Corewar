@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Feb 25 21:45:58 2016 Antoine Baché
-** Last update Mon Mar 14 18:53:34 2016 Antoine Baché
+** Last update Wed Mar 16 22:40:56 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -91,11 +91,11 @@ int	prepareHeader(int fd, t_header *header, int *line)
   if (!(tmp = getHeaderLine(fd, line, 0)))
     return (errorName(*line, NULL));
   if (getHeaderName(tmp, header, *line))
-    return (free(tmp), 1);
+    return (1);
   free(tmp);
   if (!(tmp = getHeaderLine(fd, line, 1)))
     return (0);
   if (getComment(tmp, header, line, fd))
-    return (free(tmp), 1);
+    return (1);
   return (free(tmp), 0);
 }

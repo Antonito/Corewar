@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Wed Mar 16 15:01:14 2016 Antoine Baché
+** Last update Thu Mar 17 15:46:44 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -25,7 +25,7 @@ int		liveCheck(t_params *data)
 }
 
 int		vm(t_params *data, t_hero *heros, unsigned char *map,
-		   ptrtab array)
+		   t_funcPtr *array)
 {
   int		endianness;
   int		i;

@@ -5,10 +5,12 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Thu Mar 17 00:21:19 2016 Antoine Baché
+## Last update Thu Mar 17 16:08:16 2016 Antoine Baché
 ##
 
 DEBUG=			yes
+
+BONUS=			yes
 
 SRC_ASM_PREFIX=		src/asm/
 
@@ -85,7 +87,23 @@ SRC_CORE_FILES=		main.c			\
 			case/lforkCase.c	\
 			case/lldCase.c		\
 			case/lldiCase.c		\
-			case/affCase.c
+			case/affCase.c		\
+			case/load/addCase.c	\
+			case/load/ldCase.c	\
+			case/load/liveCase.c	\
+			case/load/stCase.c	\
+			case/load/subCase.c	\
+			case/load/andCase.c	\
+			case/load/orCase.c	\
+			case/load/xorCase.c	\
+			case/load/zjmpCase.c	\
+			case/load/ldiCase.c	\
+			case/load/stiCase.c	\
+			case/load/forkCase.c	\
+			case/load/lforkCase.c	\
+			case/load/lldCase.c	\
+			case/load/lldiCase.c	\
+			case/load/affCase.c
 
 SRC_DECOMPILER_PREFIX=	src/decompiler/
 
@@ -159,6 +177,10 @@ ifeq ($(DEBUG), yes)
 	CFLAGS=		$(HEAD) -W -Wall -Wextra -ansi -pedantic -g -D DEBUG
 else
 	CFLAGS=		$(HEAD) -W -Wall -Wextra -Werror -ansi -pedantic
+endif
+
+ifeq ($(BONUS), yes)
+	CFLAGS+=	-D BONUS
 endif
 
 CC=			gcc

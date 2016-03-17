@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Thu Mar 17 12:17:16 2016 Antoine Baché
+** Last update Thu Mar 17 15:47:22 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -85,7 +85,13 @@ typedef	struct		s_params
 
 typedef	int (**ptrtab)(t_hero *, t_instruct *, unsigned char *, int);
 
-int			vm(t_params *, t_hero *, unsigned char *, ptrtab);
+typedef struct		s_funcPtr
+{
+  ptrtab		load;
+  ptrtab		exec;
+}			t_funcPtr;
+
+int			vm(t_params *, t_hero *, unsigned char *, t_funcPtr *);
 
 /*
 ** Arg parsing
@@ -104,12 +110,14 @@ int			dumpOption(char **, t_params *);
 /*
 ** Exec
 */
-int			executeOrders(t_hero *, unsigned char *, ptrtab, int);
+int			executeOrders(t_hero *, unsigned char *,
+				      t_funcPtr *, int);
 
 /*
 ** Init
 */
 ptrtab			selector(void);
+ptrtab			selectorExec(void);
 int			addHero(t_hero *);
 t_hero			*initHero(t_hero *);
 void			initParams(t_params *);
@@ -178,6 +186,42 @@ int			subCase(t_hero *, t_instruct *, unsigned char *,
 int			xorCase(t_hero *, t_instruct *, unsigned char *,
 				int);
 int			zjmpCase(t_hero *, t_instruct *, unsigned char *,
+				 int);
+
+/*
+** Execs
+*/
+int			addExec(t_hero *, t_instruct *, unsigned char *,
+				int);
+int			affExec(t_hero *, t_instruct *, unsigned char *,
+				int);
+int			andExec(t_hero *, t_instruct *, unsigned char *,
+				int);
+int			forkExec(t_hero *, t_instruct *, unsigned char *,
+				 int);
+int			ldExec(t_hero *, t_instruct *, unsigned char *,
+			       int);
+int			ldiExec(t_hero *, t_instruct *, unsigned char *,
+				int);
+int			lforkExec(t_hero *, t_instruct *, unsigned char *,
+				  int);
+int			liveExec(t_hero *, t_instruct *, unsigned char *,
+				 int);
+int			lldExec(t_hero *, t_instruct *, unsigned char *,
+				int);
+int			lldiExec(t_hero *, t_instruct *, unsigned char *,
+				 int);
+int			orExec(t_hero *, t_instruct *, unsigned char *,
+			       int);
+int			stExec(t_hero *, t_instruct *, unsigned char *,
+			       int);
+int			stiExec(t_hero *, t_instruct *, unsigned char *,
+				int);
+int			subExec(t_hero *, t_instruct *, unsigned char *,
+				int);
+int			xorExec(t_hero *, t_instruct *, unsigned char *,
+				int);
+int			zjmpExec(t_hero *, t_instruct *, unsigned char *,
 				 int);
 
 #endif /* !COREWAR_H_ */

@@ -5,14 +5,19 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 15:25:11 2016 Antoine Baché
+** Last update Thu Mar 17 11:23:25 2016 Antoine Baché
 */
 
 #include "corewar.h"
 #include "bytecode.h"
 
-int		forkExec(t_hero *hero, t_instruct *new, unsigned char *map,
+int		forkCase(t_hero *hero, t_instruct *new, unsigned char *map,
 			 int endianness)
 {
+#ifdef	DEBUG
+  write(1, "[Inst] Fork\n", 12);
+#endif
+  new->args[0] = readShort(hero, map, endianness) % IDX_MOD;
+  new->time = FORK_TIME;
   return (0);
 }

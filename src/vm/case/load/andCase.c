@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 16:43:37 2016 Antoine Baché
+** Last update Thu Mar 17 16:57:21 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -25,11 +25,11 @@ int		andCase(t_hero *hero, t_instruct *new, unsigned char *map,
   byte.bytecode = (char)map[(hero->loadAddress + hero->pc++) % MEM_SIZE];
   while (++i < 3)
     {
-      if (!(check = getByteCode(&byte)))
-	new->args[i] =
-	  hero->reg[((map[(hero->loadAddress + hero->pc++) % MEM_SIZE]
-		      -1) % REG_SIZE)]
-	  % IDX_MOD;
+      if (!(check = getByteCode(&byte)) && i < 2)
+	new->args[i] = hero->reg[((map[(hero->loadAddress + hero->pc++)
+				       % MEM_SIZE] - 1) % REG_SIZE)] % IDX_MOD;
+      else if (!check && i == 2)
+	new->args[2] = map[(hero->loadAddress + hero->pc++) % MEM_SIZE] - 1;
       else if (check == 1 && i < 2)
 	new->args[i] = readInt(hero, map, endianness) % IDX_MOD;
       else if (check == 2 && i < 2)

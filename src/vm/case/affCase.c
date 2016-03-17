@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 17:02:56 2016 Antoine Baché
+** Last update Thu Mar 17 17:07:46 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -20,6 +20,7 @@ int		affExec(t_hero *hero, t_instruct *new, unsigned char *map,
 #endif
   (void)map;
   (void)endianness;
+  (void)hero;
   c = new->args[0] % 256;
   return (write(1, &c, 1));
 }

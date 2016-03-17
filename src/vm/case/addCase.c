@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 16:49:15 2016 Antoine Baché
+** Last update Thu Mar 17 19:31:17 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -19,6 +19,6 @@ int		addExec(t_hero *hero, t_instruct *new, unsigned char *map,
   (void)map;
   (void)endianness;
   hero->reg[new->args[2]] = new->args[0] + new->args[1];
-  hero->carry = true;
+  (hero->reg[new->args[2]]) ? (hero->carry = true) : (hero->carry = false);
   return (0);
 }

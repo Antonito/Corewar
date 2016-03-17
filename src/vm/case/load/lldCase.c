@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 16:45:07 2016 Antoine Baché
+** Last update Thu Mar 17 18:23:52 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -28,8 +28,8 @@ int		lldCase(t_hero *hero, t_instruct *new, unsigned char *map,
       ret = getByteCode(&code);
       if (ret == 0)
 	new->args[i] =
-	  hero->reg[(((int)map[(hero->loadAddress + hero->pc++) % MEM_SIZE]) -1)
-		    % REG_SIZE];
+	  hero->reg[(((int)map[(hero->loadAddress + hero->pc++) % MEM_SIZE])
+		     - 1) % REG_SIZE];
       else if (ret == 1 && i != 1)
 	new->args[i] = readInt(hero, map, endianness);
       else if (ret == 2 && i != 1)

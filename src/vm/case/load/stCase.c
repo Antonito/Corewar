@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 16:46:11 2016 Antoine Baché
+** Last update Thu Mar 17 18:25:25 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -15,28 +15,26 @@ int		stCase(t_hero *hero, t_instruct *new, unsigned char *map,
 		       int endianness)
 {
   int		ret;
-  int		i;
   t_bytecode	code;
 
 #ifdef	DEBUG
   write(1, "[Inst] St\n", 10);
 #endif
-  i = -1;
   code.bytecode = (char)map[(hero->loadAddress + hero->pc++) % MEM_SIZE]
     % IDX_MOD;
-  while (i++ < 2)
+  new->args[0] =
+    hero->reg[(((int)map[(hero->loadAddress + hero->pc++) % MEM_SIZE]) - 1)
+	      % REG_SIZE] % IDX_MOD;
+  code.bytecode <<= 2;
+  if (!(ret = getByteCode(&code)))
     {
-      ret = getByteCode(&code);
-      if (ret == 0)
-	new->args[i] =
-	  hero->reg[(((int)map[(hero->loadAddress + hero->pc++) % MEM_SIZE]) -1)
-		    % REG_SIZE] % IDX_MOD;
-      else if (ret == 1 && i != 0)
-	new->args[i] = readInt(hero, map, endianness) % IDX_MOD;
-      else if (ret == 2 && i != 0)
-	new->args[i] = readShort(hero, map, endianness) % IDX_MOD;
-      code.bytecode <<= 2;
+      new->args[1] = -1;
+      new->args[2] = (map[(hero->loadAddress + hero->pc++) % MEM_SIZE] - 1)
+	% REG_SIZE;
     }
-  new->time = ST_TIME;
-  return (0);
+  else if (ret == 1)
+    new->args[1] = readInt(hero, map, endianness) % IDX_MOD;
+  else if (ret == 2)
+    new->args[1] = readShort(hero, map, endianness) % IDX_MOD;
+  return (new->time = ST_TIME, 0);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 17:22:47 2016 Antoine Baché
+** Last update Thu Mar 17 19:29:30 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -18,5 +18,7 @@ int	zjmpExec(t_hero *hero, t_instruct *new, unsigned char *map,
 #endif
   (void)map;
   (void)endianness;
-  return (hero->pc = (new->args[1] + new->args[0]) % MEM_SIZE, 0);
+  if (hero->carry)
+    hero->pc = (new->args[1] + new->args[0]) % MEM_SIZE;
+  return (0);
 }

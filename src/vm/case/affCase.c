@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 00:16:24 2016 Antoine Baché
+** Last update Thu Mar 17 01:39:36 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -17,6 +17,9 @@ int		affCase(t_hero *hero, t_instruct *new, unsigned char *map,
   int		check;
   t_bytecode	byte;
 
+#ifdef	DEBUG
+  write(1, "[Inst] Aff\n", 11);
+#endif
   (void)endianness;
   byte.bytecode = (char)map[hero->loadAddress + hero->pc++];
   if (!(check = getByteCode(&byte)))

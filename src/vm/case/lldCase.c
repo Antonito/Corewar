@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 00:15:46 2016 Antoine Baché
+** Last update Thu Mar 17 01:41:08 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -18,6 +18,9 @@ int		lldCase(t_hero *hero, t_instruct *new, unsigned char *map,
   int		i;
   t_bytecode	code;
 
+#ifdef	DEBUG
+  write(1, "[Inst] Lld\n", 11);
+#endif
   i = -1;
   code.bytecode = (char)map[hero->loadAddress + hero->pc++];
   while (i++ < 2)

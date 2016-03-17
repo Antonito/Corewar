@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Wed Mar 16 22:18:59 2016 Lucas Troncy
+** Last update Thu Mar 17 01:34:59 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -15,6 +15,9 @@
 
 # include <stdbool.h>
 # include "common.h"
+# ifdef	DEBUG
+#  include <unistd.h>
+# endif /* DEBUG */
 
 typedef enum		e_options
   {

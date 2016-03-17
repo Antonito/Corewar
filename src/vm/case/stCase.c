@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 00:14:46 2016 Antoine Baché
+** Last update Thu Mar 17 01:41:45 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -18,6 +18,9 @@ int		stCase(t_hero *hero, t_instruct *new, unsigned char *map,
   int		i;
   t_bytecode	code;
 
+#ifdef	DEBUG
+  write(1, "[Inst] St\n", 10);
+#endif
   i = -1;
   code.bytecode = (char)map[hero->loadAddress + hero->pc++] % IDX_MOD;
   while (i++ < 2)

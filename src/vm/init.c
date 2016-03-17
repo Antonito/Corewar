@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Wed Mar 16 14:12:49 2016 Antoine Baché
+** Last update Thu Mar 17 12:18:11 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -30,6 +30,7 @@ int		addHero(t_hero *hero)
   new->customAddress = false;
   new->isAlive = true;
   new->carry = false;
+  new->inst = NULL;
   new->next = NULL;
   hero->next = new;
   return (0);
@@ -49,6 +50,7 @@ t_hero		*initHero(t_hero *hero)
   hero->customAddress = false;
   hero->carry = false;
   hero->isAlive = true;
+  hero->inst = NULL;
   hero->next = NULL;
   return (hero);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Thu Mar 17 01:34:59 2016 Antoine Baché
+** Last update Thu Mar 17 12:17:16 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -68,6 +68,7 @@ typedef struct		s_hero
   bool			customId;
   bool			customAddress;
   bool			isAlive;
+  struct s_instruct	*inst;
   struct s_hero		*next;
 }			t_hero;
 

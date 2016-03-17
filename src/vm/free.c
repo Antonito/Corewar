@@ -5,11 +5,23 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 08:12:31 2016 Antoine Baché
-** Last update Sat Mar 12 19:05:13 2016 Antoine Baché
+** Last update Thu Mar 17 12:22:12 2016 Antoine Baché
 */
 
 #include <stdlib.h>
 #include "corewar.h"
+
+void		freeInst(t_instruct *inst)
+{
+  t_instruct	*tmp;
+
+  while (inst)
+    {
+      tmp = inst;
+      inst = inst->next;
+      free(tmp);
+    }
+}
 
 void		freeHero(t_hero *hero, int nbHero)
 {
@@ -25,6 +37,7 @@ void		freeHero(t_hero *hero, int nbHero)
 	free(hero->comment);
       if (hero->data)
 	free(hero->data);
+      freeInst(hero->inst);
       tmp = hero;
       hero = hero->next;
       free(tmp);

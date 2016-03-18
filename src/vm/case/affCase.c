@@ -5,9 +5,10 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 17:51:54 2016 Antoine Baché
+** Last update Fri Mar 18 17:17:45 2016 Antoine Baché
 */
 
+#include <unistd.h>
 #include "corewar.h"
 
 int		affExec(t_hero *hero, t_instruct *new, unsigned char *map,

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 15:25:11 2016 Antoine Baché
+** Last update Fri Mar 18 17:17:25 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -14,5 +14,9 @@
 int		forkExec(t_hero *hero, t_instruct *new, unsigned char *map,
 			 int endianness)
 {
+  (void)hero;
+  (void)new;
+  (void)map;
+  (void)endianness;
   return (0);
 }

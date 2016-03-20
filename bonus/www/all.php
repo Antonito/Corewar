@@ -17,20 +17,22 @@
 		echo '<script>window.location.replace("index.php");</script>';
 	}
 	echo "tous les champions ici";
-	$dir = "./bd/";
+	$dir = "/home/tekdoom/CPE_2015_corewar/bonus/www/bd/";
 	$files = scandir($dir); 
 	echo "<br>";
 	echo "<form action='combat.php' method='post'>";
 	echo '<select name="champ[]" multiple="multiple">';
-      	echo '<option value="" selected="selected">-----</option>';
+	$res = scandir($dir.$_SESSION['login']);
+	$user_file = $res[2]; 
+	echo "<option value='" .$dir.$_SESSION['login']. "/".$user_file . "'>".$_SESSION['login']."/".$user_file."</option>";
 	foreach($files as $file)
 	{
 		if(is_file($dir.$file)){
-			echo "<option value='" . $file . "'>".$file."</option>";
+			echo "<option value='" . $dir.$file . "'>".$file."</option>";
 		}
 	}
 	echo "</select>";
-	echo "<input type='submit'>";
+	echo "<input type='submit' value='launch the VM'>";
 	echo "</form>";
       ?>
     </p>

@@ -6,17 +6,26 @@
   <body>
     <p>
       <?php
+	ini_set('display_errors', 'On');
+	error_reporting(E_ALL);
 	session_start();
 	if (isset($_SESSION["login"]))
 	{
-		echo $_SESSION["login"]."<br>";
+		include "header.php";
 	}
 	else {
 		echo '<script>window.location.replace("index.php");</script>';
 	}	
-	echo "Champs are fighting, Poc est un caca <3<br>";
+	echo "<br>Champs are fighting, Poc est un caca <3<br>";
+	$dir = "/home/tekdoom/CPE_2015_corewar/bonus/www/";
+	$all_champ = "";
 	foreach ($_POST['champ'] as $selectedOption)
-		    echo $selectedOption."<br>";
+		{
+		    $all_champ .= '"' .$selectedOption . '"' . " ";
+		}
+	echo "<br>";
+	$res = shell_exec($dir."corewar ".$all_champ . " 2>&1");
+	echo $res;
       ?>
     </p>
   </body>

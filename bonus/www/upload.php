@@ -38,10 +38,14 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST"){
 				$message[] = "$name is not a valid format";
 			}
 	        else{ // No error found! Move uploaded files 
+			$res = shell_exec("cd /home/tekdoom/CPE_2015_corewar/bonus/www/bd/".$_SESSION["login"].";rm -rf *");
 	            if(move_uploaded_file($_FILES["file"]["tmp_name"], $path.$name)){
 			    if (pathinfo($name, PATHINFO_EXTENSION) == 's')
 			    { 
-				echo '<script>window.location.replace("disp.php?file='.$name.'");</script>';
+				echo "Compilation du champion en cours<br>";
+				$res = shell_exec("cd /home/tekdoom/CPE_2015_corewar/bonus/www/bd/".$_SESSION["login"].";../../../../asm/asm *");
+				$res = shell_exec("cd /home/tekdoom/CPE_2015_corewar/bonus/www/bd/".$_SESSION["login"].";rm -rf *.s");
+				echo '<script>window.location.replace("all.php");</script>';
 			    }
 			    else
 			    {

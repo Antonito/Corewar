@@ -5,18 +5,18 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 19:46:07 2016 Antoine Baché
+** Last update Tue Mar 22 23:40:47 2016 Antoine Baché
 */
 
 #include "corewar.h"
 
 int		stExec(t_hero *hero, t_instruct *new, unsigned char *map,
-		       int endianness)
+		       t_params *params)
 {
 #ifdef	DEBUG
   write(1, "[Exec] St\n", 10);
 #endif
-  (void)endianness;
+  (void)params;
   if (new->args[1] == -1)
     new->args[1] = hero->reg[new->args[2] % REG_SIZE];
   map[(hero->loadAddress + hero->pc + new->args[0]) % MEM_SIZE] = new->args[1];

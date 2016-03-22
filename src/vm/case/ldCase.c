@@ -5,20 +5,22 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 02:19:01 2016 Antoine Baché
+** Last update Tue Mar 22 23:41:24 2016 Antoine Baché
 */
 
 #include "corewar.h"
 
 int		ldExec(t_hero *hero, t_instruct *new, unsigned char *map,
-		       int endianness)
+		       t_params *params)
 {
 #ifdef	DEBUG
   write(1, "[Exec] Ld\n", 10);
 #endif
-  (void)endianness;
   (void)map;
+  (void)params;
   hero->reg[new->args[1] % REG_SIZE] = new->args[0];
+  if (new->type == 0x02)
+    hero->reg[new->args[1] % REG_SIZE] %= IDX_MOD;
   (hero->reg[new->args[1] % REG_SIZE]) ?
     (hero->carry = true) : (hero->carry = false);
   return (0);

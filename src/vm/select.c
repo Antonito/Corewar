@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:05:21 2016 Antoine Baché
-** Last update Fri Mar 18 18:36:49 2016 Antoine Baché
+** Last update Tue Mar 22 23:33:54 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -13,12 +13,12 @@
 #include "corewar.h"
 
 int		errorExec(t_hero *heros, t_instruct *new, unsigned char *map,
-			  int endianness)
+			  t_params *params)
 {
   (void)heros;
   (void)new;
   (void)map;
-  (void)endianness;
+  (void)params;
   return (0);
 }
 
@@ -58,9 +58,9 @@ ptrtab		selector(void)
   return (array);
 }
 
-ptrtab		selectorExec(void)
+insttab		selectorExec(void)
 {
-  ptrtab	array;
+  insttab	array;
 
   if ((array = malloc(sizeof(int *) * 17)) == NULL)
     return (NULL);

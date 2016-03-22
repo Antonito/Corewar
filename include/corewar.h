@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Tue Mar 22 19:44:34 2016 Antoine Baché
+** Last update Tue Mar 22 23:37:38 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -80,15 +80,17 @@ typedef	struct		s_params
   int			process;
   int			nbHeros;
   int			nbrCycleDump;
+  int			endianness;
   bool			isRunning;
 }			t_params;
 
 typedef	int (**ptrtab)(t_hero *, t_instruct *, unsigned char *, int);
+typedef	int (**insttab)(t_hero *, t_instruct *, unsigned char *, t_params *);
 
 typedef struct		s_funcPtr
 {
   ptrtab		load;
-  ptrtab		exec;
+  insttab		exec;
 }			t_funcPtr;
 
 int			vm(t_params *, t_hero *, unsigned char *, t_funcPtr *);
@@ -111,13 +113,13 @@ int			dumpOption(char **, t_params *);
 ** Exec
 */
 int			executeOrders(t_hero *, unsigned char *,
-				      t_funcPtr *, int);
+				      t_funcPtr *, t_params *);
 
 /*
 ** Init
 */
 ptrtab			selector(void);
-ptrtab			selectorExec(void);
+insttab			selectorExec(void);
 int			addHero(t_hero *);
 t_hero			*initHero(t_hero *);
 void			initParams(t_params *);
@@ -192,36 +194,36 @@ int			zjmpCase(t_hero *, t_instruct *, unsigned char *,
 ** Execs
 */
 int			addExec(t_hero *, t_instruct *, unsigned char *,
-				int);
+				t_params *);
 int			affExec(t_hero *, t_instruct *, unsigned char *,
-				int);
+				t_params *);
 int			andExec(t_hero *, t_instruct *, unsigned char *,
-				int);
+				t_params *);
 int			forkExec(t_hero *, t_instruct *, unsigned char *,
-				 int);
+				 t_params *);
 int			ldExec(t_hero *, t_instruct *, unsigned char *,
-			       int);
+			       t_params *);
 int			ldiExec(t_hero *, t_instruct *, unsigned char *,
-				int);
+				t_params *);
 int			lforkExec(t_hero *, t_instruct *, unsigned char *,
-				  int);
+				  t_params *);
 int			liveExec(t_hero *, t_instruct *, unsigned char *,
-				 int);
+				 t_params *);
 int			lldExec(t_hero *, t_instruct *, unsigned char *,
-				int);
+				t_params *);
 int			lldiExec(t_hero *, t_instruct *, unsigned char *,
-				 int);
+				 t_params *);
 int			orExec(t_hero *, t_instruct *, unsigned char *,
-			       int);
+			       t_params *);
 int			stExec(t_hero *, t_instruct *, unsigned char *,
-			       int);
+			       t_params *);
 int			stiExec(t_hero *, t_instruct *, unsigned char *,
-				int);
+				t_params *);
 int			subExec(t_hero *, t_instruct *, unsigned char *,
-				int);
+				t_params *);
 int			xorExec(t_hero *, t_instruct *, unsigned char *,
-				int);
+				t_params *);
 int			zjmpExec(t_hero *, t_instruct *, unsigned char *,
-				 int);
+				 t_params *);
 
 #endif /* !COREWAR_H_ */

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 13:59:41 2016 Antoine Baché
-** Last update Tue Mar 22 17:48:12 2016 Antoine Baché
+** Last update Tue Mar 22 23:38:41 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -55,7 +55,7 @@ void		updateTimer(t_instruct *inst)
 }
 
 int		executeInst(t_hero *heros, unsigned char *map,
-			    ptrtab exec, int endianness)
+			    insttab exec, t_params *data)
 {
   t_instruct	*tmp;
   t_instruct	*tmp2;
@@ -65,7 +65,7 @@ int		executeInst(t_hero *heros, unsigned char *map,
     {
       if (tmp2 = heros->inst, !tmp->time)
 	{
-	  if (exec[tmp->type % 17](heros, tmp, map, endianness))
+	  if (exec[tmp->type % 17](heros, tmp, map, data))
 	    return (1);
 	  while (tmp2 != tmp && ((tmp2 == tmp) ? 0 : tmp2->next != tmp))
 	    tmp2 = tmp2->next;
@@ -81,11 +81,11 @@ int		executeInst(t_hero *heros, unsigned char *map,
 }
 
 int		executeOrders(t_hero *heros, unsigned char *map,
-			      t_funcPtr *array, int endianness)
+			      t_funcPtr *array, t_params *data)
 {
-  if (executeInst(heros, map, array->exec, endianness))
+  if (executeInst(heros, map, array->exec, data))
     return (1);
-  if (readInst(heros, map, array->load, endianness))
+  if (readInst(heros, map, array->load, data->endianness))
     return (1);
   updateTimer(heros->inst);
   return (0);

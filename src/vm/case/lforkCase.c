@@ -5,13 +5,38 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 18:28:30 2016 Antoine Baché
+** Last update Tue Mar 22 23:43:00 2016 Antoine Baché
 */
 
 #include "corewar.h"
+#include "tools.h"
+#include "errors.h"
 
 int		lforkExec(t_hero *hero, t_instruct *new, unsigned char *map,
-			  int endianness)
+			  t_params *params)
 {
-  return (forkExec(hero, new, map, endianness));
+  t_hero	*newHero;
+
+#ifdef	DEBUG
+  write(1, "[Exec] LFork\n", 13);
+#endif
+  (void)map;
+  if (!(newHero = malloc(sizeof(t_hero))))
+    return (errorMalloc());
+  my_bzero(newHero, sizeof(t_hero));
+  newHero->id = hero->id;
+  newHero->loadAddress = hero->loadAddress;
+  newHero->name = hero->name;
+  newHero->comment = hero->comment;
+  newHero->pc = (hero->loadAddress + hero->pc + new->args[0]);
+  newHero->size = hero->size;
+  newHero->customId = hero->customId;
+  newHero->customAddress = hero->customAddress;
+  newHero->isAlive = hero->isAlive;
+  newHero->carry = hero->carry;
+  newHero->inst = NULL;
+  newHero->next = hero->next;
+  hero->next = newHero;
+  ++params->process;
+  return (0);
 }

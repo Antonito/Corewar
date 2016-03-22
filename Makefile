@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Fri Mar 18 17:20:57 2016 Antoine Baché
+## Last update Wed Mar 23 00:00:58 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -56,9 +56,9 @@ SRC_CORE_FILES=		main.c			\
 			check_args.c		\
 			errors.c		\
 			init.c			\
-			statusMsg.c		\
-			writeUsage.c		\
-			loadHero.c		\
+			status_msg.c		\
+			write_usage.c		\
+			load_hero.c		\
 			free.c			\
 			debug.c			\
 			vm.c			\
@@ -114,22 +114,22 @@ SRC_DECOMPILER_FILES=	main.c			\
 			loader.c		\
 			bytecode.c		\
 			select.c		\
-			case/addCase.c		\
-			case/ldCase.c		\
-			case/liveCase.c		\
-			case/stCase.c		\
-			case/subCase.c		\
-			case/andCase.c		\
-			case/orCase.c		\
-			case/xorCase.c		\
-			case/zjmpCase.c		\
-			case/ldiCase.c		\
-			case/stiCase.c		\
-			case/forkCase.c		\
-			case/lforkCase.c	\
-			case/lldCase.c		\
-			case/lldiCase.c		\
-			case/affCase.c
+			case/add_case.c		\
+			case/ld_case.c		\
+			case/live_case.c	\
+			case/st_case.c		\
+			case/sub_case.c		\
+			case/and_case.c		\
+			case/or_case.c		\
+			case/xor_case.c		\
+			case/zjmp_case.c	\
+			case/ldi_case.c		\
+			case/sti_case.c		\
+			case/fork_case.c	\
+			case/lfork_case.c	\
+			case/lld_case.c		\
+			case/lldi_case.c	\
+			case/aff_case.c
 
 SRC_TOOLS_PREFIX=	src/tools/
 
@@ -147,8 +147,8 @@ SRC_TOOLS_FILES=	my_bzero.c		\
 			my_write.c		\
 			common_errors.c		\
 			get_next_line.c		\
-			isNum.c			\
-			findEndian.c		\
+			is_num.c		\
+			find_endian.c		\
 			reverse_byte.c
 
 SRC_ASM=		$(addprefix $(SRC_ASM_PREFIX),$(SRC_ASM_FILES))

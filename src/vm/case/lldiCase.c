@@ -5,13 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 18:28:48 2016 Antoine Baché
+** Last update Tue Mar 22 23:31:16 2016 Antoine Baché
 */
 
 #include "corewar.h"
 
 int	lldiExec(t_hero *hero, t_instruct *new, unsigned char *map,
-		 int endianness)
+		 t_params *params)
 {
-  return (ldiExec(hero, new, map, endianness));
+  return (ldiExec(hero, new, map, params));
 }

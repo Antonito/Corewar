@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 16:21:56 2016 Antoine Baché
+** Last update Tue Mar 22 23:41:03 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -14,7 +14,7 @@
 #endif
 
 int		zjmpExec(t_hero *hero, t_instruct *new, unsigned char *map,
-			 int endianness)
+			 t_params *params)
 {
   int		sum;
 
@@ -22,7 +22,7 @@ int		zjmpExec(t_hero *hero, t_instruct *new, unsigned char *map,
   write(1, "[Exec] Zjmp\n", 12);
 #endif
   (void)map;
-  (void)endianness;
+  (void)params;
   if (hero->carry)
     {
       sum = new->args[0] + new->args[1] - 1;

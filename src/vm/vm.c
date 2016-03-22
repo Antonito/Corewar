@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Thu Mar 17 15:46:44 2016 Antoine Baché
+** Last update Tue Mar 22 23:43:40 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -27,18 +27,17 @@ int		liveCheck(t_params *data)
 int		vm(t_params *data, t_hero *heros, unsigned char *map,
 		   t_funcPtr *array)
 {
-  int		endianness;
   int		i;
   t_hero	*tmp;
 
-  if ((endianness = findEndian()) == UNKNOWN)
+  if ((data->endianness = findEndian()) == UNKNOWN)
     return (write(2, "Unsupported endianness\n", 23), 1);
   while (tmp = heros, i = 0, ++data->totalCycle, ++data->cycle,
 	 data->isRunning)
     {
-      while (i < data->nbHeros)
+      while (i < data->process)
 	{
-	  if (executeOrders(tmp, map, array, endianness))
+	  if (executeOrders(tmp, map, array, data))
 	    return (1);
 	  tmp = tmp->next;
 	 if (data->totalCycle == data->nbrCycleDump)

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Tue Mar 22 19:43:32 2016 Antoine Baché
+** Last update Tue Mar 22 23:48:58 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -100,6 +100,7 @@ int		initVm(t_params *data, t_hero *heros)
       writeHero(map, tmp);
     }
   tmp->next = heros;
+  data->process = data->nbHeros;
 #ifdef	DEBUG
   debugInitVm(data, heros);
 #endif

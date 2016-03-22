@@ -5,13 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 14:52:14 2016 Antoine Baché
+** Last update Tue Mar 22 23:40:27 2016 Antoine Baché
 */
 
 #include "corewar.h"
 
 int		ldiExec(t_hero *hero, t_instruct *new, unsigned char *map,
-			int endianness)
+			t_params *params)
 {
   int		i;
   int		s;
@@ -20,7 +20,7 @@ int		ldiExec(t_hero *hero, t_instruct *new, unsigned char *map,
 #ifdef	DEBUG
   write(1, "[Exec] Ldi\n", 11);
 #endif
-  (void)endianness;
+  (void)params;
   i = -1;
   tmp = (char *)&s;
   while (++i < 4 &&

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Mar 12 17:15:35 2016 Antoine Baché
-** Last update Sun Mar 13 04:59:40 2016 Antoine Baché
+** Last update Tue Mar 22 18:29:19 2016 Antoine Baché
 */
 
 #include "common.h"
@@ -41,7 +41,7 @@ int	dumpMem(unsigned char *map)
 	{
 	  if (write(1, " ", 1) < 0)
 	    return (write(2, "Error while writing on stdout\n", 30), 1);
-	  (i + j < MEM_SIZE) ? writeMemNb(map[i + j], true) :
+	  (i + j < MEM_SIZE) ? writeMemNb(map[(i + j) % MEM_SIZE], true) :
 	    write(1, "00", 2);
 	  ++j;
 	}

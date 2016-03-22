@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 02:20:13 2016 Antoine Baché
+** Last update Tue Mar 22 19:46:07 2016 Antoine Baché
 */
 
 #include "corewar.h"

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 14:00:29 2016 Antoine Baché
+** Last update Tue Mar 22 19:33:49 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -21,8 +21,8 @@ int		stCase(t_hero *hero, t_instruct *new, unsigned char *map,
 #ifdef	DEBUG
   write(1, "[Inst] St\n", 10);
 #endif
-  code.bytecode = (char)map[(hero->loadAddress + hero->pc++) % MEM_SIZE]
-    % IDX_MOD;
+  code.bytecode = (unsigned char)
+    map[(hero->loadAddress + hero->pc++) % MEM_SIZE] % IDX_MOD;
   new->args[0] =
     hero->reg[(((int)map[(hero->loadAddress + hero->pc++) % MEM_SIZE]) - 1)
 	      % REG_SIZE] % IDX_MOD;

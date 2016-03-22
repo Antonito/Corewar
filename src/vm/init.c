@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Tue Mar 22 03:33:52 2016 Antoine Baché
+** Last update Tue Mar 22 19:43:32 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -19,8 +19,9 @@ int		addHero(t_hero *hero)
 {
   t_hero	*new;
 
-  if (!(new = malloc(sizeof(t_hero))) || !(memset(new, 0, sizeof(t_hero))))
+  if (!(new = malloc(sizeof(t_hero))))
     return (errorMalloc());
+  my_bzero(new, sizeof(t_hero));
   new->id = hero->id + 1;
   new->loadAddress = -1;
   new->name = NULL;
@@ -39,8 +40,9 @@ int		addHero(t_hero *hero)
 
 t_hero		*initHero(t_hero *hero)
 {
-  if (!(hero = malloc(sizeof(t_hero))) || !(memset(hero, 0, sizeof(t_hero))))
+  if (!(hero = malloc(sizeof(t_hero))))
     return (errorMalloc(), NULL);
+  my_bzero(hero, sizeof(t_hero));
   hero->id = 1;
   hero->loadAddress = -1;
   hero->name = NULL;
@@ -69,12 +71,12 @@ void		initParams(t_params *data)
 
 void		writeHero(unsigned char *map, t_hero *hero)
 {
-  int		i;
+  unsigned int	i;
 
   i = -1;
   while (++i < hero->size)
     {
-      map[hero->loadAddress + i] = hero->data[i];
+      map[(hero->loadAddress + i) % MEM_SIZE] = hero->data[i];
     }
 }
 

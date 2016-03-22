@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat Mar 12 05:50:51 2016 Antoine Baché
-** Last update Sun Mar 13 06:48:17 2016 Antoine Baché
+** Last update Tue Mar 22 19:40:44 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -32,8 +32,8 @@ int		checkOverlap(t_hero *heros)
 {
   t_hero	*tmp;
   t_hero	*tmp2;
-  int		start;
-  int		end;
+  unsigned int	start;
+  unsigned int	end;
 
   tmp = heros;
   while (tmp && (tmp2 = tmp->next))

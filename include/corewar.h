@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Tue Mar 22 13:41:17 2016 Antoine Baché
+** Last update Tue Mar 22 19:44:34 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -57,14 +57,14 @@ typedef struct		s_instruct
 typedef struct		s_hero
 {
   int			id;
-  int			loadAddress;
+  unsigned int	       	loadAddress;
   char			*name;
   char			*comment;
   unsigned char		*data;
-  int			pc;
-  char			reg[REG_NUMBER];
+  unsigned int 		pc;
+  unsigned char		reg[REG_NUMBER];
   bool			carry;
-  int			size;
+  unsigned int		size;
   bool			customId;
   bool			customAddress;
   bool			isAlive;

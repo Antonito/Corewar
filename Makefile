@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Wed Mar 23 00:00:58 2016 Antoine Baché
+## Last update Wed Mar 23 00:10:20 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -16,7 +16,7 @@ SRC_ASM_PREFIX=		src/asm/
 
 SRC_ASM_FILES=		main.c			\
 			header.c		\
-			getHeader.c		\
+			get_header.c		\
 			parser.c		\
 			write_file.c		\
 			errors.c		\
@@ -29,26 +29,26 @@ SRC_ASM_FILES=		main.c			\
 			warnings.c		\
 			bytecode.c		\
 			epurstr.c		\
-			epurLast.c		\
-			checkStrTab.c		\
-			checkLabel.c		\
-			case/stiWrite.c		\
-			case/addCase.c		\
-			case/ldCase.c		\
-			case/liveCase.c		\
-			case/stCase.c		\
-			case/subCase.c		\
-			case/andCase.c		\
-			case/orCase.c		\
-			case/xorCase.c		\
-			case/zjmpCase.c		\
-			case/ldiCase.c		\
-			case/stiCase.c		\
-			case/forkCase.c		\
-			case/lforkCase.c	\
-			case/lldCase.c		\
-			case/lldiCase.c		\
-			case/affCase.c
+			epur_last.c		\
+			check_str_tab.c		\
+			check_label.c		\
+			case/sti_write.c	\
+			case/add_case.c		\
+			case/ld_case.c		\
+			case/live_case.c	\
+			case/st_case.c		\
+			case/sub_case.c		\
+			case/and_case.c		\
+			case/or_case.c		\
+			case/xor_case.c		\
+			case/zjmp_case.c	\
+			case/ldi_case.c		\
+			case/sti_case.c		\
+			case/fork_case.c	\
+			case/lfork_case.c	\
+			case/lld_case.c		\
+			case/lldi_case.c	\
+			case/aff_case.c
 
 SRC_CORE_PREFIX=	src/vm/
 
@@ -72,38 +72,38 @@ SRC_CORE_FILES=		main.c			\
 			options/n.c		\
 			options/a.c		\
 			options/dump.c		\
-			case/addCase.c		\
-			case/ldCase.c		\
-			case/liveCase.c		\
-			case/stCase.c		\
-			case/subCase.c		\
-			case/andCase.c		\
-			case/orCase.c		\
-			case/xorCase.c		\
-			case/zjmpCase.c		\
-			case/ldiCase.c		\
-			case/stiCase.c		\
-			case/forkCase.c		\
-			case/lforkCase.c	\
-			case/lldCase.c		\
-			case/lldiCase.c		\
-			case/affCase.c		\
-			case/load/addCase.c	\
-			case/load/ldCase.c	\
-			case/load/liveCase.c	\
-			case/load/stCase.c	\
-			case/load/subCase.c	\
-			case/load/andCase.c	\
-			case/load/orCase.c	\
-			case/load/xorCase.c	\
-			case/load/zjmpCase.c	\
-			case/load/ldiCase.c	\
-			case/load/stiCase.c	\
-			case/load/forkCase.c	\
-			case/load/lforkCase.c	\
-			case/load/lldCase.c	\
-			case/load/lldiCase.c	\
-			case/load/affCase.c
+			case/add_case.c		\
+			case/ld_case.c		\
+			case/live_case.c	\
+			case/st_case.c		\
+			case/sub_case.c		\
+			case/and_case.c		\
+			case/or_case.c		\
+			case/xor_case.c		\
+			case/zjmp_case.c	\
+			case/ldi_case.c		\
+			case/sti_case.c		\
+			case/fork_case.c	\
+			case/lfork_case.c	\
+			case/lld_case.c		\
+			case/lldi_case.c	\
+			case/aff_case.c		\
+			case/load/add_case.c	\
+			case/load/ld_case.c	\
+			case/load/live_case.c	\
+			case/load/st_case.c	\
+			case/load/sub_case.c	\
+			case/load/and_case.c	\
+			case/load/or_case.c	\
+			case/load/xor_case.c	\
+			case/load/zjmp_case.c	\
+			case/load/ldi_case.c	\
+			case/load/sti_case.c	\
+			case/load/fork_case.c	\
+			case/load/lfork_case.c	\
+			case/load/lld_case.c	\
+			case/load/lldi_case.c	\
+			case/load/aff_case.c
 
 SRC_DECOMPILER_PREFIX=	src/decompiler/
 

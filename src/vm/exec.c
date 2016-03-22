@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 13:59:41 2016 Antoine Baché
-** Last update Thu Mar 17 15:51:26 2016 Antoine Baché
+** Last update Tue Mar 22 17:48:12 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -22,13 +22,13 @@ int		readInst(t_hero *heros, unsigned char *map, ptrtab load,
   t_instruct	*tmp;
   t_instruct	*new;
 
-  if (heros->pc != heros->size)
+  if ((!heros->inst || !heros->inst->time) && heros->pc < heros->size)
     {
       if (!(new = malloc(sizeof(t_instruct))))
 	return (errorMalloc());
       my_bzero(new, sizeof(t_instruct));
       new->next = NULL;
-      new->type = map[heros->loadAddress + heros->pc++];
+      new->type = map[(heros->loadAddress + heros->pc++) % MEM_SIZE];
       if (load[new->type % 17](heros, new, map, endianness))
 	return (1);
       tmp = heros->inst;
@@ -40,6 +40,18 @@ int		readInst(t_hero *heros, unsigned char *map, ptrtab load,
 	tmp->next = new;
     }
   return (0);
+}
+
+void		updateTimer(t_instruct *inst)
+{
+  t_instruct	*tmp;
+
+  tmp = inst;
+  while (tmp)
+    {
+      (tmp->time > 0) ? --tmp->time : (tmp->time = 0);
+      tmp = tmp->next;
+    }
 }
 
 int		executeInst(t_hero *heros, unsigned char *map,
@@ -55,7 +67,7 @@ int		executeInst(t_hero *heros, unsigned char *map,
 	{
 	  if (exec[tmp->type % 17](heros, tmp, map, endianness))
 	    return (1);
-	  while (tmp2 != tmp && tmp2->next != tmp)
+	  while (tmp2 != tmp && ((tmp2 == tmp) ? 0 : tmp2->next != tmp))
 	    tmp2 = tmp2->next;
 	  if (tmp2 == tmp && (heros->inst = heros->inst->next, free(tmp), 1))
 	    tmp = NULL;
@@ -68,23 +80,12 @@ int		executeInst(t_hero *heros, unsigned char *map,
   return (0);
 }
 
-void		updateTimer(t_instruct *inst)
-{
-  t_instruct	*tmp;
-
-  tmp = inst;
-  while (tmp)
-    {
-      (inst->time > 0) ? --inst->time : (inst->time = 0);
-      tmp = tmp->next;
-    }
-}
-
 int		executeOrders(t_hero *heros, unsigned char *map,
 			      t_funcPtr *array, int endianness)
 {
-  if (executeInst(heros, map, array->exec, endianness) ||
-      readInst(heros, map, array->load, endianness))
+  if (executeInst(heros, map, array->exec, endianness))
+    return (1);
+  if (readInst(heros, map, array->load, endianness))
     return (1);
   updateTimer(heros->inst);
   return (0);

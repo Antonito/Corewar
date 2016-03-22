@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Thu Mar 17 15:47:22 2016 Antoine Baché
+** Last update Tue Mar 22 13:41:17 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -144,8 +144,8 @@ int			dumpMem(unsigned char *);
 /*
 ** Value
 */
-int			readInt(t_hero *, unsigned char *, int);
-short			readShort(t_hero *, unsigned char *, int);
+unsigned int   		readInt(t_hero *, unsigned char *, int);
+unsigned short	       	readShort(t_hero *, unsigned char *, int);
 
 /*
 ** Debug

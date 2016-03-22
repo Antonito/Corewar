@@ -5,10 +5,11 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Fri Mar 18 17:16:15 2016 Antoine Baché
+** Last update Tue Mar 22 16:52:53 2016 Antoine Baché
 */
 
 #include "corewar.h"
+#include "tools.h"
 
 int		stiExec(t_hero *hero, t_instruct *new, unsigned char *map,
 			int endianness)
@@ -18,6 +19,8 @@ int		stiExec(t_hero *hero, t_instruct *new, unsigned char *map,
 #endif
   (void)hero;
   (void)endianness;
-  map[(new->args[1] + new->args[2]) % MEM_SIZE] = new->args[0] % 256;
+  dprintf(2, "Args[1] = %d\n", new->args[1]);
+  dprintf(2, "Args[2] = %d\n", new->args[2]);
+  map[ABS((new->args[1] + new->args[2])) % MEM_SIZE] = new->args[0] % 256;
   return (0);
 }

@@ -5,11 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 01:23:00 2016 Antoine Baché
+** Last update Tue Mar 22 14:00:09 2016 Antoine Baché
 */
 
 #include "corewar.h"
 #include "bytecode.h"
+#include "tools.h"
 
 int	liveCase(t_hero *hero, t_instruct *new, unsigned char *map,
 		 int endianness)

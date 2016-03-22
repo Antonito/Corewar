@@ -5,20 +5,35 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 19:29:30 2016 Antoine Baché
+** Last update Tue Mar 22 16:21:56 2016 Antoine Baché
 */
 
 #include "corewar.h"
+#ifdef	DEBUG
+# include "tools.h"
+#endif
 
-int	zjmpExec(t_hero *hero, t_instruct *new, unsigned char *map,
-		 int endianness)
+int		zjmpExec(t_hero *hero, t_instruct *new, unsigned char *map,
+			 int endianness)
 {
+  int		sum;
+
 #ifdef	DEBUG
   write(1, "[Exec] Zjmp\n", 12);
 #endif
   (void)map;
   (void)endianness;
   if (hero->carry)
-    hero->pc = (new->args[1] + new->args[0]) % MEM_SIZE;
+    {
+      sum = new->args[0] + new->args[1] - 1;
+      if (sum < 0)
+	++sum;
+      hero->pc = (ABS(sum)) % MEM_SIZE;
+#ifdef	DEBUG
+      write(1, "Jumping to address ", 19);
+      my_write_nb(hero->pc, 1, 1);
+      write(1, "\n", 1);
+#endif
+    }
   return (0);
 }

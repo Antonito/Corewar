@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Feb 28 00:42:07 2016 Antoine Baché
-** Last update Sat Mar  5 23:42:23 2016 Antoine Baché
+** Last update Tue Mar 22 13:47:24 2016 Antoine Baché
 */
 
 #include "endianness.h"
 
-int	reverseInt(int *nb, int endian)
+int		reverseInt(int *nb, int endian)
 {
-  int	tmp;
+  int		tmp;
 
   if (endian == LITTLE_ENDIAN)
     {
@@ -26,9 +26,41 @@ int	reverseInt(int *nb, int endian)
   return (0);
 }
 
-int	reverseShort(short *nb, int endian)
+unsigned int	reverseUInt(int *nb, int endian)
 {
-  short	tmp;
+  unsigned int	tmp;
+
+  if (endian == LITTLE_ENDIAN)
+    {
+      tmp = 0;
+      tmp |= (*nb & 0xFF000000) >> 24;
+      tmp |= (*nb & 0x00FF0000) >> 8;
+      tmp |= (*nb & 0x0000FF00) << 8;
+      tmp |= (*nb & 0x000000FF) << 24;
+      *nb = tmp;
+    }
+  return (0);
+}
+
+short		reverseShort(unsigned short *nb, int endian)
+{
+  short		tmp;
+
+  if (endian == LITTLE_ENDIAN)
+    {
+      tmp = 0;
+      tmp |= (*nb & 0xF000) >> 8;
+      tmp |= (*nb & 0x0F00) >> 8;
+      tmp |= (*nb & 0x00F0) << 8;
+      tmp |= (*nb & 0x000F) << 8;
+      *nb = tmp;
+    }
+  return (0);
+}
+
+unsigned short		reverseUShort(unsigned short *nb, int endian)
+{
+  unsigned short	tmp;
 
   if (endian == LITTLE_ENDIAN)
     {

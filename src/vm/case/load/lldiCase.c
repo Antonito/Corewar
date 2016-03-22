@@ -5,11 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 18:23:59 2016 Antoine Baché
+** Last update Tue Mar 22 14:00:21 2016 Antoine Baché
 */
 
 #include "corewar.h"
 #include "bytecode.h"
+#include "tools.h"
 
 int	lldiCase(t_hero *hero, t_instruct *new, unsigned char *map,
 		 int endianness)
@@ -23,7 +24,7 @@ int	lldiCase(t_hero *hero, t_instruct *new, unsigned char *map,
 #endif
   i = -1;
   byte.bytecode = (char)map[(hero->loadAddress + hero->pc++) % MEM_SIZE];
-  while (++i < 3)
+  while (++i < 2)
     {
       if (!(check = getByteCode(&byte)))
 	new->args[i] =
@@ -35,6 +36,8 @@ int	lldiCase(t_hero *hero, t_instruct *new, unsigned char *map,
 	new->args[i] = readShort(hero, map, endianness);
       byte.bytecode <<= 2;
     }
+  new->args[2] = (map[(hero->loadAddress + hero->pc++) % MEM_SIZE] - 1)
+    % REG_SIZE;
   new->time = LDI_TIME;
   return (0);
 }

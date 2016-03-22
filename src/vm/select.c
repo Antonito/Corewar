@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:05:21 2016 Antoine Baché
-** Last update Thu Mar 17 15:40:46 2016 Antoine Baché
+** Last update Fri Mar 18 18:36:49 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -19,7 +19,7 @@ int		errorExec(t_hero *heros, t_instruct *new, unsigned char *map,
   (void)new;
   (void)map;
   (void)endianness;
-  return (1);
+  return (0);
 }
 
 int		errorInst(t_hero *heros, t_instruct *new, unsigned char *map,
@@ -29,8 +29,7 @@ int		errorInst(t_hero *heros, t_instruct *new, unsigned char *map,
   (void)new;
   (void)map;
   (void)endianness;
-  write(2, "Corrupted champion\n", 19);
-  return (1);
+  return (0);
 }
 
 ptrtab		selector(void)

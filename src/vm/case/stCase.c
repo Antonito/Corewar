@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 18:52:04 2016 Antoine Baché
+** Last update Tue Mar 22 02:20:13 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -18,7 +18,7 @@ int		stExec(t_hero *hero, t_instruct *new, unsigned char *map,
 #endif
   (void)endianness;
   if (new->args[1] == -1)
-    new->args[1] = hero->reg[new->args[2]];
+    new->args[1] = hero->reg[new->args[2] % REG_SIZE];
   map[(hero->loadAddress + hero->pc + new->args[0]) % MEM_SIZE] = new->args[1];
   return (0);
 }

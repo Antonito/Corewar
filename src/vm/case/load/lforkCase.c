@@ -5,11 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Thu Mar 17 11:27:24 2016 Antoine Baché
+** Last update Tue Mar 22 14:00:03 2016 Antoine Baché
 */
 
 #include "corewar.h"
 #include "bytecode.h"
+#include "tools.h"
 
 int		lforkCase(t_hero *hero, t_instruct *new, unsigned char *map,
 			  int endianness)

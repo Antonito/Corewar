@@ -5,10 +5,11 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Thu Mar 17 15:49:28 2016 Antoine Baché
+** Last update Tue Mar 22 03:33:52 2016 Antoine Baché
 */
 
 #include <stdlib.h>
+#include <string.h>
 #include "corewar.h"
 #include "common.h"
 #include "errors.h"
@@ -18,7 +19,7 @@ int		addHero(t_hero *hero)
 {
   t_hero	*new;
 
-  if (!(new = malloc(sizeof(t_hero))))
+  if (!(new = malloc(sizeof(t_hero))) || !(memset(new, 0, sizeof(t_hero))))
     return (errorMalloc());
   new->id = hero->id + 1;
   new->loadAddress = -1;
@@ -38,7 +39,7 @@ int		addHero(t_hero *hero)
 
 t_hero		*initHero(t_hero *hero)
 {
-  if (!(hero = malloc(sizeof(t_hero))))
+  if (!(hero = malloc(sizeof(t_hero))) || !(memset(hero, 0, sizeof(t_hero))))
     return (errorMalloc(), NULL);
   hero->id = 1;
   hero->loadAddress = -1;

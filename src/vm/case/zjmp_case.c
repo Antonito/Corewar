@@ -5,13 +5,11 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 23:41:03 2016 Antoine Baché
+** Last update Wed Mar 23 00:27:35 2016 Antoine Baché
 */
 
 #include "corewar.h"
-#ifdef	DEBUG
-# include "tools.h"
-#endif
+#include "tools.h"
 
 int		zjmpExec(t_hero *hero, t_instruct *new, unsigned char *map,
 			 t_params *params)

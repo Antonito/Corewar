@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 23:43:00 2016 Antoine Baché
+** Last update Wed Mar 23 12:21:32 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -38,5 +38,6 @@ int		lforkExec(t_hero *hero, t_instruct *new, unsigned char *map,
   newHero->next = hero->next;
   hero->next = newHero;
   ++params->process;
+  cpyReg(hero, newHero);
   return (0);
 }

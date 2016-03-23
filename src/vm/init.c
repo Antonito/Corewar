@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Tue Mar 22 23:48:58 2016 Antoine Baché
+** Last update Wed Mar 23 12:19:08 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -28,9 +28,10 @@ int		addHero(t_hero *hero)
   new->comment = NULL;
   new->pc = 0;
   new->size = 0;
+  hero->reg[0] = hero->id;
   new->customId = false;
   new->customAddress = false;
-  new->isAlive = true;
+  new->isAlive = false;
   new->carry = false;
   new->inst = NULL;
   new->next = NULL;
@@ -52,7 +53,8 @@ t_hero		*initHero(t_hero *hero)
   hero->customId = false;
   hero->customAddress = false;
   hero->carry = false;
-  hero->isAlive = true;
+  hero->reg[0] = hero->id;
+  hero->isAlive = false;
   hero->inst = NULL;
   hero->next = NULL;
   return (hero);
@@ -66,6 +68,7 @@ void		initParams(t_params *data)
   data->process = 0;
   data->nbHeros = 0;
   data->nbrCycleDump = -1;
+  data->nbrLive = 0;
   data->isRunning = true;
 }
 

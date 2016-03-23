@@ -5,13 +5,23 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 23:42:45 2016 Antoine Baché
+** Last update Wed Mar 23 12:21:24 2016 Antoine Baché
 */
 
 #include "corewar.h"
 #include "bytecode.h"
 #include "tools.h"
 #include "errors.h"
+
+void		cpyReg(t_hero *hero, t_hero *new)
+{
+  new->reg[0] = hero->reg[0];
+  new->reg[1] = hero->reg[1];
+  new->reg[2] = hero->reg[2];
+  new->reg[3] = hero->reg[3];
+  new->reg[4] = hero->reg[4];
+  new->reg[5] = hero->reg[5];
+}
 
 int		forkExec(t_hero *hero, t_instruct *new, unsigned char *map,
 			 t_params *params)
@@ -38,6 +48,7 @@ int		forkExec(t_hero *hero, t_instruct *new, unsigned char *map,
   newHero->inst = NULL;
   newHero->next = hero->next;
   hero->next = newHero;
+  cpyReg(hero, newHero);
   ++params->process;
   return (0);
 }

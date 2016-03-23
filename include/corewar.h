@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Tue Mar 22 23:37:38 2016 Antoine Baché
+** Last update Wed Mar 23 12:21:00 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -80,6 +80,7 @@ typedef	struct		s_params
   int			process;
   int			nbHeros;
   int			nbrCycleDump;
+  int			nbrLive;
   int			endianness;
   bool			isRunning;
 }			t_params;
@@ -94,6 +95,7 @@ typedef struct		s_funcPtr
 }			t_funcPtr;
 
 int			vm(t_params *, t_hero *, unsigned char *, t_funcPtr *);
+void			cpyReg(t_hero *, t_hero *);
 
 /*
 ** Arg parsing

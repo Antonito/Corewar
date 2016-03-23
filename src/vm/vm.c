@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Tue Mar 22 23:43:40 2016 Antoine Baché
+** Last update Wed Mar 23 12:15:16 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -13,13 +13,31 @@
 #include "common.h"
 #include "endianness.h"
 
-int		liveCheck(t_params *data)
+int		liveCheck(t_params *data, t_hero *heros)
 {
-  if (data->cycle == data->cycleToDie)
+  int		i;
+  int		prev;
+  t_hero	*tmp;
+
+  if (i = -1, tmp = heros, data->nbrLive == data->cycleToDie)
     {
-      data->cycle = 0;
+      data->nbrLive = 0;
       (data->cycleToDie - 4 > 0) ? (data->cycleToDie -= 4) :
 	(data->cycleToDie = 0);
+      while (++i < data->process)
+	{
+	  if (tmp->isAlive)
+	    tmp->isAlive = false;
+	  else
+	    tmp->id = -1;
+	  tmp = tmp->next;
+	}
+    }
+  tmp = heros;
+  while (++i < data->process)
+    {
+      tmp->isAlive = false;
+      tmp = tmp->next;
     }
   return (0);
 }
@@ -44,7 +62,7 @@ int		vm(t_params *data, t_hero *heros, unsigned char *map,
 	   return (dumpMem(map));
 	 ++i;
 	}
-      liveCheck(data);
+      liveCheck(data, heros);
     }
   return (0);
 }

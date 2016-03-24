@@ -5,10 +5,11 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Wed Mar 23 12:15:16 2016 Antoine Baché
+** Last update Thu Mar 24 15:29:55 2016 Antoine Baché
 */
 
 #include <unistd.h>
+#include <stdio.h>
 #include "corewar.h"
 #include "common.h"
 #include "endianness.h"
@@ -16,7 +17,6 @@
 int		liveCheck(t_params *data, t_hero *heros)
 {
   int		i;
-  int		prev;
   t_hero	*tmp;
 
   if (i = -1, tmp = heros, data->nbrLive == data->cycleToDie)

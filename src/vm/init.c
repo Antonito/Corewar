@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Wed Mar 23 12:19:08 2016 Antoine Baché
+** Last update Fri Mar 25 12:56:21 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -107,7 +107,7 @@ int		initVm(t_params *data, t_hero *heros)
 #ifdef	DEBUG
   debugInitVm(data, heros);
 #endif
-  if (vm(data, heros, map, &array))
+  if (vm(data, genLive(heros, data), map, &array))
     return (free(map), free(array.load), free(array.exec),  1);
   return (free(map), free(array.load), free(array.exec), 0);
 }

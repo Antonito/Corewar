@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Wed Mar 23 11:59:56 2016 Antoine Baché
+** Last update Fri Mar 25 13:22:06 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -19,6 +19,7 @@ int	liveExec(t_hero *hero, t_instruct *new, unsigned char *map,
   (void)new;
   (void)map;
   ++params->nbrLive;
-  hero->isAlive = true;
+  if (hero->reg[0] == (char)new->args[0])
+    hero->isAlive = true;
   return (0);
 }

@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Thu Mar 24 15:32:14 2016 Antoine Baché
+## Last update Fri Mar 25 15:31:18 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -171,10 +171,12 @@ NAME_DECOMPILER=	bonus/decompiler
 
 HEAD=			-Iinclude
 
+CFLAGS=		$(HEAD) -W -Wall -Wextra -ansi -pedantic
+
 ifeq ($(DEBUG), yes)
-	CFLAGS=		$(HEAD) -W -Wall -Wextra -ansi -pedantic -g -D DEBUG
+	CFLAGS+= -g -D DEBUG
 else
-	CFLAGS=		$(HEAD) -W -Wall -Wextra -Werror -ansi -pedantic
+	CFLAGS+= -Werror
 endif
 
 ifeq ($(BONUS), yes)

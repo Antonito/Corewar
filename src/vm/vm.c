@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Fri Mar 25 20:07:22 2016 Antoine Baché
+** Last update Fri Mar 25 20:28:28 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -83,7 +83,6 @@ int		vm(t_params *data, t_hero *heros, unsigned char *map,
   while (tmp = heros, i = 0, ++data->totalCycle, ++data->cycle,
 	 data->isRunning)
     {
-      printf("NbProcess = %d\n", data->process);
       while (i < data->process)
 	{
 	  if (executeOrders(tmp, map, array, data))

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 14:00:09 2016 Antoine Baché
+** Last update Fri Mar 25 20:34:41 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -20,6 +20,7 @@ int	liveCase(t_hero *hero, t_instruct *new, unsigned char *map,
 #endif
   new->bytecode = 0;
   new->args[0] = readInt(hero, map, endianness);
+  printf("Live [%d]\n", new->args[0]);
   new->time = LIVE_TIME;
   return (0);
 }

@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Accessing Elements</title>
+    <title>Corewar</title>
   </head>
   <body>
 	<?php
@@ -12,7 +12,7 @@
 	$failed = $_GET['fail'];
 	if ($failed == "1")
 	{
-		echo "bad pass LMAO XD LOL PTDR"."<br>";
+		echo "bad password, please enter a valid one so I can steal your UNIX account ! :)";
 	}
 	echo "UNIX login:";
 	?>

@@ -1,9 +1,9 @@
 <html>
   <head>
-    <title>My First Array</title>
+    <title>Corewar</title>
   </head>
   <body>
-    <p>
+    <p style="background-color:rgba(0, 255, 0, 0.5);">
       <?php
 	session_start();
 	if (isset($_SESSION["login"]))
@@ -13,7 +13,7 @@
 	else {
 		echo '<script>window.location.replace("index.php");</script>';
 	}	
-	echo "Here you can upload your champ <br>";
+        echo "<p style=\"background-color:rgba(0, 255, 0, 0.5);\"> Here you can upload your champion </p>"
       ?>
 <form action="upload.php" method="post" enctype="multipart/form-data">
     <input type="file" id="file" name="file" />

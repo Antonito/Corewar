@@ -1,13 +1,11 @@
 
 <html>
   <head>
-    <title>My First Array</title>
+    <title>Corewar</title>
   </head>
   <body>
-    <p>
+    <p style="background-color:rgba(255,255,255,0.5);">
       <?php
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
 	session_start();
 	if (isset($_SESSION["login"]))
 	{
@@ -16,7 +14,7 @@
 	else {
 		echo '<script>window.location.replace("index.php");</script>';
 	}
-	echo "tous les champions ici";
+        echo "<p style=\"background-color:rgba(0, 255, 0, 0.5);\"> Select champions for the WAR !!</p>";
 	$dir = "/home/tekdoom/CPE_2015_corewar/bonus/www/bd/";
 	$files = scandir($dir); 
 	echo "<br>";

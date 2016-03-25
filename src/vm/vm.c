@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Fri Mar 25 16:35:46 2016 Antoine Baché
+** Last update Fri Mar 25 20:07:22 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -45,23 +45,22 @@ void		checkEndGame(t_hero *heros, t_params *data)
 int		liveCheck(t_params *data, t_hero *heros)
 {
   int		i;
+  int		prevId;
   t_hero	*tmp;
 
-  printf("Data->nbrLive = %d\n", data->nbrLive);
-  if (i = -1, tmp = heros, data->nbrLive >= data->cycleToDie)
+  if (i = -1, tmp = heros, prevId = 0, data->nbrLive >= data->cycleToDie &&
+      !(data->nbrLive = 0) && !(data->cycle = 0))
     {
-      data->nbrLive = 0;
-      data->cycle = 0;
       (data->cycleToDie - 4 > 0) ? (data->cycleToDie -= 4) :
 	(data->cycleToDie = 0);
       while (++i < data->process)
 	{
-	  if (tmp->isAlive)
+	  if (prevId = tmp->id, tmp->isAlive)
 	    {
-	      playerAlive(tmp->id, tmp->name);
-	      tmp->isAlive = false;
+	      if (tmp->id != prevId)
+		playerAlive(tmp->id, tmp->name);
 	    }
-	  else
+	  else if (tmp->id != prevId)
 	    tmp->id = -1;
 	  tmp = tmp->next;
 	  checkEndGame(heros, data);
@@ -84,6 +83,7 @@ int		vm(t_params *data, t_hero *heros, unsigned char *map,
   while (tmp = heros, i = 0, ++data->totalCycle, ++data->cycle,
 	 data->isRunning)
     {
+      printf("NbProcess = %d\n", data->process);
       while (i < data->process)
 	{
 	  if (executeOrders(tmp, map, array, data))
@@ -94,7 +94,7 @@ int		vm(t_params *data, t_hero *heros, unsigned char *map,
 	 ++i;
 	}
       liveCheck(data, heros);
-      if (prevLive == data->nbrLive && data->cycle >= data->cycleToDie)
+      if (prevLive == data->nbrLive && data->totalCycle >= data->cycleToDie)
 	return (write(1, "Draw.\n", 6), 0);
       prevLive = data->nbrLive;
     }

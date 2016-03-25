@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 13:59:41 2016 Antoine Baché
-** Last update Thu Mar 24 15:05:52 2016 Antoine Baché
+** Last update Fri Mar 25 18:02:45 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -13,9 +13,6 @@
 #include "errors.h"
 #include "tools.h"
 
-/*
-** Execution -> Lecture -> Ajout a la liste d'exec -> return (0)
-*/
 int		readInst(t_hero *heros, unsigned char *map, ptrtab load,
 			 int endianness)
 {

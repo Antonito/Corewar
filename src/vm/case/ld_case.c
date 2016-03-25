@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 23:41:24 2016 Antoine Baché
+** Last update Fri Mar 25 20:16:44 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -18,6 +18,7 @@ int		ldExec(t_hero *hero, t_instruct *new, unsigned char *map,
 #endif
   (void)map;
   (void)params;
+  printf("Ld register %d => %d\n", new->args[1] % REG_SIZE, new->args[0]);
   hero->reg[new->args[1] % REG_SIZE] = new->args[0];
   if (new->type == 0x02)
     hero->reg[new->args[1] % REG_SIZE] %= IDX_MOD;

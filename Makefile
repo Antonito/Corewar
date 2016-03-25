@@ -5,10 +5,10 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Fri Mar 25 15:31:18 2016 Antoine Baché
+## Last update Fri Mar 25 20:17:02 2016 Antoine Baché
 ##
 
-DEBUG=			yes
+DEBUG=			no
 
 BONUS=			yes
 
@@ -176,7 +176,7 @@ CFLAGS=		$(HEAD) -W -Wall -Wextra -ansi -pedantic
 ifeq ($(DEBUG), yes)
 	CFLAGS+= -g -D DEBUG
 else
-	CFLAGS+= -Werror
+	CFLAGS+= -W
 endif
 
 ifeq ($(BONUS), yes)

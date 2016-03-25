@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Fri Mar 25 20:30:53 2016 Antoine Baché
+** Last update Fri Mar 25 21:57:11 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -13,5 +13,5 @@
 int	xorCase(t_hero *hero, t_instruct *new, unsigned char *map,
 		int endianness)
 {
-  return (0);
+  return (addCase(hero, new, map, endianness));
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Fri Mar 25 20:29:22 2016 Antoine Baché
+** Last update Fri Mar 25 21:41:21 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -14,5 +14,13 @@
 int		addCase(t_hero *hero, t_instruct *new, unsigned char *map,
 			int endianness)
 {
+  ++hero->pc;
+  new->args[0] = hero->reg[(map[(hero->loadAddress + hero->pc++)
+				% MEM_SIZE] - 1) % REG_SIZE] % IDX_MOD;
+  new->args[1] = hero->reg[(map[(hero->loadAddress + hero->pc++)
+				% MEM_SIZE] - 1) % REG_SIZE] % IDX_MOD;
+  new->args[2] = (map[(hero->loadAddress + hero->pc++) % MEM_SIZE] - 1)
+    % REG_SIZE;
+  new->time = ADD_TIME;
   return (0);
 }

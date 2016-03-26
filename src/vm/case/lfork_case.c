@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Sat Mar 26 15:43:24 2016 Antoine Baché
+** Last update Sat Mar 26 17:53:46 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -33,6 +33,7 @@ int		lforkExec(t_hero *hero, t_instruct *new, unsigned char *map,
   newHero->customAddress = hero->customAddress;
   newHero->isAlive = hero->isAlive;
   newHero->carry = hero->carry;
+  newHero->comment = NULL;
   newHero->inst = NULL;
   newHero->next = hero->next;
   hero->next = newHero;

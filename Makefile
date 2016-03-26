@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Sat Mar 26 16:12:55 2016 Antoine Baché
+## Last update Sat Mar 26 18:59:12 2016 Antoine Baché
 ##
 
 DEBUG=			no
@@ -172,11 +172,11 @@ CFLAGS=		$(HEAD) -W -Wall -Wextra -ansi -pedantic
 ifeq ($(DEBUG), yes)
 	CFLAGS+= -g -D DEBUG
 else
-	CFLAGS+= -W
+	CFLAGS+= -Werror
 endif
 
 ifeq ($(BONUS), yes)
-	CFLAGS+=	-D BONUS
+	CFLAGS+= -D BONUS
 endif
 
 CC=			gcc

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Sat Mar 26 13:30:33 2016 Antoine Baché
+** Last update Sat Mar 26 17:47:45 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -37,5 +37,5 @@ int		ldiCase(t_hero *hero, t_instruct *new, unsigned char *map,
     }
   new->args[2] = (map[(hero->loadAddress + hero->pc++) % MEM_SIZE] - 1)
     % REG_SIZE;
-  return (new->time = STI_TIME, 0);
+  return (new->time = LDI_TIME, 0);
 }

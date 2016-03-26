@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sat Mar 26 16:16:06 2016 Antoine Baché
+** Last update Sat Mar 26 19:04:04 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -84,6 +84,8 @@ typedef	struct		s_params
   int			nbrLive;
   int			endianness;
   bool			isRunning;
+  bool			currentCycle;
+  int			lastLive;
 }			t_params;
 
 typedef	int (**ptrtab)(t_hero *, t_instruct *, unsigned char *, int);

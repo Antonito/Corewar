@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Sat Mar 26 19:08:06 2016 Antoine Baché
+** Last update Sat Mar 26 19:26:38 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -72,7 +72,8 @@ int		liveCheck(t_params *data, t_hero *heros)
   t_hero	*tmp;
 
   if (i = -1, tmp = heros, prevId = 0,
-      (data->nbrLive >= data->cycleToDie) &&
+      (data->nbrLive >= data->cycleToDie ||
+       (data->cycle >> 4) == data->cycleToDie) &&
       !(data->nbrLive = 0) && !(data->cycle = 0))
     {
       (data->cycleToDie - 4 > 0) ? (data->cycleToDie -= 4) :

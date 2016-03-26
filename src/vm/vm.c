@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Fri Mar 25 20:28:28 2016 Antoine Baché
+** Last update Sat Mar 26 15:56:28 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -28,6 +28,22 @@ void		setLiveFalse(t_hero *heros, t_params *data)
     }
 }
 
+void		findWinner(t_hero *heros, t_params *data)
+{
+  int		i;
+  t_hero	*tmp;
+
+  tmp = heros;
+  i = -1;
+  while (++i < data->process)
+    if (tmp->id != -1)
+      {
+	playerWins(tmp->id, tmp->name);
+	return ;
+      }
+  write(1, "Draw.\n", 6);
+}
+
 void		checkEndGame(t_hero *heros, t_params *data)
 {
   int		i;
@@ -36,9 +52,14 @@ void		checkEndGame(t_hero *heros, t_params *data)
   tmp = heros;
   i = -1;
   while (++i < data->process)
-    if (tmp->id == -1)
-      return ;
-  write(1, "Draw.\n", 6);
+    {
+      if (tmp->id == -1)
+	return ;
+    }
+  if (data->nbHeros == 1)
+    write(1, "Draw.\n", 6);
+  else
+    findWinner(heros, data);
   data->isRunning = false;
 }
 
@@ -53,7 +74,7 @@ int		liveCheck(t_params *data, t_hero *heros)
     {
       (data->cycleToDie - 4 > 0) ? (data->cycleToDie -= 4) :
 	(data->cycleToDie = 0);
-      while (++i < data->process)
+      while (++i < data->process && data->isRunning)
 	{
 	  if (prevId = tmp->id, tmp->isAlive)
 	    {
@@ -74,12 +95,12 @@ int		vm(t_params *data, t_hero *heros, unsigned char *map,
 		   t_funcPtr *array)
 {
   int		i;
-  int		prevLive;
   t_hero	*tmp;
 
+  if (data->nbHeros == 1)
+    heros->isAlone = true;
   if ((data->endianness = findEndian()) == UNKNOWN)
     return (write(2, "Unsupported endianness\n", 23), 1);
-  prevLive = 0;
   while (tmp = heros, i = 0, ++data->totalCycle, ++data->cycle,
 	 data->isRunning)
     {
@@ -88,14 +109,11 @@ int		vm(t_params *data, t_hero *heros, unsigned char *map,
 	  if (executeOrders(tmp, map, array, data))
 	    return (1);
 	  tmp = tmp->next;
-	 if (data->totalCycle == data->nbrCycleDump)
-	   return (dumpMem(map));
-	 ++i;
+	  if (data->totalCycle == data->nbrCycleDump)
+	    return (dumpMem(map));
+	  ++i;
 	}
       liveCheck(data, heros);
-      if (prevLive == data->nbrLive && data->totalCycle >= data->cycleToDie)
-	return (write(1, "Draw.\n", 6), 0);
-      prevLive = data->nbrLive;
     }
   return (0);
 }

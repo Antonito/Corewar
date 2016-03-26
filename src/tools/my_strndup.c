@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:10:17 2016 Antoine Baché
-** Last update Tue Feb 23 16:19:36 2016 Antoine Baché
+** Last update Sat Mar 26 15:35:45 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -19,6 +19,7 @@ char	*my_strndup(char *src, int n)
   i = 0;
   if ((dest = malloc(sizeof(char) * (n + 1))) == NULL)
     return (NULL);
+  my_bzero(dest, n + 1);
   while (i < n)
     {
       dest[i] = src[i];

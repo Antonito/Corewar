@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Wed Mar 23 12:21:32 2016 Antoine Baché
+** Last update Sat Mar 26 15:43:24 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -21,13 +21,12 @@ int		lforkExec(t_hero *hero, t_instruct *new, unsigned char *map,
   write(1, "[Exec] LFork\n", 13);
 #endif
   (void)map;
-  if (!(newHero = malloc(sizeof(t_hero))))
+  if (!(newHero = malloc(sizeof(t_hero))) ||
+      !(my_bzero(newHero, sizeof(t_hero)),
+	newHero->name = my_strndup(hero->name, 129)))
     return (errorMalloc());
-  my_bzero(newHero, sizeof(t_hero));
   newHero->id = hero->id;
   newHero->loadAddress = hero->loadAddress;
-  newHero->name = hero->name;
-  newHero->comment = hero->comment;
   newHero->pc = (hero->loadAddress + hero->pc + new->args[0]);
   newHero->size = hero->size;
   newHero->customId = hero->customId;

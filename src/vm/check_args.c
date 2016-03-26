@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Mar  7 14:43:06 2016 Antoine Baché
-** Last update Tue Mar 22 22:58:05 2016 Antoine Baché
+** Last update Sat Mar 26 20:14:53 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -23,7 +23,9 @@ int		checkHerosLoading(int *i, char **av, t_hero *heros)
 int		checkHerosOptions(int ac, char **av, int *i, t_hero *heros)
 {
   int		opt;
+  int		nbHero;
 
+  nbHero = 1;
   while (opt = 0, *i < ac)
     {
       if ((!my_strncmp_("-n", av[*i], 3) && (*i += 2) && (opt = N_OPTION) &&
@@ -31,16 +33,14 @@ int		checkHerosOptions(int ac, char **av, int *i, t_hero *heros)
 	  (!opt && !my_strncmp_("-a", av[*i], 3) && (*i += 2) &&
 	   (opt = A_OPTION) && aOption(heros, *i - 1, av)))
 	return (1);
-      if ((opt == N_OPTION && !my_strncmp("-a", av[*i], 3) && (*i += 2) &&
-	   aOption(heros, *i - 1, av)) ||
-	  (opt == A_OPTION && !my_strncmp("-n", av[*i], 3) && (*i += 2) &&
-	   nOption(heros, *i - 1, av)))
+      if (((opt == N_OPTION && !my_strncmp("-a", av[*i], 3) && (*i += 2) &&
+	    aOption(heros, *i - 1, av)) ||
+	   (opt == A_OPTION && !my_strncmp("-n", av[*i], 3) && (*i += 2) &&
+	    nOption(heros, *i - 1, av))) || checkHerosLoading(i, av, heros))
 	return (1);
-      if (checkHerosLoading(i, av, heros))
-	return (1);
-      if (*i < ac)
+      if (++nbHero, *i < ac)
 	{
-	  if (addHero(heros))
+	  if (addHero(heros, nbHero))
 	    return (1);
 	  heros = heros->next;
 	}
@@ -84,6 +84,6 @@ int		check_args(int ac, char **av)
   if (ac < 2)
     return (writeUsage(av[0]), 1);
   if (checkOptions(ac, av, &data, heros) || initVm(&data, heros))
-    return (freeHero(heros, data.nbHeros), 1);
-  return (freeHero(heros, data.nbHeros), 0);
+    return (freeHero(heros, data.process), 1);
+  return (freeHero(heros, data.process), 0);
 }

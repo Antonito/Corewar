@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Tue Mar 22 23:48:58 2016 Antoine Baché
+** Last update Sat Mar 26 20:01:07 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -15,22 +15,23 @@
 #include "errors.h"
 #include "tools.h"
 
-int		addHero(t_hero *hero)
+int		addHero(t_hero *hero, int nbHero)
 {
   t_hero	*new;
 
   if (!(new = malloc(sizeof(t_hero))))
     return (errorMalloc());
   my_bzero(new, sizeof(t_hero));
-  new->id = hero->id + 1;
+  new->id = nbHero;
   new->loadAddress = -1;
   new->name = NULL;
   new->comment = NULL;
   new->pc = 0;
   new->size = 0;
+  hero->reg[0] = hero->id;
   new->customId = false;
   new->customAddress = false;
-  new->isAlive = true;
+  new->isAlive = false;
   new->carry = false;
   new->inst = NULL;
   new->next = NULL;
@@ -52,7 +53,8 @@ t_hero		*initHero(t_hero *hero)
   hero->customId = false;
   hero->customAddress = false;
   hero->carry = false;
-  hero->isAlive = true;
+  hero->reg[0] = hero->id;
+  hero->isAlive = false;
   hero->inst = NULL;
   hero->next = NULL;
   return (hero);
@@ -66,6 +68,7 @@ void		initParams(t_params *data)
   data->process = 0;
   data->nbHeros = 0;
   data->nbrCycleDump = -1;
+  data->nbrLive = 0;
   data->isRunning = true;
 }
 
@@ -104,7 +107,7 @@ int		initVm(t_params *data, t_hero *heros)
 #ifdef	DEBUG
   debugInitVm(data, heros);
 #endif
-  if (vm(data, heros, map, &array))
+  if (vm(data, genLive(heros, data), map, &array))
     return (free(map), free(array.load), free(array.exec),  1);
   return (free(map), free(array.load), free(array.exec), 0);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 23:40:11 2016 Antoine Baché
+** Last update Sat Mar 26 15:50:30 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -22,7 +22,7 @@ int		affExec(t_hero *hero, t_instruct *new, unsigned char *map,
   (void)map;
   (void)hero;
   (void)params;
-  c = (char)new->args[0];
+  c = (unsigned char)hero->reg[new->args[0]] % 256;
   write(1, &c, 1);
   return (0);
 }

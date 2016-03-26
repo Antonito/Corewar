@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Tue Mar 22 23:37:38 2016 Antoine Baché
+** Last update Sat Mar 26 20:01:37 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -49,6 +49,7 @@ typedef struct		s_instruct
 {
   int			type;
   int			bytecode;
+  unsigned int		pcSave;
   int			args[3];
   int			time;
   struct s_instruct	*next;
@@ -62,7 +63,7 @@ typedef struct		s_hero
   char			*comment;
   unsigned char		*data;
   unsigned int 		pc;
-  unsigned char		reg[REG_NUMBER];
+  unsigned int		reg[REG_NUMBER];
   bool			carry;
   unsigned int		size;
   bool			customId;
@@ -80,8 +81,11 @@ typedef	struct		s_params
   int			process;
   int			nbHeros;
   int			nbrCycleDump;
+  int			nbrLive;
   int			endianness;
   bool			isRunning;
+  bool			currentCycle;
+  int			lastLive;
 }			t_params;
 
 typedef	int (**ptrtab)(t_hero *, t_instruct *, unsigned char *, int);
@@ -94,6 +98,8 @@ typedef struct		s_funcPtr
 }			t_funcPtr;
 
 int			vm(t_params *, t_hero *, unsigned char *, t_funcPtr *);
+void			cpyReg(t_hero *, t_hero *);
+t_hero			*genLive(t_hero *, t_params *);
 
 /*
 ** Arg parsing
@@ -120,7 +126,7 @@ int			executeOrders(t_hero *, unsigned char *,
 */
 ptrtab			selector(void);
 insttab			selectorExec(void);
-int			addHero(t_hero *);
+int			addHero(t_hero *, int);
 t_hero			*initHero(t_hero *);
 void			initParams(t_params *);
 int			initVm(t_params *, t_hero *);

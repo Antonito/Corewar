@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 05:33:52 2016 Antoine Baché
-** Last update Mon Mar 14 05:30:54 2016 Antoine Baché
+** Last update Sat Mar 26 15:37:27 2016 Antoine Baché
 */
 
 #include <sys/types.h>
@@ -17,6 +17,22 @@
 #include "header.h"
 #include "errors.h"
 #include "endianness.h"
+
+t_hero		*genLive(t_hero *heros, t_params *data)
+{
+  int		i;
+  t_hero	*tmp;
+
+  tmp = heros;
+  i = 0;
+  while (tmp && i < data->process)
+    {
+      tmp->reg[0] = tmp->id;
+      tmp = tmp->next;
+      ++i;
+    }
+  return (heros);
+}
 
 void		debugHero(const t_hero *heros, const char *prog)
 {
@@ -64,8 +80,8 @@ int		loadHeader(t_hero *heros, int fd, const char *prog)
     return (write(2, "Error reading file\n", 19), 1);
   if (header.magic != (int)0xF383EA00)
     return (errorFileType(prog));
-  if (!(heros->name = my_strdup(header.name)) ||
-      !(heros->comment = my_strdup(header.comment)))
+  if (!(heros->name = my_strndup(header.name, 129)) ||
+      !(heros->comment = my_strndup(header.comment, 2048)))
     return (errorMalloc());
   reverseInt(&header.prog_size, findEndian());
   heros->size = header.prog_size;

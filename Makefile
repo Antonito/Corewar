@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Wed Mar 23 00:27:08 2016 Antoine Baché
+## Last update Sat Mar 26 21:18:00 2016 Antoine Baché
 ##
 
 DEBUG=			no
@@ -155,32 +155,28 @@ SRC_ASM=		$(addprefix $(SRC_ASM_PREFIX),$(SRC_ASM_FILES))
 
 SRC_CORE=		$(addprefix $(SRC_CORE_PREFIX),$(SRC_CORE_FILES))
 
-SRC_DECOMPILER=		$(addprefix $(SRC_DECOMPILER_PREFIX),$(SRC_DECOMPILER_FILES))
-
 SRC_TOOLS=		$(addprefix $(SRC_TOOLS_PREFIX),$(SRC_TOOLS_FILES))
 
 SRC_CORE+=		$(SRC_TOOLS)
 
 SRC_ASM+=		$(SRC_TOOLS)
 
-SRC_DECOMPILER+=	$(SRC_TOOLS)
-
 NAME_ASM=		asm/asm
 
 NAME_CORE=		corewar/corewar
 
-NAME_DECOMPILER=	bonus/decompiler
-
 HEAD=			-Iinclude
 
+CFLAGS=		$(HEAD) -W -Wall -Wextra -ansi -pedantic
+
 ifeq ($(DEBUG), yes)
-	CFLAGS=		$(HEAD) -W -Wall -Wextra -ansi -pedantic -g -D DEBUG
+	CFLAGS+= -g -D DEBUG
 else
-	CFLAGS=		$(HEAD) -W -Wall -Wextra -Werror -ansi -pedantic
+	CFLAGS+= -Werror
 endif
 
 ifeq ($(BONUS), yes)
-	CFLAGS+=	-D BONUS
+	CFLAGS+= -D BONUS
 endif
 
 CC=			gcc
@@ -190,10 +186,18 @@ RM=			rm -f
 OBJ_ASM=		$(SRC_ASM:.c=.o)
 
 OBJ_CORE=		$(SRC_CORE:.c=.o)
-
+ifeq ($(BONUS), yes)
+SRC_DECOMPILER=		$(addprefix $(SRC_DECOMPILER_PREFIX),$(SRC_DECOMPILER_FILES))
+SRC_DECOMPILER+=	$(SRC_TOOLS)
 OBJ_DECOMPILER=		$(SRC_DECOMPILER:.c=.o)
+NAME_DECOMPILER=	bonus/decompiler
+endif
 
+ifeq ($(BONUS), yes)
 $(NAME_CORE):	$(SHOW_FLAGS) $(NAME_ASM) $(NAME_DECOMPILER) $(OBJ_CORE)
+else
+$(NAME_CORE):	$(SHOW_FLAGS) $(NAME_ASM) $(OBJ_CORE)
+endif
 	@echo -n "Flags: "
 	@echo $(CFLAGS)
 	@echo -n "[ "
@@ -202,7 +206,7 @@ $(NAME_CORE):	$(SHOW_FLAGS) $(NAME_ASM) $(NAME_DECOMPILER) $(OBJ_CORE)
 	@echo "Compiled corewar"
 	@$(CC) $(OBJ_CORE) -o $(NAME_CORE)
 
-
+ifeq ($(BONUS), yes)
 $(NAME_DECOMPILER):	$(OBJ_DECOMPILER)
 	@echo -n "Flags: "
 	@echo $(CFLAGS)
@@ -211,6 +215,7 @@ $(NAME_DECOMPILER):	$(OBJ_DECOMPILER)
 	@echo -n " ] "
 	@echo "Compiled decompiler"
 	@$(CC) $(OBJ_DECOMPILER) -o $(NAME_DECOMPILER)
+endif
 
 $(NAME_ASM):	$(OBJ_ASM)
 ifeq ($(DEBUG), yes)

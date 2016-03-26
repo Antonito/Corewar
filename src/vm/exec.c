@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 13:59:41 2016 Antoine Baché
-** Last update Tue Mar 22 23:38:41 2016 Antoine Baché
+** Last update Sat Mar 26 15:32:03 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -13,16 +13,14 @@
 #include "errors.h"
 #include "tools.h"
 
-/*
-** Execution -> Lecture -> Ajout a la liste d'exec -> return (0)
-*/
 int		readInst(t_hero *heros, unsigned char *map, ptrtab load,
 			 int endianness)
 {
   t_instruct	*tmp;
   t_instruct	*new;
 
-  if ((!heros->inst || !heros->inst->time) && heros->pc < heros->size)
+  if ((!heros->inst || !heros->inst->time) && heros->id != -1 &&
+      heros->pc < heros->size)
     {
       if (!(new = malloc(sizeof(t_instruct))))
 	return (errorMalloc());
@@ -63,7 +61,7 @@ int		executeInst(t_hero *heros, unsigned char *map,
   tmp = heros->inst;
   while (tmp)
     {
-      if (tmp2 = heros->inst, !tmp->time)
+      if (tmp2 = heros->inst, !tmp->time && heros->id != -1)
 	{
 	  if (exec[tmp->type % 17](heros, tmp, map, data))
 	    return (1);

@@ -10,8 +10,7 @@ begin:	ld	%76, r1
 	ld	%15, r5
 	sub	r4, r5, r3
 	zjmp	%:attack
-live:	live	%2
-	ld	%0, r4
+live:	ld	%0, r4
 	zjmp	%:live
 attack:	ld	%65, r8
 	st	r8, 100

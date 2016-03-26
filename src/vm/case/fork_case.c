@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Sat Mar 26 15:55:51 2016 Antoine Baché
+** Last update Sat Mar 26 16:15:34 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -22,7 +22,6 @@ void		cpyReg(t_hero *hero, t_hero *new)
   new->reg[4] = hero->reg[4];
   new->reg[5] = hero->reg[5];
   new->data = NULL;
-  new->isAlone = hero->isAlone;
 }
 
 int		forkExec(t_hero *hero, t_instruct *new, unsigned char *map,

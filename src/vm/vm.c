@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 14:49:02 2016 Antoine Baché
-** Last update Sat Mar 26 15:56:28 2016 Antoine Baché
+** Last update Sat Mar 26 16:15:04 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -98,7 +98,7 @@ int		vm(t_params *data, t_hero *heros, unsigned char *map,
   t_hero	*tmp;
 
   if (data->nbHeros == 1)
-    heros->isAlone = true;
+    return (write(1, "Draw.\n", 6), 0);
   if ((data->endianness = findEndian()) == UNKNOWN)
     return (write(2, "Unsupported endianness\n", 23), 1);
   while (tmp = heros, i = 0, ++data->totalCycle, ++data->cycle,

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri Mar 11 04:18:45 2016 Antoine Baché
-** Last update Sat Mar 26 16:15:52 2016 Antoine Baché
+** Last update Sat Mar 26 20:01:07 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -15,14 +15,14 @@
 #include "errors.h"
 #include "tools.h"
 
-int		addHero(t_hero *hero)
+int		addHero(t_hero *hero, int nbHero)
 {
   t_hero	*new;
 
   if (!(new = malloc(sizeof(t_hero))))
     return (errorMalloc());
   my_bzero(new, sizeof(t_hero));
-  new->id = hero->id + 1;
+  new->id = nbHero;
   new->loadAddress = -1;
   new->name = NULL;
   new->comment = NULL;

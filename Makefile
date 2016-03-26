@@ -5,10 +5,10 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Sat Mar 26 19:11:24 2016 Antoine Baché
+## Last update Sat Mar 26 19:39:42 2016 Antoine Baché
 ##
 
-DEBUG=			no
+DEBUG=			yes
 
 BONUS=			yes
 

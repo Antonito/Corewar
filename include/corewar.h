@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sat Mar 26 19:04:04 2016 Antoine Baché
+** Last update Sat Mar 26 20:01:37 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -126,7 +126,7 @@ int			executeOrders(t_hero *, unsigned char *,
 */
 ptrtab			selector(void);
 insttab			selectorExec(void);
-int			addHero(t_hero *);
+int			addHero(t_hero *, int);
 t_hero			*initHero(t_hero *);
 void			initParams(t_params *);
 int			initVm(t_params *, t_hero *);

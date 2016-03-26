@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Fri Mar 25 21:03:58 2016 Antoine Baché
+** Last update Sat Mar 26 01:04:02 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -27,6 +27,6 @@ int		ldCase(t_hero *hero, t_instruct *new, unsigned char *map,
     new->args[0] = readShort(hero, map, endianness) % IDX_MOD;
   new->args[1] = (map[(hero->loadAddress + hero->pc++) % MEM_SIZE]  - 1)
     % REG_SIZE;
-  new->time - LD_TIME;
+  new->time = LD_TIME;
   return (0);
 }

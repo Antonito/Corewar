@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sat Mar 26 12:45:46 2016 Antoine Baché
+** Last update Sat Mar 26 13:29:21 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -49,6 +49,7 @@ typedef struct		s_instruct
 {
   int			type;
   int			bytecode;
+  unsigned int		pcSave;
   int			args[3];
   int			time;
   struct s_instruct	*next;

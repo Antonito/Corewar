@@ -17,6 +17,7 @@
                 echo "<p style=\"background-color:rgba(0, 255, 0, 0.5);\">Welcome ".$_SESSION['login']." <br> </p>";
 		echo "<a href='ok.php' style='border:2px solid red;color: hotpink;'>Upload a Champ</a>        ";
 		echo "<a href='all.php' style='border:2px solid red;color: hotpink;'>launch a fight</a>  ";
+		echo "<a href='rank.php' style='border:2px solid red;color: hotpink;'>Rank</a><br><br>";
 		echo "<a href='index.php' style='border:2px solid red;color: hotpink;'>Logout</a><br><br>";
 	}
 	else {

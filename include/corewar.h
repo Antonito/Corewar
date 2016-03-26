@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Fri Mar 25 12:57:10 2016 Antoine Baché
+** Last update Sat Mar 26 12:45:46 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -62,7 +62,7 @@ typedef struct		s_hero
   char			*comment;
   unsigned char		*data;
   unsigned int 		pc;
-  unsigned char		reg[REG_NUMBER];
+  unsigned int		reg[REG_NUMBER];
   bool			carry;
   unsigned int		size;
   bool			customId;

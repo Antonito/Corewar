@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Sat Mar 26 01:04:02 2016 Antoine Baché
+** Last update Sat Mar 26 13:10:34 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -18,6 +18,7 @@ int		ldCase(t_hero *hero, t_instruct *new, unsigned char *map,
   int		tmp;
   t_bytecode	byte;
 
+  new->args[2] = hero->pc;
   new->bytecode = byte.bytecode =
     map[(hero->loadAddress + hero->pc++) % MEM_SIZE] % IDX_MOD;
   tmp = getByteCode(&byte);

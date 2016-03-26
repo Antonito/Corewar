@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Tue Mar 22 23:40:27 2016 Antoine Baché
+** Last update Sat Mar 26 01:24:36 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -24,7 +24,8 @@ int		ldiExec(t_hero *hero, t_instruct *new, unsigned char *map,
   i = -1;
   tmp = (char *)&s;
   while (++i < 4 &&
-	 (tmp[i] = map[(hero->loadAddress + hero->pc + i) % MEM_SIZE], 1));
+	 (tmp[i] = map[(hero->loadAddress + hero->pc + i + new->args[0])
+		       % MEM_SIZE], 1));
   s += new->args[1];
   if (new->type == 0x0a)
     s %= IDX_MOD;

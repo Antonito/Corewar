@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Mar 16 14:16:27 2016 Antoine Baché
-** Last update Fri Mar 25 21:25:58 2016 Antoine Baché
+** Last update Sat Mar 26 01:29:21 2016 Antoine Baché
 */
 
 #include "corewar.h"
@@ -31,9 +31,9 @@ int		stCase(t_hero *hero, t_instruct *new, unsigned char *map,
   if (!check)
     {
       new->args[1] = -1;
-      new->args[2] = map[(hero->loadAddress + hero->pc++) % MEM_SIZE]
-	% REG_SIZE;
-      printf("St2: r%d\n", new->args[2]);
+      new->args[2] = (map[(hero->loadAddress + hero->pc++) % MEM_SIZE]
+		      - 1)% REG_SIZE;
+      printf("St2: r%d\n", new->args[2] + 1);
     }
   else
     {

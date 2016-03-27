@@ -3,6 +3,8 @@
     <title>Corewar</title>
   </head>
   <body>
+	<img src="imgs/Montage.png" class="dossier" alt="Montage">
+	<img src="imgs/leek_left.png" class="leek_left" alt="leek_left">
     <p>
       <?php
 	session_start();
@@ -13,7 +15,6 @@
 	else {
 		echo '<script>window.location.replace("index.php");</script>';
 	}	
-        echo "<p style=\"background-color:rgba(0, 255, 0, 0.5);\">The Ranking !!</p>";
 	$dbhost = 'localhost:3306';
    	$dbuser = 'root';
    	$dbpass = 'tekdoom';
@@ -29,7 +30,7 @@
 
 	if (mysqli_num_rows($result) > 0) {
     	// output data of each row
-	echo "<p style=\"background-color:rgba(0, 255, 0, 0.5);\">";
+	echo "<p class='ranking'>";
 	$i = 1;
     	while($row = mysqli_fetch_assoc($result)) {
         	echo $i. " - " . $row["login"]. " - Score: " . $row["score"].  " - victoire: " . $row['victoire']. " - defaite: " .$row['defaite']."<br>";
@@ -42,5 +43,6 @@
    	mysqli_close($conn);
       ?>
     </p>
+	<img src="imgs/leek_right.png" class="leek_right" alt="leek_right">
   </body>
 </html>

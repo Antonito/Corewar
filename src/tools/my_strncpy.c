@@ -5,10 +5,10 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:09:49 2016 Antoine Baché
-** Last update Tue Feb 23 16:09:59 2016 Antoine Baché
+** Last update Sun Mar 27 18:14:04 2016 Antoine Baché
 */
 
-char	*my_strncpy(char *dest, char *src, int n)
+char	*my_strncpy(char *dest, const char *src, int n)
 {
   int	i;
 

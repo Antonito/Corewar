@@ -5,10 +5,10 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:05:50 2016 Antoine Baché
-** Last update Fri Mar  4 23:45:46 2016 Antoine Baché
+** Last update Sun Mar 27 18:18:49 2016 Antoine Baché
 */
 
-int	my_getnbr(char *str)
+int	my_getnbr(const char *str)
 {
   int	i;
   int	s;

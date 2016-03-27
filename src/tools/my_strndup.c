@@ -5,13 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:10:17 2016 Antoine Baché
-** Last update Sat Mar 26 15:35:45 2016 Antoine Baché
+** Last update Sun Mar 27 18:14:35 2016 Antoine Baché
 */
 
 #include <stdlib.h>
 #include "tools.h"
 
-char	*my_strndup(char *src, int n)
+char	*my_strndup(const char *src, int n)
 {
   char	*dest;
   int	i;
@@ -29,7 +29,7 @@ char	*my_strndup(char *src, int n)
   return (dest);
 }
 
-char	*my_strdup(char *src)
+char	*my_strdup(const char *src)
 {
   char	*dest;
   int	i;

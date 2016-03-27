@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 11:30:01 2016 Antoine Baché
-** Last update Sat Mar 26 20:01:37 2016 Antoine Baché
+** Last update Sun Mar 27 18:07:09 2016 Antoine Baché
 */
 
 #ifndef	COREWAR_H_
@@ -89,7 +89,8 @@ typedef	struct		s_params
 }			t_params;
 
 typedef	int (**ptrtab)(t_hero *, t_instruct *, unsigned char *, int);
-typedef	int (**insttab)(t_hero *, t_instruct *, unsigned char *, t_params *);
+typedef	int (**insttab)(t_hero *, t_instruct *, unsigned char *,
+			t_params *);
 
 typedef struct		s_funcPtr
 {

@@ -5,12 +5,12 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Tue Feb 23 11:35:35 2016 Antoine Baché
-## Last update Sat Mar 26 21:18:00 2016 Antoine Baché
+## Last update Sun Mar 27 18:21:04 2016 Antoine Baché
 ##
 
 DEBUG=			no
 
-BONUS=			no
+BONUS=			yes
 
 SRC_ASM_PREFIX=		src/asm/
 
@@ -241,7 +241,11 @@ endif
 	@echo "Compiling" $<
 	@$(CC) -o $@ -c $< $(CFLAGS)
 
+ifeq ($(BONUS), yes)
 all:	$(NAME_ASM) $(NAME_CORE) $(NAME_DECOMPILER)
+else
+all:	$(NAME_ASM) $(NAME_CORE)
+endif
 
 clean:
 	@echo -n "[ "
@@ -250,7 +254,9 @@ clean:
 	@echo "Removing OBJ files ..."
 	@$(RM) $(OBJ_ASM)
 	@$(RM) $(OBJ_CORE)
+ifeq ($(BONUS), yes)
 	@$(RM) $(OBJ_DECOMPILER)
+endif
 
 fclean:	clean
 	@echo -n "[ "
@@ -259,7 +265,9 @@ fclean:	clean
 	@echo "Deleting binaries ..."
 	@$(RM) $(NAME_ASM)
 	@$(RM) $(NAME_CORE)
+ifeq ($(BONUS), yes)
 	@$(RM) $(NAME_DECOMPILER)
+endif
 
 re:	fclean all
 

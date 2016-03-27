@@ -5,12 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Feb 24 22:19:40 2016 Antoine Baché
-** Last update Thu Feb 25 03:13:34 2016 Antoine Baché
+** Last update Sun Mar 27 18:14:57 2016 Antoine Baché
 */
 
 #include <unistd.h>
 
-int	my_write(char c, int fd)
+int	my_write(const char c, int fd)
 {
   return (write(fd, &c, 1));
 }

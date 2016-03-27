@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Feb 24 16:53:31 2016 Antoine Baché
-** Last update Fri Feb 26 10:42:41 2016 Antoine Baché
+** Last update Sun Mar 27 18:19:59 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -13,13 +13,13 @@
 #include "decompiler.h"
 #include "tools.h"
 
-int	errorChamp(void)
+int		errorChamp(void)
 {
   write(2, "Error while loading champion\n", 29);
   return (1);
 }
 
-int	prepare_ins(char **inst)
+int		prepare_ins(char **inst)
 {
   inst[16] = NULL;
   if (!(inst[0] = my_strdup("live ")) || !(inst[1] = my_strdup("ld ")) ||

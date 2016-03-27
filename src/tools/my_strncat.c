@@ -5,12 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:09:05 2016 Antoine Baché
-** Last update Tue Feb 23 16:09:11 2016 Antoine Baché
+** Last update Sun Mar 27 18:13:44 2016 Antoine Baché
 */
 
 #include "tools.h"
 
-char	*my_strncat(char *dest, char *src, int n)
+char	*my_strncat(char *dest, const char *src, int n)
 {
   int	count;
   int	len;

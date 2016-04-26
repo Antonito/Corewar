@@ -14,3 +14,5 @@ If you compile with the variable "BONUS" to "yes" in the Makefile :
         - Ranking system
 
 Realized with Luka Boulagnon, Ludovic Petrenko and Lucas Troncy.
+
+ASM grade : 19.75 / 20
